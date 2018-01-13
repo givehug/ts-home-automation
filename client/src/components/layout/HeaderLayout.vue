@@ -1,0 +1,121 @@
+<template>
+<nav class="navbar is-primary is-fixed-top">
+	<div class="navbar-brand">
+		<!-- title -->
+		<h4 class="navbar-item title is-4 route-title">{{$route.meta.title}}</h4>
+		<!-- burger -->
+		<div
+			class="navbar-burger burger"
+			v-if="amIAuthed"
+			@click="toggleMobMenu()"
+			:class="{'is-active': showMobMenu}"
+		>
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+	</div>
+	<!-- desktop menu -->
+	<div class="navbar-menu">
+		<div class="navbar-end">
+			<router-link
+				class="navbar-item"
+				to="/profile"
+			>{{$store.state.user.data && $store.state.user.data.name}}</router-link>
+			<router-link
+				v-if="amIAuthed"
+				class="navbar-item" to="/settings"
+			>
+				<span class="icon is-medium">
+					<i class="fa fa-cog fa-lg"></i>
+				</span>
+			</router-link>
+			<a
+				v-if="amIAuthed"
+				class="navbar-item navbar-action"
+			>
+				<b-dropdown position="is-bottom-left">
+					<a slot="trigger">
+						<span class="icon is-medium">
+							<i class="fa fa-ellipsis-v fa-lg"></i>
+						</span>
+					</a>
+					<b-dropdown-item @click.native="logOut($event)">Log Out</b-dropdown-item>
+				</b-dropdown>
+			</a>
+		</div>
+	</div>
+	<!-- mob menu -->
+	<ul
+		class="mob-nav"
+		v-if="amIAuthed"
+		:class="{'is-active': showMobMenu}"
+		@click="toggleMobMenu()"
+	>
+		<li><router-link to="/profile">profile</router-link></li>
+		<li><router-link to="/settings">settings</router-link></li>
+		<li><router-link to="/dashboard">dashboard</router-link></li>
+		<li><router-link to="/devices">devices</router-link></li>
+		<li><router-link to="/users">users</router-link></li>
+		<li @click="logOut($event)">logout</li>
+	</ul>
+</nav>
+</template>
+
+<script>
+import {actions, getters} from '@/store/constants';
+
+export default {
+    name: 'theHeader',
+    data () {
+        return {
+			showMobMenu: false,
+		};
+    },
+    computed: {
+        amIAuthed() {
+            return this.$store.getters[getters.AM_I_AUTHED];
+        }
+    },
+    methods: {
+        logOut(e) {
+            e.preventDefault();
+            this.$store.dispatch(actions.USER_LOGOUT);
+		},
+		toggleMobMenu() {
+			this.showMobMenu = !this.showMobMenu;
+		},
+    },
+};
+</script>
+
+<style lang="scss" scoped>
+.route-title {
+	margin: 0 !important;
+}
+.mob-nav {
+	display: none;
+
+	@media screen and (max-width: 600px) {
+		position: fixed;
+		top: 52px;
+		left: 0;
+		height: calc(100% - 52px);
+		width: 100%;
+		z-index: 5;
+		background: white;		
+		padding: 20px;
+
+		li {
+			padding: 15px;
+			color: black;
+			text-transform: uppercase;
+			font-weight: 500;
+		}
+
+		&.is-active {
+			display: block;
+		}
+	}
+}
+</style>

@@ -1,0 +1,86 @@
+// Import Bulma's core
+@import "~bulma/sass/utilities/_all";
+
+// $family-primary: 'Ubuntu', sans-serif;
+
+// Set your colors
+// $primary: #7D669E;
+// $primary-invert: findColorInvert($primary);
+// $twitter: #4099FF;
+// $twitter-invert: findColorInvert($twitter);
+
+// Setup $colors to use as bulma classes (e.g. 'is-twitter')
+// $colors: (
+//     "white": ($white, $black),
+//     "black": ($black, $white),
+//     "light": ($light, $light-invert),
+//     "dark": ($dark, $dark-invert),
+//     "primary": ($primary, $primary-invert),
+//     "info": ($info, $info-invert),
+//     "success": ($success, $success-invert),
+//     "warning": ($warning, $warning-invert),
+//     "danger": ($danger, $danger-invert),
+//     "twitter": ($twitter, $twitter-invert)
+// );
+
+// // Links
+// $link: $primary;
+// $link-invert: $primary-invert;
+// $link-focus-border: $primary;
+
+// Import Bulma and Buefy styles
+@import "~bulma";
+@import "~buefy/src/scss/buefy";
+
+// .is-three-quarters-mobile {
+//     @media screen and (max-width: 520) {
+//         -webkit-box-flex: 0;
+//         -ms-flex: none;
+//         flex: none;
+//         width: 75%;
+//     }
+// }
+
+.box, .card {
+    box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1);
+    border-radius: 5px;
+}
+
+// .title,
+// .subtitle {
+//     line-height: 0.8;
+
+//     &.is-primary {
+//         color: $primary;
+//     }
+//     &.is-danger {
+//         color: $danger;
+//     }
+// }
+
+// .title:not(.is-spaced) + .subtitle {
+//     margin-top: -1rem;
+// }
+
+// .content {
+//     padding: 30px;
+//     @media screen and (max-width: 800px) {
+//         padding: 20px 10px;
+//     }
+// }
+
+// .button {
+//     .icon {
+//         margin-right: 5px !important;
+//     }
+// }
+
+// hr {
+//     height: 2px;
+//     border-bottom: 1px solid white;
+// }
+
+// .dropdown-content a {
+//     color: black  !important;
+//     padding: 1rem 1.5rem !important;
+// }

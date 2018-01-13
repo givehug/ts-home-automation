@@ -1,0 +1,13 @@
+{
+	"name": "harsu",
+	"version": "1.0.0",
+	"description": "Home automation raspberry security unit.",
+	"main": "main.js",
+	"scripts": {},
+	"author": "Vladimir Boretskyi",
+	"license": "ISC",
+	"dependencies": {
+		"fs-extra": "^3.0.0",
+		"onoff": "^1.1.2"
+	}
+}

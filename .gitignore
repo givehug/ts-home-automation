@@ -1,0 +1,11 @@
+// npm
+node_modules/
+
+// OS
+.DS_Store
+
+// configs
+// config/config.json
+
+// builds
+client/dist/

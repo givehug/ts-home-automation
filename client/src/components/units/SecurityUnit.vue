@@ -1,0 +1,132 @@
+<template>
+<div id="security">
+
+    <!-- Images -->
+    <div
+		class="images-wrapper"
+		v-if="securityState.images"
+	>
+        <p v-if="!securityState.images.length">No Images</p>
+        <div
+			v-if="securityState.images.length"
+			class="images"
+		>
+            <img
+                v-for="(image, index) in securityState.images"
+                :src="'data:image/png;base64,' + image"
+                :key="index"
+                @click="imageToShow = image"
+            />
+        </div>
+    </div>
+
+    <!-- Images Lightshot -->
+	<b-modal :active.sync="imageToShow">
+		<p class="image">
+            <img :src="'data:image/png;base64,' + imageToShow">
+        </p>
+	</b-modal>
+
+    <!-- Last detected -->
+    <div
+		v-if="securityState"
+		class="line"
+	>
+        <p>Last detected: {{securityState.lastDetected | time}}</p>
+    </div>
+
+	<div class="line">
+		<!-- take picture -->
+		<button
+			class="button"
+			@click="sendCommand(commands.takePicture.key)"
+		>
+			<span>Take Picture</span>
+		</button>
+
+		<!-- delete picture -->
+		<button
+			class="button"
+			@click="sendCommand(commands.deletePictures.key)"
+		>
+			<span>Delete Pictures</span>
+		</button>
+	</div>
+
+	<!-- toggle detection -->
+	<div class="line">
+		<span>Turn detection ON</span>
+		<input
+			type="checkbox"
+			v-model="securityState.detectionStatus"
+			@click="sendCommand(commands.toggleDetection.key)"
+		/>
+	</div>
+
+	<!-- toggle nobody home -->
+	<div class="line">
+		<span>Turn detection ON when nobody home</span>
+		<input
+			type="checkbox"
+			v-model="securityState.turnDetectionOnWhenNobodyHome"
+			@click="sendCommand(commands.toggleDetectionWhenNobodyHome.key)"
+		/>
+	</div>
+	
+</div>
+</template>
+
+<script>
+import {mutations} from '@/store/constants';
+
+export default {
+    name: 'SecurityUnit',
+    data() {
+        return {
+            imageToShow: false,
+        };
+    },
+    computed: {
+		securityState() {
+			return this.$store.state.home.security;
+		},
+		commands() {
+			return this.$store.state.commands.byKey;
+		},
+    },
+    methods: {
+        sendCommand(cmd) {
+            this.$store.commit(mutations.WS_MESSAGE_SEND, [
+				'deviceCommand',
+				{cmdId: cmd},
+			]);
+        },
+    },
+};
+</script>
+
+<style lang="scss" scoped>
+#security {
+    .images-wrapper {
+        overflow-y: scroll;
+        margin-bottom: 15px;
+        min-height: 40px;
+        line-height: 40px;
+        text-align: center;
+    }
+    .images {
+        text-align: left;
+        height: 100px;
+        white-space: nowrap;
+
+        img {
+            margin: 0 5px;
+            height: 100px;
+            cursor: pointer;
+        }
+    }
+    .line {
+        margin-bottom: 15px;
+    }
+}
+</style>

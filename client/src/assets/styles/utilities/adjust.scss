@@ -1,0 +1,52 @@
+body {
+  background: #f8f8f8;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.btn {
+  cursor: pointer;
+}
+
+h2, h4 {
+  margin-bottom: 1rem;
+}
+
+a {
+  color: inherit;
+}
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+/*fix tooltip transition*/
+.tooltip {
+  transition: opacity .3s, visibility .3s;
+}
+
+.bottom-border {
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ccc;
+}
+
+.top-border {
+    padding-top: 15px;
+    margin-top: 15px;
+    border-top: 1px solid #ccc;
+}
+
+.hero {
+  width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
