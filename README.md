@@ -1,6 +1,8 @@
 # Simple JavaScript Home Automation Example Project 
 ![alt text](/client/static/favicons/favicon.ico "logo")
 
+[Demo video](https://youtu.be/lrV0SyhGV-c)
+
 - NodeJS back end (http and websockets cloud server). MongoDB database.
 - VueJS client side.
 - Raspberry pi 3 running NodeJS and Nodemcu flashed with Espruino running es5 as home IOT devices.
