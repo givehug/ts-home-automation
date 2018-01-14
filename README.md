@@ -19,6 +19,8 @@ Each device has independent power supply and is connected wirelessly to home wif
 
 WS server handles communication between devices and client side.
 
+![alt text](ui.png "user interface")
+
 ### FEATURES
 - email notifications with nodemailer
 - JWT, bcrypt authorization
