@@ -9,7 +9,6 @@ class Sockets {
 		this.options = options;
 
 		this.ws;
-		this.connectionTimeput;
 		this.reconnectInterval = 1000;
 
 		this.send = this.send.bind(this);
@@ -40,14 +39,11 @@ class Sockets {
 
 		this.ws.on('open', () => {
 			console.log('WS Connected');
-			this.cntTimeout && clearTimeout(this.cntTimeout);
 		});
 
 		this.ws.on('close', code => {
 			console.log('WS Disconnected: ' + code);
-			this.options.onClose && this.options.onClose();
-			this.cntTimeout && clearTimeout(this.cntTimeout);
-			this.cntTimeout = setTimeout(() => {
+			setTimeout(() => {
 				this.start();
 			}, this.reconnectInterval);
 		});
@@ -63,11 +59,7 @@ class Sockets {
 	* Send WS message.
 	*/
 	send(msg) {
-		this.ws && this.ws.send(msg, err => {
-			if (err) {
-				this.start();
-			}
-		});
+		this.ws && this.ws.send(msg);
 	}
 }
 

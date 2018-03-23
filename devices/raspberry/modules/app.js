@@ -12,7 +12,7 @@ class App {
 		this.config = config;
 
 		// state
-		this.turnDetectionOnWhenNobodyHome = true;
+		this.turnDetectionOnWhenNobodyHome = false;
 		this.someoneHome = false;
 
 		this.arpscan = new ArpScan(null, 60000);

@@ -1,9 +1,10 @@
 const {messageToJSON, jsonToMessage} = require('./../utils');
+const compareSets = require('./../utils/compareSets');
 const {notifyDetection} = require('./motionDetection');
 const {User} = require('./../models/user');
 const uuidv4 = require('uuid/v4');
 
-const pingInterval = 5000;
+const pingInterval = 10000;
 
 class WsServer {
 	constructor(WS, wss) {
@@ -42,22 +43,23 @@ class WsServer {
 		});
 
 		setInterval(() => {
-			let someDevicesDisconnected = false;
+			const confirmedConnectedDevices = new Set();
 
 			this.wss.clients.forEach(client => {
-				if (!client.alive) {
-					if (client.type === 'device') {
-						this.connectedDevices.delete(client.protocol);
-						someDevicesDisconnected = true;
-					}
-					client.terminate();
-				} else {
-					client.send(''); // ping empty message
+				if (client.alive) {
 					client.alive = false;
+					client.send(''); // ping empty message
+
+					if (client.type === 'device') {
+						confirmedConnectedDevices.add(client.protocol);
+					}
+				} else {
+					client.terminate();
 				}
 			});
 
-			if (someDevicesDisconnected) {
+			if (!compareSets(confirmedConnectedDevices, this.connectedDevices)) {
+				this.connectedDevices = confirmedConnectedDevices;
 				this.broadcast(null, jsonToMessage('connectedDevices', Array.from(this.connectedDevices)), 'ui');
 			}
 		}, pingInterval);
@@ -102,18 +104,16 @@ class WsServer {
 	}
 
 	handleMessage(message, ws) {
-		if (message === '') {
-			return ws.alive = true; // pong
-		}
-
 		const [msgType, msgData] = messageToJSON(message);
+
+		ws.alive = true;
 
 		// handle state update
 		if (msgType === 'stateUpdate') {
 			// for now broadcast 'stateUpdate' to ui only
 			this.broadcast(null, message, 'ui');
 			msgData.state && this.handleStateUpdate(msgData.state, ws);
-		} else {
+		} else if (msgType) {
 			this.broadcast(ws, message);
 		}
 	}
