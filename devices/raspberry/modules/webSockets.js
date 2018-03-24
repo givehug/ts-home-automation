@@ -1,5 +1,5 @@
 const WS = require('ws');
-const {messageToJSON} = require('./../utils/wsMessage');
+const {messageToJSON} = require('./../../../utils/wsMessage');
 
 /*
 * WebSocket client module.

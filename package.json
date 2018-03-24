@@ -12,8 +12,7 @@
 		"build-client": "cd client && vue-cli-service build",
 		"dev-server": "nodemon server/server.js",
 		"lint-client": "eslint client/src/ --quiet",
-		"lint-server": "eslint server/ --quiet",
-		"lint": "cd client && vue-cli-service lint"
+		"lint-server": "eslint server/ --quiet"
 	},
 	"browserslist": [
 		"> 1%",

@@ -17,5 +17,12 @@
 		"__dirname": true,
 		"digitalWrite": true,
 		"D4": true
-	}
+	},
+	"parserOptions": {
+        "ecmaVersion": 2017
+	},
+	"rules": {
+		"no-unused-vars": "warn",
+		"no-console": "warn"
+    }
 }

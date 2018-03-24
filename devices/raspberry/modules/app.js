@@ -2,7 +2,7 @@ const Camera = require('./camera');
 const Pir = require('./pir');
 const Sockets = require('./webSockets');
 const ArpScan = require('./arpscan');
-const {jsonToMessage} = require('./../utils/wsMessage');
+const {jsonToMessage} = require('./../../../utils/wsMessage');
 
 /*
 * App module.

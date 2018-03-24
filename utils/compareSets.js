@@ -1,6 +1,5 @@
 /**
  * Compare two sets
- *
  * @param {Set} setA
  * @param {Set} setB
  * @returns true if sets are equal, false if not

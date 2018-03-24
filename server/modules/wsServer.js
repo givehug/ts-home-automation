@@ -1,5 +1,5 @@
-const {messageToJSON, jsonToMessage} = require('./../utils');
-const compareSets = require('./../utils/compareSets');
+const {messageToJSON, jsonToMessage} = require('./../../utils/wsMessage');
+const compareSets = require('./../../utils/compareSets');
 const {notifyDetection} = require('./motionDetection');
 const {User} = require('./../models/user');
 const uuidv4 = require('uuid/v4');
@@ -33,13 +33,13 @@ class WsServer {
 				this.handleMessage(message, ws);
 			});
 
-			ws.on('error', error => {
-				// error
-			});
+			// ws.on('error', error => {
+			// 	// error
+			// });
 
-			ws.on('close', close => {
-				// close
-			});
+			// ws.on('close', close => {
+			// 	// close
+			// });
 		});
 
 		setInterval(() => {

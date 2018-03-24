@@ -38,7 +38,7 @@ const actions = {
 				context.commit(constants.mutations.ROBO_INIT);
 				context.commit(constants.mutations.WS_CONNECT);
 			} catch (error) {
-				console.error('APP async error');
+				// console.error('APP async error');
 			}
 		}
 	},

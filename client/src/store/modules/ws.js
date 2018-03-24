@@ -1,4 +1,4 @@
-import {messageToJSON, jsonToMessage} from './../../utils/wsMessage';
+import {messageToJSON, jsonToMessage} from './../../../../utils/wsMessage';
 import * as constants from './../constants';
 import config from '../../../../config';
 
