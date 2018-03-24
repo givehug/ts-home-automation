@@ -1,3 +1,5 @@
+import '../../config/config';
+
 import Vue from 'vue';
 
 // external modules
@@ -21,9 +23,7 @@ Vue.config.productionTip = false;
 
 // create app
 new Vue({
-	el: '#app',
 	store,
 	router,
-	template: '<App/>',
-	components: {App},
-});
+	render: h => h(App),
+}).$mount('#app');

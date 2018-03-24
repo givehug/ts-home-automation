@@ -1,23 +1,22 @@
-// @flow
 import {api, endpoints} from './../../api';
 import * as constants from './../constants';
 
-const state: UsersStateType = {list: null};
+const state = {list: null};
 
 const mutations = {
-	[constants.mutations.USERS_LIST_UPDATE](state: UsersStateType, list: Array<UserDataType>) {
+	[constants.mutations.USERS_LIST_UPDATE](state, list) {
 		state.list = list;
 	},
-	[constants.mutations.USERS_LIST_ADD](state: UsersStateType, user: UserDataType) {
+	[constants.mutations.USERS_LIST_ADD](state, user) {
 		state.list = state.list ? [...state.list, user] : [user];
 	},
-	[constants.mutations.USERS_LIST_REMOVE](state: UsersStateType, userId: string) {
+	[constants.mutations.USERS_LIST_REMOVE](state, userId) {
 		state.list = state.list ? state.list.filter(u => u._id !== userId) : state.list;
 	},
 };
 
 const actions = {
-	[constants.actions.USERS_FETCH]: async(context: any) => {
+	[constants.actions.USERS_FETCH]: async(context) => {
 		try {
 			const res = await api.request(endpoints.users, 'GET');
 
@@ -26,7 +25,7 @@ const actions = {
 			// do nothing
 		}
 	},
-	[constants.actions.USERS_INVITE]: async(context: any, {email, name}: {email: string, name: string}) => {
+	[constants.actions.USERS_INVITE]: async(context, {email, name}) => {
 		try {
 			const res = await api.request(endpoints.users, 'POST', {
 				email,
@@ -45,7 +44,7 @@ const actions = {
 			return false;
 		}
 	},
-	[constants.actions.USERS_DELETE]: async(context: any, userId: string) => {
+	[constants.actions.USERS_DELETE]: async(context, userId) => {
 		try {
 			await api.request(endpoints.users + userId, 'DELETE');
 

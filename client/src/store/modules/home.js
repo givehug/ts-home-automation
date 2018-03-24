@@ -1,5 +1,3 @@
-// @flow
-
 /**
  * 'home' state represents state of all smart home devices and units.
  * Currently it includes single raspberry pi 3 device,
@@ -8,7 +6,7 @@
 
 import * as constants from './../constants';
 
-const state: HomeStateType = {
+const state = {
 	/**
 	 * 'network' state represents state of home wifi network and connected devices at the moment.
 	 * (a few minutes delay possible)
@@ -40,7 +38,7 @@ const mutations = {
 	/**
 	 * Update particular 'home' state property values
 	 */
-	[constants.mutations.HOME_STATE_UPDATE](state: NetworkStateType, update: any) {
+	[constants.mutations.HOME_STATE_UPDATE](state, update) {
 		Object.keys(update).forEach(key => {
 			state[key] = update[key];
 		});

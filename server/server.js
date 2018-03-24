@@ -1,3 +1,6 @@
+// Config
+const config = require('../config');
+
 // Libs
 const chalk = require('chalk');
 const WS = require('ws');
@@ -8,7 +11,7 @@ const app = require('./app');
 const WsServer = require('./modules/wsServer');
 
 // Constants
-const port = process.env.PORT;
+const port = config.PORT;
 const server = http.createServer(app);
 const wss = new WS.Server({server});
 

@@ -73,11 +73,12 @@ export default {
 		},
 
 		async handleDeviceChange(deviceId, update) {
-			const deviceData = {
-				...this.getDeviceById(deviceId),
-				...update,
-			};
-
+			const deviceData = Object.assign(
+				{},
+				this.getDeviceById(deviceId),
+				update
+			);
+				
 			try {
 				await this.$store.dispatch(actions.DEVICES_SAVE, deviceData);
 

@@ -1,5 +1,3 @@
-// @flow
-
 /**
  * Devices state is based on the list of devices that were added to database by user.
  * Actions inlcude fetching, adding new, deleting, updating device specs on server.
@@ -10,7 +8,7 @@
 import {api, endpoints} from './../../api';
 import * as constants from './../constants';
 
-const state: DevicesStateType = {
+const state = {
 	loading: false,
 	loaded: false,
 	list: [],
@@ -26,58 +24,50 @@ const mutations = {
 	/**
 	 * Start fetching devices, set fetching devices status to true
 	 */
-	[constants.mutations.DEVICES_ASYNC_START](state: DevicesStateType) {
+	[constants.mutations.DEVICES_ASYNC_START](state) {
 		state.loading = true;
 	},
 	/**
 	 * Set fetching devices status to false when finished
 	 */
-	[constants.mutations.DEVICES_ASYNC_FINISH](state: DevicesStateType) {
+	[constants.mutations.DEVICES_ASYNC_FINISH](state) {
 		state.loading = false;
 	},
 	/**
 	 * Fethced devices, update store with response
 	 */
-	[constants.mutations.DEVICES_FETCH_OK](state: DevicesStateType, list: DeviceType[]) {
+	[constants.mutations.DEVICES_FETCH_OK](state, list) {
 		state.list = list;
 		state.loaded = true;
 	},
 	/**
 	 * Saved devices succesfully, update store
 	 */
-	[constants.mutations.DEVICES_SAVE_OK](state, device: DeviceType) {
+	[constants.mutations.DEVICES_SAVE_OK](state, device) {
 		state.list = state.list.map(d => {
-			return d._id === device._id
-				? {
-					...d,
-					...device,
-				}
-				: d;
+			return d._id === device._id ? Object.assign({}, d, device) : d;
 		});
 	},
 	/**
 	 * Added device succesfully on server, add it to store
 	 */
-	[constants.mutations.DEVICES_ADD_OK](state: DevicesStateType, device: DeviceType) {
+	[constants.mutations.DEVICES_ADD_OK](state, device) {
 		state.list = [...state.list, device];
 	},
 	/**
 	 * Delete device succesfully from db, remove it from store
 	 */
-	[constants.mutations.DEVICES_DELETE_OK](state: DevicesStateType, id: string) {
+	[constants.mutations.DEVICES_DELETE_OK](state, id) {
 		state.list = state.list.filter(d => d._id !== id);
 	},
 	/**
 	 * Update device status with data from 'statusUpdate' WS event
 	 */
-	[constants.mutations.DEVICES_STATUS_UPDATE](state: DevicesStateType, activeDevices: string[] = []) {
+	[constants.mutations.DEVICES_STATUS_UPDATE](state, activeDevices = []) {
 		state.list = state.list.map(device => {
 			const active = activeDevices.indexOf('device-' + device._id) > -1;
 
-			return {
-				...device,
-				active,
-			};
+			return Object.assign({}, device, {active});
 		});
 	},
 };
@@ -86,7 +76,7 @@ const actions = {
 	/**
 	 * Fetch list of all user devices
 	 */
-	[constants.actions.DEVICES_FETCH]: async(context: any) => {
+	[constants.actions.DEVICES_FETCH]: async(context) => {
 		context.commit({type: constants.mutations.DEVICES_ASYNC_START});
 
 		try {
@@ -101,7 +91,7 @@ const actions = {
 	/**
 	 * Update existing device data on server
 	 */
-	[constants.actions.DEVICES_SAVE]: async(context: any, deviceData: DeviceType) => {
+	[constants.actions.DEVICES_SAVE]: async(context, deviceData) => {
 		context.commit(constants.mutations.DEVICES_ASYNC_START);
 
 		try {
@@ -116,7 +106,7 @@ const actions = {
 	/**
 	 * Add new device. It will be added with default data and will be given unique id on server.
 	 */
-	[constants.actions.DEVICES_ADD]: async(context: any) => {
+	[constants.actions.DEVICES_ADD]: async(context) => {
 		context.commit(constants.mutations.DEVICES_ASYNC_START);
 
 		try {
@@ -131,7 +121,7 @@ const actions = {
 	/**
 	 * Delete device by its id.
 	 */
-	[constants.actions.DEVICES_DELETE]: async(context: any, id: string) => {
+	[constants.actions.DEVICES_DELETE]: async(context, id) => {
 		context.commit(constants.mutations.DEVICES_ASYNC_START);
 
 		try {
@@ -149,7 +139,7 @@ const getters = {
 	/**
 	 * Find device by id in store.
 	 */
-	[constants.getters.DEVICES_GET_BY_ID]: (state: DevicesStateType) => (id: string): ?DeviceType => {
+	[constants.getters.DEVICES_GET_BY_ID]: (state) => (id) => {
 		return state.list.find(d => d._id === id);
 	},
 };

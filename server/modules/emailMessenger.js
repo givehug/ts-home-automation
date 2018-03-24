@@ -1,15 +1,16 @@
 const nodemailer = require('nodemailer');
+const config = require('../../config');
 
 const smtpConfig = {
 	service: 'gmail',
 	auth: {
-		user: process.env.SMTP_USER,
-		pass: process.env.SMTP_KEY,
+		user: config.SMTP_USER,
+		pass: config.SMTP_KEY,
 	},
 };
 
 const mailOptions = {
-	from: process.env.SMTP_USER,
+	from: config.SMTP_USER,
 	to: 'empty@email.com',
 	subject: 'Home Automation Notification',
 	text: 'Message text not specified',

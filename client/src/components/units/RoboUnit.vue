@@ -221,19 +221,15 @@ export default {
     0% {
         height: 2.5px;
     }
-    ,
     20% {
         height: 2.5px;
     }
-    ,
     50% {
         height: 25px;
     }
-    ,
     80% {
         height: 2.5px;
     }
-    ,
     100% {
         height: 2.5px;
     }
@@ -243,23 +239,18 @@ export default {
     0% {
         left: 5px;
     }
-    ,
     30% {
         left: 5px;
     }
-    ,
     35% {
         left: 25px;
     }
-    ,
     55% {
         left: 25px;
     }
-    ,
     60% {
         left: 5px;
     }
-    ,
     100% {
         left: 5px;
     }

@@ -26,10 +26,11 @@ const byKey = {
 };
 
 const byTitle = Object.values(byKey)
-	.reduce((allCommandsMap, command) => ({
-		...allCommandsMap,
-		[command.title]: command,
-	}), {});
+	.reduce((allCommandsMap, command) => Object.assign(
+		{},
+		allCommandsMap,
+		{[command.title]: command}
+	), {});
 
 const state = {
 	byKey,

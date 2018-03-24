@@ -1,5 +1,3 @@
-// @flow
-
 /**
  * Settings state has main object 'data' where all user settings are stored.
  * We load settings from server, update them on client side, save updates to server.
@@ -8,7 +6,7 @@
 import {api, endpoints} from './../../api';
 import * as constants from './../constants';
 
-const state: SettingsStateType = {
+const state = {
 	loaded: false,
 	data: {},
 };
@@ -17,11 +15,8 @@ const mutations = {
 	/**
 	 * Update settings state in store
 	 */
-	[constants.mutations.SETTINGS_UPDATE](state: SettingsStateType, settings: any) {
-		state.data = {
-			...state.data,
-			...settings,
-		};
+	[constants.mutations.SETTINGS_UPDATE](state, settings) {
+		state.data = Object.assign({}, state.data, settings);
 		state.loaded = true;
 	},
 };
@@ -30,7 +25,7 @@ const actions = {
 	/**
 	 * Load settings from server
 	 */
-	[constants.actions.SETTINGS_LOAD]: async(context: any) => {
+	[constants.actions.SETTINGS_LOAD]: async(context) => {
 		try {
 			const res = await api.request(endpoints.settings, 'GET');
 
@@ -42,7 +37,7 @@ const actions = {
 	/**
 	 * Save settings on server
 	 */
-	[constants.actions.SETTINGS_SAVE]: (context: any, settings: any) => {
+	[constants.actions.SETTINGS_SAVE]: (context, settings) => {
 		context.commit(constants.mutations.SETTINGS_UPDATE, settings);
 
 		const settingsData = context.rootState.settings.data;

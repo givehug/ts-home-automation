@@ -1,5 +1,3 @@
-// @flow
-
 /**
  * App state only stores some application meta data.
  * Single action is used to initialize application,
@@ -15,7 +13,7 @@ const actions = {
 	 * If user auth token is in local storage, get user data by it,
 	 * fetch all other necessary data and init components available for signe in user.
 	 */
-	[constants.actions.APP_INIT]: async(context: any) => {
+	[constants.actions.APP_INIT]: async(context) => {
 		const token = localStorage.getItem('token');
 
 		if (token) {

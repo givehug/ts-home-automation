@@ -1,5 +1,4 @@
-// @flow
-export const messageToJSON = (msg: string): WsMessageType => {
+export const messageToJSON = (msg) => {
 	let message = [
 		'',
 		null,
@@ -14,7 +13,7 @@ export const messageToJSON = (msg: string): WsMessageType => {
 	return message;
 };
 
-export const jsonToMessage = (type: string, data: any): string => {
+export const jsonToMessage = (type, data) => {
 	if (!type) {
 		return '';
 	}

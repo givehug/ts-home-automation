@@ -1,27 +1,28 @@
 import axios from 'axios';
+import config from '../../../config';
 
-class Api {
-	rootUrl = process.env.HOST + '/api/';
+function Api() {
+	const rootUrl = config.HOST + '/api/';
 
-	get options() {
+	const options = () => {
 		const token = localStorage.getItem('token');
-		const options = {headers: {}};
+		const ops = {headers: {}};
 
 		if (token) {
-			options.headers['x-auth'] = token;
+			ops.headers['x-auth'] = token;
 		}
 
-		return options;
-	}
+		return ops;
+	};
 
-	request(url, method, data) {
+	this.request = (url, method, data) => {
 		return axios({
 			method,
-			url: this.rootUrl + url,
+			url: rootUrl + url,
 			data,
-			headers: this.options.headers,
+			headers: options().headers,
 		});
-	}
+	};
 }
 
 export default new Api();

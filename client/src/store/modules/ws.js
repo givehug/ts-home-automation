@@ -1,24 +1,24 @@
-// @flow
 import {messageToJSON, jsonToMessage} from './../../utils/wsMessage';
 import * as constants from './../constants';
+import config from '../../../../config';
 
 const mutations = {
 	[constants.mutations.WS_CONNECT]() { /* do nothing */ },
 	[constants.mutations.WS_CONNECTED]() { /* do nothing */ },
 	[constants.mutations.WS_DISCONNECT]() { /* do nothing */ },
 	[constants.mutations.WS_DISCONNECTED]() { /* do nothing */ },
-	[constants.mutations.WS_MESSAGE_SEND](state: any, payload: [string, any]) { /* do nothing */ },
+	[constants.mutations.WS_MESSAGE_SEND](state, payload) { /* do nothing */ },
 	[constants.mutations.WS_MESSAGE_SENT]() { /* do nothing */ },
 	[constants.mutations.WS_MESSAGE_RECEIVED]() { /* do nothing */ },
 };
 
 export default {mutations};
 
-export const wsMiddleware = (store: any) => {
-	const hostname = process.env.WS_HOST;
+export const wsMiddleware = (store) => {
+	const hostname = config.WS_HOST;
 	let socket = null;
 
-	const onMessage = (evt: MessageEvent) => {
+	const onMessage = (evt) => {
 		const msg = evt.data;
 		const [msgType, msgData] = messageToJSON(msg);
 
@@ -46,7 +46,7 @@ export const wsMiddleware = (store: any) => {
 		}
 	};
 
-	store.subscribe((mutation: any) => {
+	store.subscribe((mutation) => {
 		switch (mutation.type) {
 			case constants.mutations.WS_CONNECT:
 				if (socket !== null) {

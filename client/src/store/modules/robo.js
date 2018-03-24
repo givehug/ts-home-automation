@@ -1,9 +1,8 @@
-// @flow
 import annyang from 'annyang'; // only chrome and some android
 import {SpeechSynthesisUtterance} from './../../utils/speechSynthesis';
 import * as constants from './../constants';
 
-const state: RoboStateType = {
+const state = {
 	annyangAvailable: false,
 	name: 'Robby',
 	langs: ['en-US', 'ru-RU'],
@@ -22,7 +21,7 @@ const mutations = {
 	 * Initialize annyang.
 	 * Used in roboMiddleware.
 	 */
-	[constants.mutations.ROBO_INIT](state: RoboStateType) {
+	[constants.mutations.ROBO_INIT](state) {
 		state.annyangAvailable = !!annyang;
 	},
 	/**
@@ -34,11 +33,11 @@ const mutations = {
 	 * Robot say message.
 	 * Used in roboMiddleware.
 	 */
-	[constants.mutations.ROBO_SAY](state: RoboStateType, msg: string) { /* do nothing */ },
+	[constants.mutations.ROBO_SAY](state, msg) { /* do nothing */ },
 	/**
 	 * Change robot face expression.
 	 */
-	[constants.mutations.ROBO_EMOTION_CHANGE](state: RoboStateType, emotions: RoboEmotionsType) {
+	[constants.mutations.ROBO_EMOTION_CHANGE](state, emotions) {
 		state.emotions = Object.assign({}, state.emotions, emotions);
 	},
 	/**
@@ -57,7 +56,7 @@ const actions = {
 	/**
 	 * Turn annyang on/off. Save it on server in user settings.
 	 */
-	[constants.actions.ROBO_TOGGLE](context: any) {
+	[constants.actions.ROBO_TOGGLE](context) {
 		const annyangActive = context.rootState.settings.data.annyangActive;
 
 		if (annyangActive) {
@@ -74,14 +73,14 @@ const getters = {
 	/**
 	 * Returns robot face expression css classes string.
 	 */
-	[constants.getters.ROBO_GET_EMOTIONS_STRING]: (state: RoboStateType) => {
+	[constants.getters.ROBO_GET_EMOTIONS_STRING]: (state) => {
 		return Object
 			.keys(state.emotions)
 			.reduce((p, c) => state.emotions[c] ? p + ' ' + c : p, '');
 	},
 };
 
-export const roboMiddleware = (store: any) => {
+export const roboMiddleware = (store) => {
 	if (!annyang) {
 		/**
 		 * Annyang works by using the webkitSpeechRecognition API,
@@ -114,7 +113,7 @@ export const roboMiddleware = (store: any) => {
 		},
 	};
 
-	store.subscribe((mutation: any) => {
+	store.subscribe((mutation) => {
 		switch (mutation.type) {
 			/**
 			 * On ROBO_INIT start anyang and populate it with predefined commands.

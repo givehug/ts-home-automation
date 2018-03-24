@@ -9,5 +9,15 @@
 		"SMTP_USER": "emailClientSmtpAddress",
 		"PORT": "devProt",
 		"NODE_ENV": "development"
+	},
+	"production": {
+		"HOST": "yourDevHostName",
+		"JWT_SECRET": "someSecretKeyForJWT",
+		"KEY": "anotherKey",
+		"MONGODB_URI": "mongoDbUri",
+		"SMTP_KEY": "emailClientPassword",
+		"SMTP_USER": "emailClientSmtpAddress",
+		"PORT": "devProt",
+		"NODE_ENV": "development"
 	}
 }
