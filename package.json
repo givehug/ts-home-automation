@@ -20,8 +20,8 @@
 		"not ie <= 8"
 	],
 	"engines": {
-		"node": "8.9.1",
-		"npm": "5.6.0"
+		"node": "9.9.0",
+		"npm": "5.8.0"
 	},
 	"dependencies": {
 		"annyang": "*",

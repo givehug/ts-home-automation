@@ -39,6 +39,7 @@ export default {
     width: 100%;
 	display: flex;
     flex-direction: row;
+	padding-top: 60px;
 
     &.authed {
         @media screen and (max-width: 600px) {

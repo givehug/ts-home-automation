@@ -1,3 +1,4 @@
+// rename this file to config.json and fill in your real data
 {
 	"development": {
 		"HOST": "yourDevHostName",
