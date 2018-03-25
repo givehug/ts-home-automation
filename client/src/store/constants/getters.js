@@ -1,5 +1,5 @@
 // Devices
-export const DEVICES_GET_BY_ID = 'DEVICES_GET_BY_ID';
+export const IS_DEVICE_ACTIVE = 'IS_DEVICE_ACTIVE';
 
 // Robo
 export const ROBO_GET_EMOTIONS_STRING = 'ROBO_GET_EMOTIONS_STRING';

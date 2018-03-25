@@ -11,7 +11,7 @@
             <a class="card-header-icon">
 				<span
 					class="icon is-medium"
-					:class="{'has-text-success': device.active, 'has-text-danger': !device.active}"
+					:class="{'has-text-success': isDeviceActive, 'has-text-danger': !isDeviceActive}"
 				>
 					<i class="fa fa-lightbulb-o fa-lg"></i>
 				</span>
@@ -44,6 +44,7 @@
 
 <script>
 import EditableContent from '@/components/other/EditableContent.vue';
+import {getters} from '@/store/constants';        
 
 export default {
     name: 'DeviceCard',
@@ -54,6 +55,11 @@ export default {
 	},
 	components: {
         EditableContent,
+	},
+	computed: {
+        isDeviceActive() {
+            return this.$store.getters[getters.IS_DEVICE_ACTIVE](this.device._id);
+		},
     },
 	methods: {
 		handleChange(update) {

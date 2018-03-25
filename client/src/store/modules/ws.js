@@ -34,7 +34,7 @@ export const wsMiddleware = (store) => {
 
 		switch (msgType) {
 			case 'connectedDevices':
-				store.commit(constants.mutations.DEVICES_STATUS_UPDATE, msgData);
+				store.commit(constants.mutations.DEVICES_ACTIVE_UPDATE, msgData);
 				break;
 
 			case 'stateUpdate':

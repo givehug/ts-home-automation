@@ -1,7 +1,7 @@
 // @flow
 
 declare type DevicesStateType = {
-    list: DeviceType[],
+    map: {[string]: DeviceType},
 };
 
 declare type DeviceType = {

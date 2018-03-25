@@ -48,47 +48,6 @@
 			v-model="userData.oldPassword"
 		></b-input></b-field>
 	</b-field>
-	<hr />
-
-	<!-- devices mac addresses -->
-    <h4 class="title is-5">Associated mac addresses</h4>
-    <p
-		class="reveal"
-		@click="showMacs = !showMacs"
-	>{{showMacs ? 'hide' : 'reveal'}}</p>
-    <div v-if="showMacs">
-        <p
-			v-for="mac in $store.state.settings.data.deviceIdentifiers"
-			:key="mac"
-			class="mac"
-		>
-            <span>{{mac}}</span>
-            <a
-				class="del"
-				@click="deleteMacAddress(mac)"
-			>
-                <span class="icon is-medium has-text-danger">
-					<i class="fa fa-trash-o fa-lg"></i>
-				</span>
-            </a>
-        </p>
-        <p>
-            <b-field>
-                <b-input
-					placeholder="New mac address..."
-                    type="text"
-                    v-model="newMacAddress"
-				></b-input>
-                <p class="control">
-                    <button
-						:disabled="!newMacAddress"
-                        class="button is-primary"
-                        @click="addNewMacAddress()"
-                    >Add</button>
-                </p>
-            </b-field>
-        </p>
-    </div>
 
 </div>
 </template>
@@ -103,12 +62,8 @@ export default {
 	components: {
         EditableContent,
 	},
-
     data() {
         return {
-            showMacs: false,
-            newMacAddress: '',
-			macToRemove: '',
 			changed: false,
 			userData: {
 				name: this.$store.state.user.data.name,
@@ -119,30 +74,8 @@ export default {
 			},
         };
 	},
-
-    computed: {
-        updatedMacs() {
-            return [...this.$store.state.settings.data.deviceIdentifiers, this.newMacAddress];
-        },
-        macsToRemove() {
-            return this.$store.state.settings.data.deviceIdentifiers.filter(m => m !== this.macToRemove);
-        },
-	},
-
     methods: {
-        addNewMacAddress() {
-            if (!this.newMacAddress) {
-                return;
-            }
-
-            this.$store.dispatch(actions.SETTINGS_SAVE, {deviceIdentifiers: this.updatedMacs});
-            this.newMacAddress = '';
-        },
-        deleteMacAddress(mac) {
-            this.macToRemove = mac;
-            this.$store.dispatch(actions.SETTINGS_SAVE, {deviceIdentifiers: this.macsToRemove});
-            this.macToRemove = '';
-		},
+        
 		handleChange(update) {
 			// apply changes to userData
 			Object.assign(this.userData, update);
@@ -211,26 +144,6 @@ export default {
         color: grey;
         margin-bottom: 20px;
         cursor: pointer;
-    }
-    .mac {
-        .del {
-            opacity: 0;
-            visibility: hidden;
-            transition: .2s;
-            margin-left: 15px;
-            position: relative;
-            top: -2px;
-        }
-
-        &:hover {
-            .del {
-                opacity: 0.6;
-                visibility: visible;
-                &:hover {
-                    opacity: 1;
-                }
-            }
-        }
     }
 }
 </style>

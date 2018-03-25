@@ -22,7 +22,7 @@
 		<!-- cards -->
         <div
 			class="column is-half-tablet is-one-third-desktop"
-			v-for="device in deviceList"
+			v-for="device in $store.state.devices.map"
 			:key="device._id"
 		>
             <device-card
@@ -45,15 +45,9 @@ export default {
 	
 	components: {DeviceCard},
 
-    computed: {
-        deviceList() {
-			return this.$store.state.devices.list;
-		},
-	},
-
 	methods: {
 		getDeviceById(deviceId) {
-			return this.$store.getters[getters.DEVICES_GET_BY_ID](deviceId);
+			return this.$store.devices.map[deviceId];
 		},
 
 		async addNewDevice() {
