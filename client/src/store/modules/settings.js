@@ -21,18 +21,6 @@ const mutations = {
 
 const actions = {
 	/**
-	 * Load settings from server
-	 */
-	[constants.actions.SETTINGS_LOAD]: async(context) => {
-		try {
-			const res = await api.request(endpoints.settings, 'GET');
-
-			context.commit(constants.mutations.SETTINGS_UPDATE, res.data);
-		} catch (error) {
-			// do nothing
-		}
-	},
-	/**
 	 * Save settings on server
 	 */
 	[constants.actions.SETTINGS_SAVE]: async(context, update) => {

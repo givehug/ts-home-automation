@@ -44,22 +44,6 @@ const mutations = {
 
 const actions = {
 	/**
-	 * Fetch user data from server.
-	 */
-	[constants.actions.USER_DATA_FETCH]: async(context) => {
-		if (!context.getters[constants.getters.AM_I_AUTHED]) {
-			return;
-		}
-
-		try {
-			const res = await api.request(endpoints.userMe, 'GET');
-
-			context.commit(constants.mutations.USER_DATA_SET, res.data);
-		} catch (error) {
-			context.dispatch(constants.actions.USER_LOGOUT);
-		}
-	},
-	/**
 	 * Patch user data on server.
 	 */
 	[constants.actions.USER_DATA_PATCH]: async(context, update) => {

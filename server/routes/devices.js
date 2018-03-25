@@ -7,16 +7,6 @@ const router = express.Router();
 
 router.use('/devices', authenticate);
 router.route('/devices')
-	// GET ALL DEVICES
-	.get(async(req, res) => {
-		try {
-			const devices = await Device.find();
-
-			res.send({devices});
-		} catch (error) {
-			res.sendStatus(400);
-		}
-	})
 	// CREATE NEW DEVICE
 	.post(async(req, res) => {
 		const device = new Device(req.body);

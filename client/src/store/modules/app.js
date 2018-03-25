@@ -5,6 +5,7 @@
  */
 
 import * as constants from './../constants';
+import {api, endpoints} from '../../api';
 
 const state = {
 	deviceTypes: ['espruino', 'raspberry pi 3'],
@@ -28,32 +29,24 @@ const actions = {
 	[constants.actions.APP_INIT]: async(context) => {
 		const token = localStorage.getItem('token');
 
-		if (token) {
-			context.commit(constants.mutations.USER_TOKEN_SET, token);
+		if (!token) return;
 
-			try {
-				try {
-					// try fetching user data with token from localStorage
-					await context.dispatch(constants.actions.USER_DATA_FETCH);
-				} catch (error) {
-					// token might be expired
-					context.dispatch(constants.actions.USER_LOGOUT);
+		context.commit(constants.mutations.USER_TOKEN_SET, token);
 
-					return;
-				}
+		try {
+			// try fetching user data with token from localStorage
+			const {data} = await api.request(endpoints.app, 'GET');
 
-				await Promise.all([
-					context.dispatch(constants.actions.USERS_FETCH),
-					context.dispatch(constants.actions.DEVICES_FETCH),
-					context.dispatch(constants.actions.SETTINGS_LOAD),
-				]);
-
-				context.commit(constants.mutations.APP_DATA_LOADED);
-				context.commit(constants.mutations.ROBO_INIT);
-				context.commit(constants.mutations.WS_CONNECT);
-			} catch (error) {
-				// console.error('APP async error');
-			}
+			context.commit(constants.mutations.USER_DATA_SET, data.user);
+			context.commit(constants.mutations.USERS_MAP_UPDATE, data.users);
+			context.commit(constants.mutations.DEVICES_MAP_UPDATE, data.devices);
+			context.commit(constants.mutations.SETTINGS_UPDATE, data.settings);
+			context.commit(constants.mutations.APP_DATA_LOADED);
+			context.commit(constants.mutations.ROBO_INIT);
+			context.commit(constants.mutations.WS_CONNECT);
+		} catch (error) {
+			// token might be expired
+			context.dispatch(constants.actions.USER_LOGOUT);
 		}
 	},
 };

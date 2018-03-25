@@ -42,14 +42,9 @@ import {actions, getters} from '@/store/constants';
 
 export default {
 	name: 'DevicesPage',
-	
 	components: {DeviceCard},
 
 	methods: {
-		getDeviceById(deviceId) {
-			return this.$store.devices.map[deviceId];
-		},
-
 		async addNewDevice() {
 			try {
 				await this.$store.dispatch(actions.DEVICES_ADD);
@@ -69,7 +64,7 @@ export default {
 		async handleDeviceChange(deviceId, update) {
 			const deviceData = Object.assign(
 				{},
-				this.getDeviceById(deviceId),
+				this.$store.state.devices.map[deviceId],
 				update
 			);
 				

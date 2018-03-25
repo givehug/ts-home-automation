@@ -5,6 +5,7 @@ export const endpoints = {
 	userLogout: 'users/me/token',
 	settings: 'settings/',
 	devices: 'devices/',
+	app: 'app/',
 };
 
 Object.freeze(endpoints);

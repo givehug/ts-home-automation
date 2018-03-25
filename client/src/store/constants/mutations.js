@@ -2,7 +2,7 @@
 export const APP_DATA_LOADED = 'APP_DATA_LOADED';
 
 // Devices
-export const DEVICES_FETCH_OK = 'DEVICES_FETCH_OK';
+export const DEVICES_MAP_UPDATE = 'DEVICES_MAP_UPDATE';
 export const DEVICES_SAVE_OK = 'DEVICES_SAVE_OK';
 export const DEVICES_ADD_OK = 'DEVICES_ADD_OK';
 export const DEVICES_DELETE_OK = 'DEVICES_DELETE_OK';

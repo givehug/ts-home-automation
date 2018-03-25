@@ -7,30 +7,12 @@ const {authenticate} = require('./../middleware/authenticate');
 const genPass = require('./../../utils/genPass');
 const {sendEmail} = require('./../modules/emailMessenger');
 
-const userProps = ['name', 'email', '_id', 'admin'];
 const userPropsToUpdate = ['name', 'email', 'password'];
-
-async function getUserData(user) {
-	const {deviceIdentifiers} = await Settings.findOne({userId: user._id});
-
-	return Object.assign(pick(user, userProps), {deviceIdentifiers});
-}
 
 const router = express.Router();
 
 router.use('/users', authenticate);
 router.route('/users')
-	// GET ALL USERS
-	.get(async(req, res) => {
-		try {
-			const users = await User.find();
-			const mappedData = await Promise.all(users.map(getUserData));
-
-			res.send(mappedData);
-		} catch (error) {
-			res.status(400).send(error);
-		}
-	})
 	// CREATE NEW USER (by admin)
 	.post(async(req, res) => {
 		// Comment this out and disable auth to easily add initial admin user
@@ -100,10 +82,6 @@ router.route('/users/:id')
 
 router.use('/users/me', authenticate);
 router.route('/users/me')
-	// GET USER DATA
-	.get((req, res) => {
-		res.send(pick(req.user, userProps));
-	})
 	// UPDATE USER DATA
 	.patch(async(req, res) => {
 		const update = pick(req.body.update, userPropsToUpdate);

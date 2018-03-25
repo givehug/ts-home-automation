@@ -6,12 +6,11 @@
  */
 
 import Vue from 'vue';
-import keyBy from 'lodash/keyBy';
 import {api, endpoints} from './../../api';
 import * as constants from './../constants';
 
 const state = {
-	map: [],
+	map: {},
 	activeDevices: [],
 };
 
@@ -25,20 +24,20 @@ const mutations = {
 	/**
 	 * Fethced devices, update store with response
 	 */
-	[constants.mutations.DEVICES_FETCH_OK](state, map) {
+	[constants.mutations.DEVICES_MAP_UPDATE](state, map) {
 		state.map = map;
 	},
 	/**
 	 * Saved devices succesfully, update store
 	 */
-	[constants.mutations.DEVICES_SAVE_OK](state, deviceData) {
-		state.map[deviceData._id] = Object.assign({}, state.map[deviceData._id], deviceData);
+	[constants.mutations.DEVICES_SAVE_OK](state, device) {
+		Vue.set(state.map, device._id, Object.assign({}, state.map[device._id], device));
 	},
 	/**
 	 * Added device succesfully on server, add it to store
 	 */
 	[constants.mutations.DEVICES_ADD_OK](state, device) {
-		state.map[device._id] = device;
+		Vue.set(state.map, device._id, device);
 	},
 	/**
 	 * Delete device succesfully from db, remove it from store
@@ -56,35 +55,24 @@ const mutations = {
 
 const actions = {
 	/**
-	 * Fetch list of all user devices
-	 */
-	[constants.actions.DEVICES_FETCH]: async(context) => {
-		const res = await api.request(endpoints.devices, 'GET');
-
-		context.commit(constants.mutations.DEVICES_FETCH_OK, keyBy(res.data.devices, '_id'));
-	},
-	/**
 	 * Update existing device data on server
 	 */
 	[constants.actions.DEVICES_SAVE]: async(context, deviceData) => {
-		await api.request('devices/' + deviceData._id, 'PATCH', deviceData);
+		await api.request(endpoints.devices + deviceData._id, 'PATCH', deviceData);
 		context.commit(constants.mutations.DEVICES_SAVE_OK, deviceData);
 	},
 	/**
 	 * Add new device. It will be added with default data and will be given unique id on server.
 	 */
 	[constants.actions.DEVICES_ADD]: async(context) => {
-		const res = await api.request('devices/', 'POST', getNewDeviceData());
-
+		const res = await api.request(endpoints.devices, 'POST', getNewDeviceData());
 		context.commit(constants.mutations.DEVICES_ADD_OK, res.data);
-		context.dispatch(constants.actions.DEVICES_FETCH);
 	},
 	/**
 	 * Delete device by its id.
 	 */
 	[constants.actions.DEVICES_DELETE]: async(context, id) => {
-		const res = await api.request('devices/' + id, 'DELETE');
-
+		const res = await api.request(endpoints.devices + id, 'DELETE');
 		context.commit(constants.mutations.DEVICES_DELETE_OK, res.data.device._id);
 	},
 };
