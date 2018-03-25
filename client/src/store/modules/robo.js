@@ -1,5 +1,5 @@
 import annyang from 'annyang'; // only chrome and some android
-import {SpeechSynthesisUtterance} from './../../../../utils/speechSynthesis';
+import SpeechSynthesisUtterance from './../../../../utils/speechSynthesis';
 import * as constants from './../constants';
 
 const state = {

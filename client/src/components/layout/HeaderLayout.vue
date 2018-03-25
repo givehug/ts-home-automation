@@ -17,13 +17,12 @@
 	</div>
 	<!-- desktop menu -->
 	<div class="navbar-menu">
-		<div class="navbar-end">
+		<div class="navbar-end" v-if="amIAuthed">
 			<router-link
 				class="navbar-item"
 				to="/profile"
 			>{{$store.state.user.data && $store.state.user.data.name}}</router-link>
 			<a
-				v-if="amIAuthed"
 				class="navbar-item" to="/settings"
 				@click="logOut($event)"
 			>

@@ -12,8 +12,11 @@
         <div class="hero-foot">
             <div class="has-text-centered">
                 <p>
-                    <a href="https://github.com/givehug">Vladimir Boretskyi</a>. The source code is licensed
-                    <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. Content
+                    <a href="https://github.com/givehug">Vladimir Boretskyi</a>. 
+					<a href="https://github.com/givehug/JavaScript-Home-Automation">The source code</a> 
+					is licensed
+                    <a href="http://opensource.org/licenses/mit-license.php">MIT</a>
+					. Content
                     is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</a>.
                 </p>
             </div>
