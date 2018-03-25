@@ -20,21 +20,18 @@ const state = {
 const mutations = {
 	/**
 	 * Initialize annyang.
-	 * Used in roboMiddleware.
 	 */
 	[constants.mutations.ROBO_INIT](state) {
 		state.annyangAvailable = !!annyang;
 	},
 	/**
 	 * Stop annyang.
-	 * Used in roboMiddleware.
 	 */
-	[constants.mutations.ROBO_STOP]() { /* do nothing */ },
+	[constants.mutations.ROBO_STOP]() { /* Used in roboMiddleware */ },
 	/**
 	 * Robot say message.
-	 * Used in roboMiddleware.
 	 */
-	[constants.mutations.ROBO_SAY](state, msg) { /* do nothing */ },
+	[constants.mutations.ROBO_SAY](state, msg) { /* Used in roboMiddleware */ },
 	/**
 	 * Change robot face expression.
 	 */
@@ -43,14 +40,12 @@ const mutations = {
 	},
 	/**
 	 * Pause annyang.
-	 * Used in roboMiddleware.
 	 */
-	[constants.mutations.ROBO_PAUSE]() { /* do nothing */ },
+	[constants.mutations.ROBO_PAUSE]() { /* Used in roboMiddleware */ },
 	/**
 	 * Pause annyang after it was paused.
-	 * Used in roboMiddleware.
 	 */
-	[constants.mutations.ROBO_RESUME]() { /* do nothing */ },
+	[constants.mutations.ROBO_RESUME]() { /* Used in roboMiddleware */ },
 };
 
 const actions = {
@@ -100,7 +95,7 @@ export const roboMiddleware = (store) => {
 		},
 		/**
 		 * Please execute command from store.commands map.
-		 * Execute WS device command event.
+		 * Send WS device command event.
 		 */
 		'please *commandTitle': (commandTitle) => {
 			const command = deviceCommands.byTitle[commandTitle];

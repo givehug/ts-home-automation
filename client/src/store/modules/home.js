@@ -1,7 +1,7 @@
 /**
  * 'home' state represents state of all smart home devices and units.
- * Currently it includes single raspberry pi 3 device,
- * which handles network and security units.
+ * Currently it includes raspberry pi 3 device,
+ * which handles network and security units and simple nodemcu led bulb.
  */
 
 import * as constants from './../constants';

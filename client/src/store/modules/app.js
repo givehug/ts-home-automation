@@ -1,7 +1,7 @@
 /**
  * App state only stores some application meta data.
  * Single action is used to initialize application,
- * which means fetch all necessary data and initialize other components.
+ * it fetches all necessary data and initializes other components.
  */
 
 import * as constants from './../constants';

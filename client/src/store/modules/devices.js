@@ -1,7 +1,7 @@
 /**
  * Devices state is based on the map of devices that were added to database by user.
  * Actions inlcude fetching, adding new, deleting, updating device specs on server.
- * DEVICES_ACTIVE_UPDATE updates the state of particular device.
+ * DEVICES_ACTIVE_UPDATE updates list currently connected devices.
  * This mutation is initialized by websocket event of type 'stateUpdate'.
  */
 

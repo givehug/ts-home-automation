@@ -1,6 +1,5 @@
 /**
  * Settings state has main object 'data' where all user settings are stored.
- * We load settings from server, update them on client side, save updates to server.
  */
 
 import {api, endpoints} from './../../api';
@@ -12,7 +11,7 @@ const state = {
 
 const mutations = {
 	/**
-	 * Update settings state in store
+	 * Update settings state
 	 */
 	[constants.mutations.SETTINGS_UPDATE](state, update) {
 		state.data = Object.assign({}, state.data, update);

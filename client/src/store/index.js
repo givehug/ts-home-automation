@@ -38,17 +38,12 @@ const modules = {
 // Getters
 const getters = {
 	/**
-	 * Is user at home. If one of user devices is connected to home network at the moment.
+	 * User is considered to be at home if one of his devices
+	 * is connected to home network at the moment.
 	 */
 	[constants.getters.IS_USER_HOME]: state => userId => {
-		if (!state.home.network.macMap) {
-			return null;
-		}
-
-		const user = state.users.map[userId];
-		const macIds = Object.keys(state.home.network.macMap);
-
-		return user._id === userId && macIds.some(mId => user.deviceIdentifiers.includes(mId));
+		return state.users.map[userId].deviceIdentifiers
+			.some(mac => mac in state.home.network.macMap);
 	},
 };
 
