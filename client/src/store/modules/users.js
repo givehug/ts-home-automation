@@ -1,38 +1,37 @@
+import keyBy from 'lodash/keyBy';
 import {api, endpoints} from './../../api';
 import * as constants from './../constants';
 
-const state = {list: null};
+const state = {map: {}};
 
 const mutations = {
-	[constants.mutations.USERS_LIST_UPDATE](state, list) {
-		state.list = list;
+	[constants.mutations.USERS_MAP_UPDATE](state, map) {
+		state.map = map;
 	},
-	[constants.mutations.USERS_LIST_ADD](state, user) {
-		state.list = state.list ? [...state.list, user] : [user];
+	[constants.mutations.USERS_MAP_ADD](state, userId, userData) {
+		state.map[userId] = userData;
 	},
-	[constants.mutations.USERS_LIST_REMOVE](state, userId) {
-		state.list = state.list ? state.list.filter(u => u._id !== userId) : state.list;
+	[constants.mutations.USERS_MAP_REMOVE](state, userId) {
+		delete state.map[userId];
 	},
 };
 
 const actions = {
 	[constants.actions.USERS_FETCH]: async(context) => {
-		try {
-			const res = await api.request(endpoints.users, 'GET');
+		const res = await api.request(endpoints.users, 'GET');
 
-			context.commit(constants.mutations.USERS_LIST_UPDATE, res.data);
-		} catch (error) {
-			// do nothing
-		}
+		context.commit(constants.mutations.USERS_MAP_UPDATE, keyBy(res.data, '_id'));
 	},
 	[constants.actions.USERS_INVITE]: async(context, {email, name}) => {
 		try {
+			debugger;
 			const res = await api.request(endpoints.users, 'POST', {
 				email,
 				name,
 			});
+			debugger;
 
-			context.commit(constants.mutations.USERS_LIST_ADD, {
+			context.commit(constants.mutations.USERS_MAP_ADD, res.data, {
 				email,
 				name,
 				_id: res.data,
@@ -47,7 +46,7 @@ const actions = {
 		try {
 			await api.request(endpoints.users + userId, 'DELETE');
 
-			context.commit(constants.mutations.USERS_LIST_REMOVE, userId);
+			context.commit(constants.mutations.USERS_MAP_REMOVE, userId);
 
 			return true;
 		} catch (error) {

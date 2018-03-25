@@ -30,9 +30,9 @@ export const USER_DATA_UPDATE = 'USER_DATA_UPDATE';
 export const USER_DATA_CLEAR = 'USER_DATA_CLEAR';
 
 // Users
-export const USERS_LIST_UPDATE = 'USERS_LIST_UPDATE';
-export const USERS_LIST_ADD = 'USERS_LIST_ADD';
-export const USERS_LIST_REMOVE = 'USERS_LIST_REMOVE';
+export const USERS_MAP_UPDATE = 'USERS_MAP_UPDATE';
+export const USERS_MAP_ADD = 'USERS_MAP_ADD';
+export const USERS_MAP_REMOVE = 'USERS_MAP_REMOVE';
 
 // WS
 export const WS_CONNECT = 'WS_CONNECT';

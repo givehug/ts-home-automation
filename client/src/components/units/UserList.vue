@@ -1,11 +1,11 @@
 <template>
 <ul
-	v-if="$store.state.users.list"
+	v-if="$store.state.app.dataLoaded"
 	class="userList"
 >
     <li
 		class="userList-item"
-		v-for="user in $store.state.users.list"
+		v-for="user in $store.state.users.map"
 		:key="user._id"
 	>
         <b-tooltip
@@ -24,7 +24,7 @@
 		>{{user.email}}</span>
 		<span
 			class="icon is-medium has-text-danger userList-del"
-			v-if="amIAdmin && !isUserAdmin(user._id) && !hideDelete"
+			v-if="amIAdmin && !user.admin && !hideDelete"
 			@click="deleteUser(user._id)"
 		>
 			<i class="fa fa-trash-o fa-lg"></i>
@@ -48,9 +48,6 @@ export default {
 		}
 	},
     methods: {
-		isUserAdmin(userId) {
-			return this.$store.getters[getters.IS_USER_ADMIN](userId);
-		},
         isUserAtHome(userId) {
             return this.$store.getters[getters.IS_USER_HOME](userId);
 		},

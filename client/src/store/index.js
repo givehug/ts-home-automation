@@ -43,21 +43,14 @@ const getters = {
 	 * Is user at home. If one of user devices is connected to home network at the moment.
 	 */
 	[constants.getters.IS_USER_HOME]: state => userId => {
-		if (!state.home.network.macMap || !state.users.list) {
+		if (!state.home.network.macMap) {
 			return null;
 		}
 
-		return state.users.list.find(u => {
-			const macIds = Object.keys(state.home.network.macMap);
+		const user = state.users.map[userId];
+		const macIds = Object.keys(state.home.network.macMap);
 
-			return u._id === userId && macIds.some(mId => u.deviceIdentifiers.includes(mId));
-		});
-	},
-	/**
-	 * Check if user has admin permissions.
-	 */
-	[constants.getters.IS_USER_ADMIN]: state => userId => {
-		return !!(state.users.list && state.users.list.find(u => u._id === userId && u.admin));
+		return user._id === userId && macIds.some(mId => user.deviceIdentifiers.includes(mId));
 	},
 };
 

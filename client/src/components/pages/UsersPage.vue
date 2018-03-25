@@ -54,10 +54,12 @@ export default {
     },
     methods: {
         async inviteNewUser() {
+			debugger;
 			const invited = await this.$store.dispatch(actions.USERS_INVITE, {
 				name: this.newUserName,
 				email: this.newUserEmail,
 			});
+			debugger;
 
 			if (invited) {
 				this.newUserEmail = '';

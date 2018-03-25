@@ -4,7 +4,7 @@ const pick = require('lodash/pick');
 const {User, checkPassword} = require('./../models/user');
 const {Settings} = require('./../models/settings'); 
 const {authenticate} = require('./../middleware/authenticate');
-const {genPass} = require('./../../utils/genPass');
+const genPass = require('./../../utils/genPass');
 const {sendEmail} = require('./../modules/emailMessenger');
 
 const userProps = ['name', 'email', '_id', 'admin'];
