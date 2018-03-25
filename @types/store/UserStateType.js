@@ -10,5 +10,4 @@ declare type UserDataType = {
 	email: string,
 	name: string,
 	admin: ?boolean,
-	macs: string[],
 };

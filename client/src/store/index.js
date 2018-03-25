@@ -50,7 +50,7 @@ const getters = {
 		return state.users.list.find(u => {
 			const macIds = Object.keys(state.home.network.macMap);
 
-			return u._id === userId && macIds.some(mId => u.macs.indexOf(mId) > -1);
+			return u._id === userId && macIds.some(mId => u.deviceIdentifiers.includes(mId));
 		});
 	},
 	/**

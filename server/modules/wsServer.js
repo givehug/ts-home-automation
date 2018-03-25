@@ -1,7 +1,7 @@
 const {messageToJSON, jsonToMessage} = require('./../../utils/wsMessage');
 const compareSets = require('./../../utils/compareSets');
 const {notifyDetection} = require('./motionDetection');
-const {User} = require('./../models/user');
+const {Settings} = require('./../models/settings');
 const uuidv4 = require('uuid/v4');
 
 const pingInterval = 10000;
@@ -125,15 +125,15 @@ class WsServer {
 			notifyDetection(state.security.lastDetected);
 		}
 
-		// hande someone home
+		// handle someone home
 		if (state.network) {
 			if (
 				state.security
 				&& JSON.stringify(Object.keys(state.network.macMap)) !== this.cachedMacMapStr
 			) {
-				const users = await User.find();
-				const someoneHome = users.some(user => {
-					return user.macs.some(deviceMac => deviceMac in state.network.macMap);
+				const settings = await Settings.find();
+				const someoneHome = settings.some(s => {
+					return s.deviceIdentifiers.some(mac => mac in state.network.macMap);
 				});
 
 				this.broadcast(null, jsonToMessage('someoneHome', someoneHome), ws.id);

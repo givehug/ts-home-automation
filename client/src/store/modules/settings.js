@@ -15,8 +15,8 @@ const mutations = {
 	/**
 	 * Update settings state in store
 	 */
-	[constants.mutations.SETTINGS_UPDATE](state, settings) {
-		state.data = Object.assign({}, state.data, settings);
+	[constants.mutations.SETTINGS_UPDATE](state, update) {
+		state.data = Object.assign({}, state.data, update);
 		state.loaded = true;
 	},
 };
@@ -29,7 +29,7 @@ const actions = {
 		try {
 			const res = await api.request(endpoints.settings, 'GET');
 
-			context.commit(constants.mutations.SETTINGS_UPDATE, res.data.settings);
+			context.commit(constants.mutations.SETTINGS_UPDATE, res.data);
 		} catch (error) {
 			// do nothing
 		}
@@ -37,12 +37,9 @@ const actions = {
 	/**
 	 * Save settings on server
 	 */
-	[constants.actions.SETTINGS_SAVE]: (context, settings) => {
-		context.commit(constants.mutations.SETTINGS_UPDATE, settings);
-
-		const settingsData = context.rootState.settings.data;
-
-		api.request(endpoints.settings, 'PATCH', {settings: settingsData});
+	[constants.actions.SETTINGS_SAVE]: async(context, update) => {
+		await api.request(endpoints.settings, 'PATCH', update);
+		context.commit(constants.mutations.SETTINGS_UPDATE, update);
 	},
 };
 

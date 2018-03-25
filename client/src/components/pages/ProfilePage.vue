@@ -58,7 +58,7 @@
 	>{{showMacs ? 'hide' : 'reveal'}}</p>
     <div v-if="showMacs">
         <p
-			v-for="mac in $store.state.user.data.macs"
+			v-for="mac in $store.state.settings.data.deviceIdentifiers"
 			:key="mac"
 			class="mac"
 		>
@@ -122,10 +122,10 @@ export default {
 
     computed: {
         updatedMacs() {
-            return [...this.$store.state.user.data.macs, this.newMacAddress];
+            return [...this.$store.state.settings.data.deviceIdentifiers, this.newMacAddress];
         },
         macsToRemove() {
-            return this.$store.state.user.data.macs.filter(m => m !== this.macToRemove);
+            return this.$store.state.settings.data.deviceIdentifiers.filter(m => m !== this.macToRemove);
         },
 	},
 
@@ -135,12 +135,12 @@ export default {
                 return;
             }
 
-            this.$store.dispatch(actions.USER_DATA_PATCH, {macs: this.updatedMacs});
+            this.$store.dispatch(actions.SETTINGS_SAVE, {deviceIdentifiers: this.updatedMacs});
             this.newMacAddress = '';
         },
         deleteMacAddress(mac) {
             this.macToRemove = mac;
-            this.$store.dispatch(actions.USER_DATA_PATCH, {macs: this.macsToRemove});
+            this.$store.dispatch(actions.SETTINGS_SAVE, {deviceIdentifiers: this.macsToRemove});
             this.macToRemove = '';
 		},
 		handleChange(update) {

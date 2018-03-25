@@ -26,7 +26,7 @@ router.route('/settings')
 	// UPDATE USER SETTINGS
 	.patch(async(req, res) => {
 		const query = {userId: req.user._id};
-		const update = req.body.settings;
+		const update = req.body;
 		const options = {
 			upsert: true,
 			new: true,
@@ -34,7 +34,7 @@ router.route('/settings')
 		};
 
 		try {
-			await Settings.findOneAndUpdate(query, {settings: update}, options);
+			await Settings.findOneAndUpdate(query, update, options);
 
 			res.sendStatus(200);
 		} catch (error) {

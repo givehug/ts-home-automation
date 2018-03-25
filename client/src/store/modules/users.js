@@ -35,7 +35,6 @@ const actions = {
 			context.commit(constants.mutations.USERS_LIST_ADD, {
 				email,
 				name,
-				macs: [],
 				_id: res.data,
 			});
 

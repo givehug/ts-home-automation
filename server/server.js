@@ -11,7 +11,7 @@ const app = require('./app');
 const WsServer = require('./modules/wsServer');
 
 // Constants
-const port = config.PORT;
+const port = process.env.PORT || config.PORT;
 const server = http.createServer(app);
 const wss = new WS.Server({server});
 

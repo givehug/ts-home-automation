@@ -30,7 +30,6 @@ const UserSchema = new mongoose.Schema({
 	admin: {
 		type: Boolean,
 	},
-	macs: [{type: String}], // associated mac addresses
 	tokens: [{
 		access: {
 			type: String,

@@ -5,16 +5,15 @@ const SettingsSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	settings: {
-		annyangActive: {
-			type: Boolean,
-			required: true,
-			default: false,
-		},
-		notifyOnMotionDetection: {
-			type: Boolean,
-			default: false,
-		},
+	deviceIdentifiers: [{type: String}],
+	annyangActive: {
+		type: Boolean,
+		required: true,
+		default: false,
+	},
+	notifyOnMotionDetection: {
+		type: Boolean,
+		default: false,
 	},
 });
 

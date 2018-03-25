@@ -7,8 +7,14 @@ const {authenticate} = require('./../middleware/authenticate');
 const {genPass} = require('./../../utils/genPass');
 const {sendEmail} = require('./../modules/emailMessenger');
 
-const userProps = ['name', 'email', '_id', 'macs', 'admin'];
-const userPropsToUpdate = ['name', 'email', 'macs', 'password'];
+const userProps = ['name', 'email', '_id', 'admin'];
+const userPropsToUpdate = ['name', 'email', 'password'];
+
+async function getUserData(user) {
+	const {deviceIdentifiers} = await Settings.findOne({userId: user._id});
+
+	return Object.assign(pick(user, userProps), {deviceIdentifiers});
+}
 
 const router = express.Router();
 
@@ -18,7 +24,7 @@ router.route('/users')
 	.get(async(req, res) => {
 		try {
 			const users = await User.find();
-			const mappedData = users.map(u => pick(u, userProps));
+			const mappedData = await Promise.all(users.map(getUserData));
 
 			res.send(mappedData);
 		} catch (error) {

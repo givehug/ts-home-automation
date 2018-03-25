@@ -11,7 +11,7 @@ const state = {
 	 * 'network' state represents state of home wifi network and connected devices at the moment.
 	 * (a few minutes delay possible)
 	 * It also defines which user is home or away.
-	 * 'user' state has 'macs' array of devices id which represent user.
+	 * 'user' state has 'deviceIdentifiers' array of devices id which represent user.
 	 * If one of this devices is in  'network.macMap',
 	 * this means that user is home, otherwise he is away.
 	 */
