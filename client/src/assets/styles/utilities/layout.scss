@@ -20,11 +20,7 @@ body {
     max-width: 1200px;
     margin: 0 auto;
 
-    @media screen and (max-width: 999px) {
-        padding: 20px;
-    }
-
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 1024px) {
         padding: 15px;
     }
 }

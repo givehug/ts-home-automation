@@ -25,6 +25,14 @@
 				<span>Users</span>
 			</router-link>
 		</li>
+		<li>
+			<router-link to="/settings">
+				<span class="icon">
+					<i class="fa fa-cog"></i>
+				</span>
+				<span>Settings</span>
+			</router-link>
+		</li>
 	</ul>
 </aside>
 </template>

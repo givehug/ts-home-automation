@@ -22,26 +22,19 @@
 				class="navbar-item"
 				to="/profile"
 			>{{$store.state.user.data && $store.state.user.data.name}}</router-link>
-			<router-link
-				v-if="amIAuthed"
-				class="navbar-item" to="/settings"
-			>
-				<span class="icon is-medium">
-					<i class="fa fa-cog fa-lg"></i>
-				</span>
-			</router-link>
 			<a
 				v-if="amIAuthed"
-				class="navbar-item navbar-action"
+				class="navbar-item" to="/settings"
+				@click="logOut($event)"
 			>
-				<b-dropdown position="is-bottom-left">
-					<a slot="trigger">
-						<span class="icon is-medium">
-							<i class="fa fa-ellipsis-v fa-lg"></i>
-						</span>
-					</a>
-					<b-dropdown-item @click.native="logOut($event)">Log Out</b-dropdown-item>
-				</b-dropdown>
+				<b-tooltip
+					label="log out"
+					position="is-left" type="is-white"
+				>
+					<span class="icon is-medium">
+						<i class="fa fa-power-off fa-lg"></i>
+					</span>
+				</b-tooltip>
 			</a>
 		</div>
 	</div>
@@ -96,7 +89,7 @@ export default {
 .mob-nav {
 	display: none;
 
-	@media screen and (max-width: 600px) {
+	@media screen and (max-width: 1024px) {
 		position: fixed;
 		top: 52px;
 		left: 0;

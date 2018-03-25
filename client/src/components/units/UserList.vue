@@ -102,7 +102,7 @@ export default {
             font-size: 1rem;
         }
 
-        @media screen and (max-width: 600px) {
+        @media screen and (max-width: 1024px) {
             flex-direction: column;
             margin-bottom: 25px;
         }
