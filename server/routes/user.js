@@ -115,7 +115,7 @@ router.route('/users/me/token')
 	// LOG OUT
 	.delete(async(req, res) => {
 		try {
-			await req.user.removeToken();
+			req.user.removeToken(req.headers['x-auth']);
 			res.sendStatus(200);
 		} catch (error) {
 			res.sendStatus(400);
