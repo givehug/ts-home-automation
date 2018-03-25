@@ -1,6 +1,7 @@
+// App
+export const APP_DATA_LOADED = 'APP_DATA_LOADED';
+
 // Devices
-export const DEVICES_ASYNC_START = 'DEVICES_ASYNC_START';
-export const DEVICES_ASYNC_FINISH = 'DEVICES_ASYNC_FINISH';
 export const DEVICES_FETCH_OK = 'DEVICES_FETCH_OK';
 export const DEVICES_SAVE_OK = 'DEVICES_SAVE_OK';
 export const DEVICES_ADD_OK = 'DEVICES_ADD_OK';

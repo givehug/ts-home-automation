@@ -7,7 +7,6 @@ import {api, endpoints} from './../../api';
 import * as constants from './../constants';
 
 const state = {
-	loaded: false,
 	data: {},
 };
 
@@ -17,7 +16,6 @@ const mutations = {
 	 */
 	[constants.mutations.SETTINGS_UPDATE](state, update) {
 		state.data = Object.assign({}, state.data, update);
-		state.loaded = true;
 	},
 };
 

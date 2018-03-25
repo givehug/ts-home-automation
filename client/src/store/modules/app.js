@@ -6,7 +6,19 @@
 
 import * as constants from './../constants';
 
-const state = {deviceTypes: ['espruino', 'raspberry pi 3']};
+const state = {
+	deviceTypes: ['espruino', 'raspberry pi 3'],
+	dataLoaded: false,
+};
+
+const mutations = {
+	/**
+	 * Set app.dataLoaded to true
+	 */
+	[constants.mutations.APP_DATA_LOADED](state) {
+		state.dataLoaded = true;
+	},
+};
 
 const actions = {
 	/**
@@ -35,6 +47,8 @@ const actions = {
 					context.dispatch(constants.actions.DEVICES_FETCH),
 					context.dispatch(constants.actions.SETTINGS_LOAD),
 				]);
+
+				context.commit(constants.mutations.APP_DATA_LOADED);
 				context.commit(constants.mutations.ROBO_INIT);
 				context.commit(constants.mutations.WS_CONNECT);
 			} catch (error) {
@@ -47,4 +61,5 @@ const actions = {
 export default {
 	state,
 	actions,
+	mutations,
 };

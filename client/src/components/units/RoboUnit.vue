@@ -39,7 +39,7 @@
         </div>
     </div>
     <div
-		v-if="$store.state.settings.loaded"
+		v-if="$store.state.app.dataLoaded"
 		class="robo-settings"
 	>
         <b-switch

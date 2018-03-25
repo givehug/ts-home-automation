@@ -1,6 +1,9 @@
 // @flow
 
 declare type SettingsStateType = {
-    loaded: boolean,
-    data: any,
+	data: {
+		deviceIdentifiers: string[],
+		annyangActive: boolean,
+		notifyOnMotionDetection: boolean
+	}
 };

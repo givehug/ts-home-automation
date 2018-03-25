@@ -1,7 +1,7 @@
 <template>
 <div
 	id="settings"
-	v-if="$store.state.settings.loaded"
+	v-if="$store.state.app.dataLoaded"
 	class="main-content"
 >
     <h4 class="title is-5">Robo</h4>

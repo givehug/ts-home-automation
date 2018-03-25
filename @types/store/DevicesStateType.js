@@ -1,8 +1,6 @@
 // @flow
 
 declare type DevicesStateType = {
-    loading: boolean,
-    loaded: boolean,
     list: DeviceType[],
 };
 
