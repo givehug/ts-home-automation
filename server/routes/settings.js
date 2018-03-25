@@ -1,6 +1,9 @@
 const express = require('express');
+const pick = require('lodash/pick');
 const {Settings} = require('./../models/settings');
 const {authenticate} = require('./../middleware/authenticate');
+
+const settingsProps = ['annyangActive', 'deviceIdentifiers', 'notifyOnMotionDetection'];
 
 const router = express.Router();
 
@@ -8,17 +11,17 @@ router.use('/settings', authenticate);
 router.route('/settings')
 	// GET USER SETTINGS
 	.get(async(req, res) => {
+		let settings;
+
 		try {
-			const settings = await Settings.findOne({userId: req.user._id});
+			settings = await Settings.findOne({userId: req.user._id});
 
-			if (settings) {
-				res.send(settings);
-			} else {
+			if (!settings) {
 				const newSettings = new Settings({userId: req.user._id});
-				const doc = await newSettings.save();
-
-				res.send(doc);
+				settings = await newSettings.save();
 			}
+				
+			res.send(pick(settings, settingsProps));
 		} catch (error) {
 			res.sendStatus(400);
 		}

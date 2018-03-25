@@ -9,7 +9,7 @@ const mutations = {
 	[constants.mutations.USERS_MAP_UPDATE](state, map) {
 		state.map = map;
 	},
-	[constants.mutations.USERS_MAP_ADD](state, userId, userData) {
+	[constants.mutations.USERS_MAP_ADD](state, {userId, userData}) {
 		Vue.set(state.map, userId, userData);
 	},
 	[constants.mutations.USERS_MAP_REMOVE](state, userId) {
@@ -30,10 +30,14 @@ const actions = {
 				name,
 			});
 
-			context.commit(constants.mutations.USERS_MAP_ADD, res.data, {
-				email,
-				name,
-				_id: res.data,
+			context.commit(constants.mutations.USERS_MAP_ADD, {
+				userId: res.data,
+				userData: {
+					email,
+					name,
+					_id: res.data,
+					deviceIdentifiers: [],
+				}
 			});
 
 			return true;
