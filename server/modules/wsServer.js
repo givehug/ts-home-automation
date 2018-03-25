@@ -1,5 +1,5 @@
-const {messageToJSON, jsonToMessage} = require('./../../utils/wsMessage');
-const compareSets = require('./../../utils/compareSets');
+const {messageToJSON, jsonToMessage} = require('./../../common/utils/wsMessage');
+const compareSets = require('./../../common/utils/compareSets');
 const {notifyDetection} = require('./motionDetection');
 const {Settings} = require('./../models/settings');
 const uuidv4 = require('uuid/v4');

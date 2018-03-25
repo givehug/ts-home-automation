@@ -8,7 +8,6 @@ import * as constants from './../constants';
 import {api, endpoints} from '../../api';
 
 const state = {
-	deviceTypes: ['espruino', 'raspberry pi 3'],
 	dataLoaded: false,
 };
 

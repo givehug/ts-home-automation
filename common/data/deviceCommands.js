@@ -1,8 +1,8 @@
 /**
- * Commands state stores unique keys of webSocket commands that are sent to devices
+ * Devices webSocket commands
  */
 
- import keyBy from 'lodash/keyBy';
+const keyBy = require('lodash/keyBy');
 
 const commands = [
 	{
@@ -27,9 +27,10 @@ const commands = [
 	},
 ];
 
-const state = {
-	byKey: keyBy(commands, 'key'),
-	byTitle: keyBy(commands, 'title'),
-};
+const byKey = keyBy(commands, 'key');
+const byTitle = keyBy(commands, 'title');
 
-export default {state};
+module.exports = {
+	byKey,
+	byTitle,
+};

@@ -29,6 +29,7 @@
 
 <script>
 import {mutations} from '@/store/constants';
+import deviceCommands from '../../../../common/data/deviceCommands';
 
 export default {
     name: 'LedUnit',
@@ -42,7 +43,7 @@ export default {
             this.$store.commit(mutations.WS_MESSAGE_SEND, [
 				'deviceCommand',
 				{
-					cmdId: this.$store.state.commands.byKey.setLed.key,
+					cmdId: deviceCommands.byKey.setLed.key,
 					status: this.ledState ? 0 : 1,
 				}
 			]);

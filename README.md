@@ -1,5 +1,5 @@
 # Simple JavaScript Home Automation Example Project 
-![alt text](/client/static/favicons/favicon.ico "logo")
+![alt text](/client/public/favicon.ico "logo")
 
 [Demo video](https://youtu.be/lrV0SyhGV-c)
 

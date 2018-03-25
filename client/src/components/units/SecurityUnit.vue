@@ -39,7 +39,7 @@
 		<!-- take picture -->
 		<button
 			class="button"
-			@click="sendCommand(commands.takePicture.key)"
+			@click="sendCommand(commandsByKey.takePicture.key)"
 		>
 			<span>Take Picture</span>
 		</button>
@@ -47,7 +47,7 @@
 		<!-- delete picture -->
 		<button
 			class="button"
-			@click="sendCommand(commands.deletePictures.key)"
+			@click="sendCommand(commandsByKey.deletePictures.key)"
 		>
 			<span>Delete Pictures</span>
 		</button>
@@ -59,7 +59,7 @@
 		<input
 			type="checkbox"
 			v-model="securityState.detectionStatus"
-			@click="sendCommand(commands.toggleDetection.key)"
+			@click="sendCommand(commandsByKey.toggleDetection.key)"
 		/>
 	</div>
 
@@ -69,7 +69,7 @@
 		<input
 			type="checkbox"
 			v-model="securityState.turnDetectionOnWhenNobodyHome"
-			@click="sendCommand(commands.toggleDetectionWhenNobodyHome.key)"
+			@click="sendCommand(commandsByKey.toggleDetectionWhenNobodyHome.key)"
 		/>
 	</div>
 	
@@ -78,20 +78,19 @@
 
 <script>
 import {mutations} from '@/store/constants';
+import deviceCommands from '../../../../common/data/deviceCommands';
 
 export default {
     name: 'SecurityUnit',
     data() {
         return {
-            imageToShow: false,
+			imageToShow: false,
+			commandsByKey: deviceCommands.byKey,
         };
     },
     computed: {
 		securityState() {
 			return this.$store.state.home.security;
-		},
-		commands() {
-			return this.$store.state.commands.byKey;
 		},
     },
     methods: {

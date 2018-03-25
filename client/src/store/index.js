@@ -10,7 +10,6 @@ import settings from './modules/settings';
 import robo, {roboMiddleware} from './modules/robo';
 import ws, {wsMiddleware} from './modules/ws';
 import home from './modules/home';
-import commands from './modules/commands';
 import * as constants from './constants';
 
 Vue.use(Vuex);
@@ -34,7 +33,6 @@ const modules = {
 	ws,
 	settings,
 	home,
-	commands,
 };
 
 // Getters

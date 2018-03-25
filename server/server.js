@@ -18,7 +18,7 @@ const wss = new WS.Server({server});
 // Start http server
 server.listen(port, () => {
 	console.log(
-		chalk.cyan(`\n\n***  Server started on port ${port}, env: ${process.env.NODE_ENV}. ***\n\n`)
+		chalk.cyan(`\n\n***  Server started on port ${port}, env: ${process.env.NODE_ENV || config.NODE_ENV}. ***\n\n`)
 	);
 
 	// Start WebSocket server

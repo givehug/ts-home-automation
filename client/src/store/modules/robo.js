@@ -1,6 +1,7 @@
 import annyang from 'annyang'; // only chrome and some android
-import SpeechSynthesisUtterance from './../../../../utils/speechSynthesis';
+import SpeechSynthesisUtterance from './../../../../common/utils/speechSynthesis';
 import * as constants from './../constants';
+import deviceCommands from '../../../../common/data/deviceCommands';
 
 const state = {
 	annyangAvailable: false,
@@ -102,7 +103,7 @@ export const roboMiddleware = (store) => {
 		 * Execute WS device command event.
 		 */
 		'please *commandTitle': (commandTitle) => {
-			const command = store.state.commands.byTitle[commandTitle];
+			const command = deviceCommands.byTitle[commandTitle];
 
 			if (command) {
 				store.commit(constants.mutations.ROBO_SAY, 'executing');
