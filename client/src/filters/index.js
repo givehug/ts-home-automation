@@ -1,1 +1,2 @@
+import './capitalize';
 import './time';

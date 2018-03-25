@@ -1,36 +1,15 @@
 <template>
 <aside class="menu sidebar">
 	<ul class="menu-list">
-		<li>
-			<router-link to="/dashboard">
+		<li
+			v-for="link in links"
+			:key="link.name"
+		>
+			<router-link :to="'/' + link.name">
 				<span class="icon">
-					<i class="fa fa-tachometer"></i>
+					<i :class="'fa ' + link.icon"></i>
 				</span>
-				<span>Dashboard</span>
-			</router-link>
-		</li>
-		<li>
-			<router-link to="/devices">
-				<span class="icon">
-					<i class="fa fa-puzzle-piece"></i>
-				</span>
-				<span>Devices</span>
-			</router-link>
-		</li>
-		<li>
-			<router-link to="/users">
-				<span class="icon">
-					<i class="fa fa-users"></i>
-				</span>
-				<span>Users</span>
-			</router-link>
-		</li>
-		<li>
-			<router-link to="/settings">
-				<span class="icon">
-					<i class="fa fa-cog"></i>
-				</span>
-				<span>Settings</span>
+				<span>{{link.name | capitalize}}</span>
 			</router-link>
 		</li>
 	</ul>
@@ -40,6 +19,23 @@
 <script>
 export default {
 	name: 'SidebarLayout',
+	data() {
+		return {
+			links: [{
+				name: 'dashboard',
+				icon: 'fa-tachometer',
+			},{
+				name: 'devices',
+				icon: 'fa-puzzle-piece',
+			},{
+				name: 'users',
+				icon: 'fa-users',
+			},{
+				name: 'settings',
+				icon: 'fa-cog',
+			}]
+		};
+	}
 };
 </script>
 
