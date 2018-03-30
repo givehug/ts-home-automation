@@ -39,7 +39,7 @@ import {actions, getters} from '@/store/constants';
 import UserList from '@/components/units/UserList.vue';
 
 export default {
-    name: 'UsersPage',
+    name: 'UsersView',
 	components: {UserList},
 	data() {
 		return {

@@ -58,7 +58,7 @@
 import {actions, getters} from '@/store/constants';
 
 export default {
-    name: 'theHeader',
+    name: 'HeaderLayout',
     data () {
         return {
 			showMobMenu: false,

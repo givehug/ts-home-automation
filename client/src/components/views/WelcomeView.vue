@@ -25,7 +25,7 @@
 </template>
 
 <script>
-export default {name: 'WelcomePage'}
+export default {name: 'WelcomeView'}
 </script>
 
 <style lang="scss" scoped>

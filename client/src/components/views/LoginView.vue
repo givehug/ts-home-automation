@@ -34,7 +34,7 @@ import router from '@/router';
 import {actions} from '@/store/constants';
 
 export default {
-    name: 'LoginPage',
+    name: 'LoginView',
     data() {
         return {
             loginForm: {

@@ -1,6 +1,7 @@
 import {api, endpoints} from './../../api';
 import router from './../../router';
 import * as constants from './../constants';
+import {USER_SESSION_TOKEN} from '../../data/constants';
 
 const state = {
 	token: null,
@@ -13,14 +14,14 @@ const mutations = {
 	 */
 	[constants.mutations.USER_TOKEN_SET](state, token) {
 		state.token = token;
-		localStorage.setItem('token', token);
+		localStorage.setItem(USER_SESSION_TOKEN, token);
 	},
 	/**
 	 * Remove user token from localStorage.
 	 */
 	[constants.mutations.USER_TOKEN_CLEAR](state) {
 		state.token = null;
-		localStorage.removeItem('token');
+		localStorage.removeItem(USER_SESSION_TOKEN);
 	},
 	/**
 	 * Clear user data.

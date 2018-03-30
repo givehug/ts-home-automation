@@ -6,6 +6,7 @@
 
 import * as constants from './../constants';
 import {api, endpoints} from '../../api';
+import {USER_SESSION_TOKEN} from '../../data/constants';
 
 const state = {
 	dataLoaded: false,
@@ -26,7 +27,7 @@ const actions = {
 	 * fetch all other necessary data and init components available for signe in user.
 	 */
 	[constants.actions.APP_INIT]: async(context) => {
-		const token = localStorage.getItem('token');
+		const token = localStorage.getItem(USER_SESSION_TOKEN);
 
 		if (!token) return;
 

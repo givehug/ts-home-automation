@@ -64,7 +64,7 @@
 import {actions} from '@/store/constants';
 
 export default {
-	name: 'SettingsPage',
+	name: 'SettingsView',
 	data() {
 		return {
 			showMacs: false,

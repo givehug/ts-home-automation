@@ -38,7 +38,7 @@
 	<div class="line">
 		<!-- take picture -->
 		<button
-			class="button"
+			class="button button--margin"
 			@click="sendCommand(commandsByKey.takePicture.key)"
 		>
 			<span>Take Picture</span>
@@ -46,7 +46,7 @@
 
 		<!-- delete picture -->
 		<button
-			class="button"
+			class="button button--margin"
 			@click="sendCommand(commandsByKey.deletePictures.key)"
 		>
 			<span>Delete Pictures</span>
@@ -57,6 +57,7 @@
 	<div class="line">
 		<span>Turn detection ON</span>
 		<input
+			class="checkbox checkbox--margin"
 			type="checkbox"
 			v-model="securityState.detectionStatus"
 			@click="sendCommand(commandsByKey.toggleDetection.key)"
@@ -67,6 +68,7 @@
 	<div class="line">
 		<span>Turn detection ON when nobody home</span>
 		<input
+			class="checkbox checkbox--margin"
 			type="checkbox"
 			v-model="securityState.turnDetectionOnWhenNobodyHome"
 			@click="sendCommand(commandsByKey.toggleDetectionWhenNobodyHome.key)"
@@ -107,7 +109,7 @@ export default {
 <style lang="scss" scoped>
 #security {
     .images-wrapper {
-        overflow-y: scroll;
+        overflow-y: auto;
         margin-bottom: 15px;
         min-height: 40px;
         line-height: 40px;

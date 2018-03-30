@@ -32,55 +32,7 @@
 @import "~bulma";
 @import "~buefy/src/scss/buefy";
 
-// .is-three-quarters-mobile {
-//     @media screen and (max-width: 520) {
-//         -webkit-box-flex: 0;
-//         -ms-flex: none;
-//         flex: none;
-//         width: 75%;
-//     }
-// }
-
 .box, .card {
     box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1);
     border-radius: 5px;
 }
-
-// .title,
-// .subtitle {
-//     line-height: 0.8;
-
-//     &.is-primary {
-//         color: $primary;
-//     }
-//     &.is-danger {
-//         color: $danger;
-//     }
-// }
-
-// .title:not(.is-spaced) + .subtitle {
-//     margin-top: -1rem;
-// }
-
-// .content {
-//     padding: 30px;
-//     @media screen and (max-width: 1024px) {
-//         padding: 20px 10px;
-//     }
-// }
-
-// .button {
-//     .icon {
-//         margin-right: 5px !important;
-//     }
-// }
-
-// hr {
-//     height: 2px;
-//     border-bottom: 1px solid white;
-// }
-
-// .dropdown-content a {
-//     color: black  !important;
-//     padding: 1rem 1.5rem !important;
-// }

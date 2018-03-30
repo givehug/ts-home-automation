@@ -1,23 +1,25 @@
 // rename this file to config.json and fill in your real data
 {
 	"development": {
-		"HOST": "yourDevHostName",
+		"HTTP_URL": "yourHttpRequestsUrl",
 		"JWT_SECRET": "someSecretKeyForJWT",
 		"KEY": "anotherKey",
 		"MONGODB_URI": "mongoDbUri",
+		"NODE_ENV": "development",
+		"PORT": "devProt",
 		"SMTP_KEY": "emailClientPassword",
 		"SMTP_USER": "emailClientSmtpAddress",
-		"PORT": "devProt",
-		"NODE_ENV": "development"
+		"WS_URL": "yourWsRequestsUrl",
 	},
 	"production": {
-		"HOST": "yourDevHostName",
+		"HTTP_URL": "yourHttpRequestsUrl",
 		"JWT_SECRET": "someSecretKeyForJWT",
 		"KEY": "anotherKey",
 		"MONGODB_URI": "mongoDbUri",
+		"NODE_ENV": "production",
+		"PORT": "devProt",
 		"SMTP_KEY": "emailClientPassword",
 		"SMTP_USER": "emailClientSmtpAddress",
-		"PORT": "devProt",
-		"NODE_ENV": "development"
+		"WS_URL": "yourWsRequestsUrl",
 	}
 }

@@ -57,7 +57,7 @@ import {actions} from '@/store/constants';
 import EditableContent from '@/components/other/EditableContent.vue';
 
 export default {
-	name: 'ProfilePage',
+	name: 'ProfileView',
 
 	components: {
         EditableContent,

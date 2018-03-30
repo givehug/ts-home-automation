@@ -1,11 +1,12 @@
 import axios from 'axios';
 import config from '../../../config';
+import {USER_SESSION_TOKEN} from '../data/constants';
 
 function Api() {
-	const rootUrl = config.HOST + '/api/';
+	const rootUrl = config.HTTP_URL + '/api/';
 
 	const options = () => {
-		const token = localStorage.getItem('token');
+		const token = localStorage.getItem(USER_SESSION_TOKEN);
 		const ops = {headers: {}};
 
 		if (token) {

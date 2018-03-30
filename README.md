@@ -1,9 +1,9 @@
-# Simple JavaScript Home Automation Example Project 
+# Simple JavaScript Home Automation
 ![alt text](/client/public/favicon.ico "logo")
 
 [Demo video](https://youtu.be/lrV0SyhGV-c)
 
-- NodeJS back end (http and websockets cloud server). MongoDB database.
+- NodeJS srver side (HTTP and WebSockets cloud server). MongoDB database.
 - VueJS client side.
 - Raspberry pi 3 running NodeJS and Nodemcu flashed with Espruino running es5 as home IOT devices.
 
@@ -11,13 +11,11 @@
 ![alt text](/assets/schema.png "schema")
 
 
-Communication between devices, server and client is done via WebSockets.
-Client - Server requests related to database are done via http.
+Communication:
+- Client <-> Server <-> Device - WebSockets.
+- Client <-> Server <-> DB - REST HTTP.
 
-Each device has independent power supply and is connected wirelessly to home wifi network and further to cloud websocket server directly.
-(this allows to include devices outside of home to the dashboard, hey just have to connect to internet)
-
-WS server handles communication between devices and client side.
+Each device has independent power supply and is connected wirelessly to home WiFi network and further to cloud WebSockets server directly. This allows to control device outside of home, if it has internet access.
 
 ![alt text](/assets/ui.png "user interface")
 
@@ -25,18 +23,21 @@ WS server handles communication between devices and client side.
 - email notifications with nodemailer
 - JWT, bcrypt authorization
 - motion detection
-- track whether user is home or not
+- track whether user is at home or not
 - security camera (takes pictures)
 - voice control (chrome only)
 
 ### TODO
-- unit tests
-- test coverage
+- unit/e2e tests, test coverage
 - save images on server
 - video streaming
-- face recognition (what for?)
+- face recognition (when motion detected, to differentiate between homie and intruder)
 - replace web speach API with something cross platfrom
 - enhance security
+- migrate to TypeScript (nodemcu?)
+- improve vue components composition
+- lerna js project splitting
+- add homie entrance sound and illumination introduction
 
 ### HELPFUL DOCS
 - [Enable Raspberry Camera](/docs/enableRaspberryCamera.md)

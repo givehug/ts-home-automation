@@ -1,15 +1,17 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
+import {USER_SESSION_TOKEN} from '@/data/constants';
+
 // components
-import DashboardPage from '@/components/pages/DashboardPage.vue';
-import LoginPage from '@/components/pages/LoginPage.vue';
-import DevicesPage from '@/components/pages/DevicesPage.vue';
-import UsersPage from '@/components/pages/UsersPage.vue';
-import WelcomePage from '@/components/pages/WelcomePage.vue';
-import NotFoundPage from '@/components/pages/NotFoundPage.vue';
-import ProfilePage from '@/components/pages/ProfilePage.vue';
-import SettingsPage from '@/components/pages/SettingsPage.vue';
+import DashboardView from '@/components/views/DashboardView.vue';
+import LoginView from '@/components/views/LoginView.vue';
+import DevicesView from '@/components/views/DevicesView.vue';
+import UsersView from '@/components/views/UsersView.vue';
+import WelcomeView from '@/components/views/WelcomeView.vue';
+import NotFoundView from '@/components/views/NotFoundView.vue';
+import ProfileView from '@/components/views/ProfileView.vue';
+import SettingsView from '@/components/views/SettingsView.vue';
 
 // store
 import store from '@/store';
@@ -22,7 +24,7 @@ const router = new Router({
 	routes: [{
 		path: '/',
 		name: 'welcome',
-		component: WelcomePage,
+		component: WelcomeView,
 		meta: {
 			onlyGuest: true,
 			title: '',
@@ -30,7 +32,7 @@ const router = new Router({
 	}, {
 		path: '/dashboard',
 		name: 'dashboard',
-		component: DashboardPage,
+		component: DashboardView,
 		meta: {
 			onlyUser: true,
 			title: 'Dashboard',
@@ -38,7 +40,7 @@ const router = new Router({
 	}, {
 		path: '/login',
 		name: 'login',
-		component: LoginPage,
+		component: LoginView,
 		meta: {
 			onlyGuest: true,
 			title: 'Log in',
@@ -46,7 +48,7 @@ const router = new Router({
 	}, {
 		path: '/devices',
 		name: 'device-list',
-		component: DevicesPage,
+		component: DevicesView,
 		meta: {
 			onlyUser: true,
 			title: 'Devices',
@@ -54,7 +56,7 @@ const router = new Router({
 	}, {
 		path: '/settings',
 		name: 'settings',
-		component: SettingsPage,
+		component: SettingsView,
 		meta: {
 			onlyUser: true,
 			title: 'Settings',
@@ -62,7 +64,7 @@ const router = new Router({
 	}, {
 		path: '/profile',
 		name: 'profile',
-		component: ProfilePage,
+		component: ProfileView,
 		meta: {
 			onlyUser: true,
 			title: 'Profile',
@@ -70,20 +72,20 @@ const router = new Router({
 	}, {
 		path: '/users',
 		name: 'users',
-		component: UsersPage,
+		component: UsersView,
 		meta: {
 			onlyUser: true,
 			title: 'Users',
 		},
 	}, {
 		path: '*',
-		component: NotFoundPage,
+		component: NotFoundView,
 	}],
 });
 
 // guards
 router.beforeEach((to, from, next) => {
-	const token = localStorage.getItem('token');
+	const token = localStorage.getItem(USER_SESSION_TOKEN);
 
 	// ONLY USER ROUTING
 	if (to.matched.some(record => record.meta.onlyUser)) {

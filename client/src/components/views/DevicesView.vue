@@ -41,7 +41,7 @@ import DeviceCard from '@/components/devices/DeviceCard.vue';
 import {actions, getters} from '@/store/constants';
 
 export default {
-	name: 'DevicesPage',
+	name: 'DevicesView',
 	components: {DeviceCard},
 
 	methods: {

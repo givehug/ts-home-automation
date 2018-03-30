@@ -15,7 +15,7 @@ const mutations = {
 export default {mutations};
 
 export const wsMiddleware = (store) => {
-	const hostname = config.WS_HOST;
+	const hostname = config.WS_URL;
 	let socket = null;
 
 	const onMessage = (evt) => {

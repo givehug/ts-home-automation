@@ -62,7 +62,7 @@ import SecurityUnit from '@/components/units/SecurityUnit.vue';
 import LedUnit from '@/components/units/LedUnit.vue';
 
 export default {
-    name: 'DashboardPage',
+    name: 'DashboardView',
     components: {
         RoboUnit,
         UserList,
