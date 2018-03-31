@@ -1,10 +1,10 @@
-const express = require('express');
-const {mongoose} = require('../db/mongoose');
-const {pick, keyBy} = require('lodash');
-const {User} = require('../models/user');
-const {Settings} = require('../models/settings'); 
-const {Device} = require('../models/device'); 
-const {authenticate} = require('../middleware/authenticate');
+import * as express from 'express';
+import {keyBy, pick} from 'lodash';
+import mongoose from '../db/mongoose';
+import {authenticate} from '../middleware/authenticate';
+import {Device} from '../models/device'; 
+import {Settings} from '../models/settings'; 
+import {User} from '../models/user';
 
 const userProps = ['name', 'email', '_id', 'admin'];
 const deviceProps = ['name', 'type', '_id', 'description'];
@@ -34,14 +34,14 @@ router.route('/app')
 			
 			// Send
 			res.send({
+				devices: devicesMap,
+				settings: userSettings,
 				user,
 				users: usersMap,
-				settings: userSettings,
-				devices: devicesMap,
 			});
 		} catch (error) {
 			res.status(400).send(error);
 		}
 	});
 
-module.exports = router;
+export default router;

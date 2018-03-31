@@ -5,4 +5,4 @@ const genPass = () => {
 		.slice(-8);    // Cut off last 8 characters : "yo82mvyr"
 };
 
-module.exports = genPass;
+export default genPass;

@@ -1,4 +1,4 @@
-const messageToJSON = (msg) => {
+export const messageToJSON = (msg) => {
 	let message = [
 		'',
 		null,
@@ -13,15 +13,10 @@ const messageToJSON = (msg) => {
 	return message;
 };
 
-const jsonToMessage = (type, data) => {
+export const jsonToMessage = (type, data) => {
 	if (!type) {
 		return '';
 	}
 
 	return JSON.stringify(data === undefined ? [type] : [type, data]);
-};
-
-module.exports = {
-	messageToJSON,
-	jsonToMessage,
 };

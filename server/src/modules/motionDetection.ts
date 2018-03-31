@@ -1,8 +1,8 @@
-const {sendEmail} = require('./emailMessenger');
-const {User} = require('./../models/user');
-const {Settings} = require('./../models/settings');
+import {Settings} from './../models/settings';
+import {User} from './../models/user';
+import {sendEmail} from './emailMessenger';
 
-async function notifyDetection(lastDetected) {
+export async function notifyDetection(lastDetected) {
 	let settings;
 
 	try {
@@ -18,9 +18,9 @@ async function notifyDetection(lastDetected) {
 				const user = await User.findById(setting.userId);
 
 				sendEmail({
-					to: user.email,
 					subject: 'Home Security Motion Detected',
 					text: 'Motion Detected: ' + lastDetected, // TODO should be user location based
+					to: user.email,
 				});
 			} catch (error) {
 				return console.error(error);
@@ -28,5 +28,3 @@ async function notifyDetection(lastDetected) {
 		}
 	});
 }
-
-module.exports = {notifyDetection};

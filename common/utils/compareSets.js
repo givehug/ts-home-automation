@@ -18,4 +18,4 @@ function compareSets(setA, setB) {
 	return true;
 }
 
-module.exports = compareSets;
+export default compareSets;

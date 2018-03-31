@@ -1,31 +1,31 @@
-const nodemailer = require('nodemailer');
-const config = require('../../config');
+import * as nodemailer from 'nodemailer';
+import config from '../../../config';
 
 const smtpConfig = {
-	service: 'gmail',
 	auth: {
-		user: config.SMTP_USER,
 		pass: config.SMTP_KEY,
+		user: config.SMTP_USER,
 	},
+	service: 'gmail',
 };
 
 const mailOptions = {
 	from: config.SMTP_USER,
-	to: 'empty@email.com',
 	subject: 'Home Automation Notification',
 	text: 'Message text not specified',
+	to: 'empty@email.com',
 	// html: '<p>some html<p>
 };
 
 const transporter = nodemailer.createTransport(smtpConfig);
 
-const sendEmail = ({to, subject, text}) => {
+export const sendEmail = ({to, subject, text}) => {
 	transporter.sendMail(
 		{
 			from: mailOptions.from,
-			to: to || mailOptions.to,
-			subject: subject || mailOptions.subject,
 			html: text || mailOptions.text,
+			subject: subject || mailOptions.subject,
+			to: to || mailOptions.to,
 		},
 		(error) => {
 			if (error) {
@@ -35,5 +35,3 @@ const sendEmail = ({to, subject, text}) => {
 		}
 	);
 };
-
-module.exports = {sendEmail};

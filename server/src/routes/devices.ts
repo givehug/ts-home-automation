@@ -1,7 +1,7 @@
-const express = require('express');
-const {ObjectID} = require('mongodb');
-const {Device} = require('./../models/device');
-const {authenticate} = require('./../middleware/authenticate');
+import * as express from 'express';
+import {ObjectID} from 'mongodb';
+import {authenticate} from './../middleware/authenticate';
+import {Device} from './../models/device';
 
 const router = express.Router();
 
@@ -58,4 +58,4 @@ router.route('/devices/:id')
 		}
 	});
 
-module.exports = router;
+export default router;

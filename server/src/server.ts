@@ -1,14 +1,14 @@
 // Config
-const config = require('../config');
+import config from '../../config';
 
 // Libs
-const chalk = require('chalk');
-const WS = require('ws');
-const http = require('http');
+import chalk from 'chalk';
+import * as http from 'http';
+import * as WS from 'ws';
 
 // Modules
-const app = require('./app');
-const WsServer = require('./modules/wsServer');
+import app from './app';
+import WsServer from './modules/wsServer';
 
 // Constants
 const port = process.env.PORT || config.PORT;

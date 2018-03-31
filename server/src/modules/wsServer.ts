@@ -1,17 +1,21 @@
-const {messageToJSON, jsonToMessage} = require('./../../common/utils/wsMessage');
-const compareSets = require('./../../common/utils/compareSets');
-const {notifyDetection} = require('./motionDetection');
-const {Settings} = require('./../models/settings');
-const uuidv4 = require('uuid/v4');
+import * as uuidv4 from 'uuid';
+import compareSets from '../../../common/utils/compareSets';
+import {jsonToMessage, messageToJSON} from '../../../common/utils/wsMessage';
+import {Settings} from './../models/settings';
+import {notifyDetection} from './motionDetection';
 
 const pingInterval = 10000;
 
-class WsServer {
+export default class WsServer {
+	private WS: any;
+	private wss: any;
+	private connectedDevices: any;
+	private cachedMacMapStr: any;
+
 	constructor(WS, wss) {
 		this.WS = WS;
 		this.wss = wss;
 		this.connectedDevices = new Set();
-		this.cachedMacMapStr;
 
 		wss.on('connection', ws => {
 			ws.id = uuidv4();
@@ -65,7 +69,7 @@ class WsServer {
 		}, pingInterval);
 	}
 
-	broadcast(socket, msg, target) {
+	private broadcast(socket, msg, target?) {
 		this.wss.clients.forEach(client => {
 			if (
 				client.readyState !== this.WS.OPEN
@@ -90,20 +94,20 @@ class WsServer {
 		});
 	}
 
-	handleDeviceConnection(ws) {
+	private handleDeviceConnection(ws) {
 		this.connectedDevices.add(ws.protocol);
 		// send list of connected device to ui
 		this.broadcast(null, jsonToMessage('connectedDevices', Array.from(this.connectedDevices)), 'ui');
 	}
 
-	handleUiConnection(ws) {
+	private handleUiConnection(ws) {
 		// send list of connected device to ui
 		ws.send(jsonToMessage('connectedDevices', Array.from(this.connectedDevices)), 'ui');
 		// currently device responds with stateUpdate on any message
 		this.broadcast(null, jsonToMessage('newUiConnection'), 'devices');
 	}
 
-	handleMessage(message, ws) {
+	private handleMessage(message, ws) {
 		const [msgType, msgData] = messageToJSON(message);
 
 		ws.alive = true;
@@ -118,7 +122,7 @@ class WsServer {
 		}
 	}
 
-	async handleStateUpdate(state, ws) {
+	private async handleStateUpdate(state, ws) {
 		// handle security new motion detection
 		if (state.security && state.security.newDetection) {
 			// handle notifications for each state key
@@ -143,5 +147,3 @@ class WsServer {
 		}
 	}
 }
-
-module.exports = WsServer;

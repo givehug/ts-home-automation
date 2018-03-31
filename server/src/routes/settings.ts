@@ -1,7 +1,7 @@
-const express = require('express');
-const pick = require('lodash/pick');
-const {Settings} = require('./../models/settings');
-const {authenticate} = require('./../middleware/authenticate');
+import * as express from 'express';
+import {pick} from 'lodash';
+import {authenticate} from './../middleware/authenticate';
+import {Settings} from './../models/settings';
 
 const router = express.Router();
 
@@ -12,9 +12,9 @@ router.route('/settings')
 		const query = {userId: req.user._id};
 		const update = req.body;
 		const options = {
-			upsert: true,
 			new: true,
 			setDefaultsOnInsert: true,
+			upsert: true,
 		};
 
 		try {
@@ -26,4 +26,4 @@ router.route('/settings')
 		}
 	});
 
-module.exports = router;
+export default router;

@@ -1,11 +1,11 @@
-const express = require('express');
-const {mongoose} = require('./../db/mongoose');
-const pick = require('lodash/pick');
-const {User, checkPassword} = require('./../models/user');
-const {Settings} = require('./../models/settings'); 
-const {authenticate} = require('./../middleware/authenticate');
-const genPass = require('./../../common/utils/genPass');
-const {sendEmail} = require('./../modules/emailMessenger');
+import * as express from 'express';
+import {pick} from 'lodash';
+import genPass from '../../../common/utils/genPass';
+import mongoose from './../db/mongoose';
+import {authenticate} from './../middleware/authenticate';
+import {Settings} from './../models/settings'; 
+import {checkPassword, User} from './../models/user';
+import {sendEmail} from './../modules/emailMessenger';
 
 const userPropsToUpdate = ['name', 'email', 'password'];
 
@@ -25,8 +25,8 @@ router.route('/users')
 		const password = genPass();
 		const {name, email} = req.body;
 		const user = new User({
-			name,
 			email,
+			name,
 			password,
 		});
 		const settings = new Settings({userId: user._id});
@@ -37,13 +37,13 @@ router.route('/users')
 
 			// send email invitation
 			sendEmail({
-				to: email,
 				subject: 'Home Automation Invitation',
 				text: `
 					${name}, you have been invited to Home Automation dashboard. \n
 					Your temporary password is: ${password} \n
 					Update it as son as you sign in. \n
 				`,
+				to: email,
 			});
 
 			res.send(user._id);
@@ -135,4 +135,4 @@ router.route('/login')
 		}
 	});
 
-module.exports = router;
+export default router;

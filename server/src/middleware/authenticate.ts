@@ -1,6 +1,6 @@
-const {User} = require('./../models/user');
+import {User} from './../models/user';
 
-const authenticate = async(req, res, next) => {
+export const authenticate = async(req, res, next) => {
 	const token = req.header('x-auth');
 
 	try {
@@ -18,5 +18,3 @@ const authenticate = async(req, res, next) => {
 		res.sendStatus(401);
 	}
 };
-
-module.exports = {authenticate};

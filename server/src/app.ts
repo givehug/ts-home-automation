@@ -1,21 +1,21 @@
 // Config
-require('./../config/config');
+import '../../config/config';
 
 // Libs
-const express = require('express');
-const path = require('path');
-const bodyParser = require('body-parser');
+import * as bodyParser from 'body-parser';
+import * as express from 'express';
+import * as path from 'path';
 
 // Routes
-const routes = require('./routes');
+import routes from './routes';
 
 // Constants
 const excludeApiRoutes = /^\/(?!api).*/;
 const app = express();
-const staticPath = path.join(__dirname, './../client/dist/');
+const staticPath = path.join(__dirname, './../../client/dist/');
 
 // Middleware
-const {cors} = require('./middleware/cors');
+import {cors} from './middleware/cors';
 
 // Apply app settings
 app.use(cors);
@@ -30,4 +30,4 @@ app.get(excludeApiRoutes, (req, res) => {
 	res.sendFile(staticPath + 'index.html');
 });
 
-module.exports = app;
+export default app;

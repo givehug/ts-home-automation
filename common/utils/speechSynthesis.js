@@ -7,4 +7,4 @@ const SpeechSynthesisUtterance = window && (
 	|| window.SpeechSynthesisUtterance
 );
 
-module.exports = SpeechSynthesisUtterance;
+export default SpeechSynthesisUtterance;
