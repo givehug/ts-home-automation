@@ -2,7 +2,7 @@
  * Settings state has main object 'data' where all user settings are stored.
  */
 
-import {api, endpoints} from './../../api';
+import {endpoints, request} from './../../api';
 import * as constants from './../constants';
 
 const state = {
@@ -23,7 +23,7 @@ const actions = {
 	 * Save settings on server
 	 */
 	[constants.actions.SETTINGS_SAVE]: async(context, update) => {
-		await api.request(endpoints.settings, 'PATCH', update);
+		await request(endpoints.settings, 'PATCH', update);
 		context.commit(constants.mutations.SETTINGS_UPDATE, update);
 	},
 };

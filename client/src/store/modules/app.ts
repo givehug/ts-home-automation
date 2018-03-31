@@ -4,7 +4,7 @@
  * it fetches all necessary data and initializes other components.
  */
 
-import {api, endpoints} from '../../api';
+import {endpoints, request} from '../../api';
 import {USER_SESSION_TOKEN} from '../../data/constants';
 import * as constants from './../constants';
 
@@ -35,7 +35,7 @@ const actions = {
 
 		try {
 			// try fetching user data with token from localStorage
-			const {data} = await api.request(endpoints.app, 'GET');
+			const {data} = await request(endpoints.app, 'GET');
 
 			context.commit(constants.mutations.USER_DATA_SET, data.user);
 			context.commit(constants.mutations.USERS_MAP_UPDATE, data.users);

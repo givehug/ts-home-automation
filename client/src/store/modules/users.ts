@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import {api, endpoints} from './../../api';
+import {endpoints, request} from './../../api';
 import * as constants from './../constants';
 
 const state = {map: {}};
@@ -19,7 +19,7 @@ const mutations = {
 const actions = {
 	[constants.actions.USERS_INVITE]: async(context, {email, name}) => {
 		try {
-			const res = await api.request(endpoints.users, 'POST', {
+			const res = await request(endpoints.users, 'POST', {
 				email,
 				name,
 			});
@@ -41,7 +41,7 @@ const actions = {
 	},
 	[constants.actions.USERS_DELETE]: async(context, userId) => {
 		try {
-			await api.request(endpoints.users + userId, 'DELETE');
+			await request(endpoints.users + userId, 'DELETE');
 			context.commit(constants.mutations.USERS_MAP_REMOVE, userId);
 
 			return true;

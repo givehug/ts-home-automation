@@ -6,7 +6,7 @@
  */
 
 import Vue from 'vue';
-import {api, endpoints} from './../../api';
+import {endpoints, request} from './../../api';
 import * as constants from './../constants';
 
 const state = {
@@ -58,21 +58,21 @@ const actions = {
 	 * Update existing device data on server
 	 */
 	[constants.actions.DEVICES_SAVE]: async(context, deviceData) => {
-		await api.request(endpoints.devices + deviceData._id, 'PATCH', deviceData);
+		await request(endpoints.devices + deviceData._id, 'PATCH', deviceData);
 		context.commit(constants.mutations.DEVICES_SAVE_OK, deviceData);
 	},
 	/**
 	 * Add new device. It will be added with default data and will be given unique id on server.
 	 */
 	[constants.actions.DEVICES_ADD]: async(context) => {
-		const res = await api.request(endpoints.devices, 'POST', getNewDeviceData());
+		const res = await request(endpoints.devices, 'POST', getNewDeviceData());
 		context.commit(constants.mutations.DEVICES_ADD_OK, res.data);
 	},
 	/**
 	 * Delete device by its id.
 	 */
 	[constants.actions.DEVICES_DELETE]: async(context, id) => {
-		const res = await api.request(endpoints.devices + id, 'DELETE');
+		const res = await request(endpoints.devices + id, 'DELETE');
 		context.commit(constants.mutations.DEVICES_DELETE_OK, res.data.device._id);
 	},
 };

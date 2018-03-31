@@ -1,4 +1,4 @@
-import api from './api';
-import {endpoints} from './endpoints';
+import endpoints from './endpoints';
+import request from './request';
 
-export {api, endpoints};
+export {endpoints, request};

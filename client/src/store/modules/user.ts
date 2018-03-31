@@ -1,5 +1,5 @@
 import {USER_SESSION_TOKEN} from '../../data/constants';
-import {api, endpoints} from './../../api';
+import {endpoints, request} from './../../api';
 import router from './../../router';
 import * as constants from './../constants';
 
@@ -53,7 +53,7 @@ const actions = {
 		}
 
 		try {
-			await api.request(endpoints.userMe, 'PATCH', {update});
+			await request(endpoints.userMe, 'PATCH', {update});
 			context.commit(constants.mutations.USER_DATA_UPDATE, update);
 
 			return true;
@@ -66,7 +66,7 @@ const actions = {
 	 */
 	[constants.actions.USER_ADD]: async(context, form) => {
 		try {
-			const res = await api.request(endpoints.users, 'POST', form);
+			const res = await request(endpoints.users, 'POST', form);
 
 			context.commit(constants.mutations.USER_TOKEN_SET, res.headers['x-auth']);
 			context.dispatch(constants.actions.APP_INIT);
@@ -81,7 +81,7 @@ const actions = {
 	 */
 	[constants.actions.USER_LOGIN]: async(context, {email, password}) => {
 		try {
-			const res = await api.request(endpoints.userLogin, 'POST', {email, password});
+			const res = await request(endpoints.userLogin, 'POST', {email, password});
 
 			context.commit(constants.mutations.USER_TOKEN_SET, res.headers['x-auth']);
 			context.dispatch(constants.actions.APP_INIT);
@@ -96,7 +96,7 @@ const actions = {
 	 */
 	[constants.actions.USER_LOGOUT]: async(context) => {
 		try {
-			await api.request(endpoints.userLogout, 'DELETE');
+			await request(endpoints.userLogout, 'DELETE');
 		} catch (error) {
 			// do nothing
 		}
