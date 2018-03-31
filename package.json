@@ -1,62 +1,16 @@
 {
 	"name": "js-home-automation",
 	"version": "0.0.1",
-	"description": "Simple JavaScript home automation project.",
+	"description": "JavaScript home automation.",
 	"author": "Vladimir Boretskyi",
 	"license": "MIT",
 	"scripts": {
-		"start": "node server/server.js",
+		"start": "cd server && npm run start",
 		"deploy": "git push heroku master -f",
-		"heroku-postbuild": "npm run build-client",
-		"dev-client": "cd client && vue-cli-service serve --open",
-		"build-client": "cd client && vue-cli-service build",
-		"dev-server": "nodemon server/server.js",
-		"lint-client": "eslint client/src/ --quiet",
-		"lint-server": "eslint server/ --quiet"
+		"heroku-postbuild": "cd server && npm i && cd ../client && npm i && npm run build"
 	},
-	"browserslist": [
-		"> 1%",
-		"last 2 versions",
-		"not ie <= 8"
-	],
 	"engines": {
 		"node": "9.9.0",
 		"npm": "5.8.0"
-	},
-	"dependencies": {
-		"@vue/cli-plugin-babel": "^3.0.0-beta.6",
-		"@vue/cli-plugin-eslint": "^3.0.0-beta.6",
-		"@vue/cli-service": "^3.0.0-beta.6",
-		"@vue/eslint-config-airbnb": "^3.0.0-beta.6",
-		"annyang": "*",
-		"autoprefixer": "^7.1.6",
-		"axios": "^0.17.1",
-		"bcryptjs": "^2.4.0",
-		"body-parser": "^1.18.2",
-		"buefy": "^0.6.1",
-		"bulma": "^0.6.1",
-		"chalk": "^2.3.0",
-		"connect-history-api-fallback": "^1.5.0",
-		"cors": "^2.8.4",
-		"crypto-js": "^3.1.9-1",
-		"eslint": "^4.15.0",
-		"express": "^4.16.2",
-		"jsonwebtoken": "^8.1.0",
-		"lodash": "*",
-		"moment": "^2.19.3",
-		"mongodb": "^2.2.33",
-		"mongoose": "^4.13.6",
-		"node-sass": "^4.7.2",
-		"nodemailer": "^4.4.0",
-		"nodemailer-smtp-transport": "^2.7.4",
-		"nodemon": "^1.12.0",
-		"sass-loader": "^6.0.6",
-		"uuid": "^3.1.0",
-		"validator": "^9.1.2",
-		"vue": "^2.5.9",
-		"vue-router": "^3.0.1",
-		"vue-template-compiler": "^2.5.13",
-		"vuex": "^3.0.1",
-		"ws": "^3.3.2"
 	}
 }

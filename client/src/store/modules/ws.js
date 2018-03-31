@@ -7,6 +7,7 @@ const mutations = {
 	[constants.mutations.WS_CONNECTED]() { /* do nothing */ },
 	[constants.mutations.WS_DISCONNECT]() { /* do nothing */ },
 	[constants.mutations.WS_DISCONNECTED]() { /* do nothing */ },
+	// eslint-disable-next-line
 	[constants.mutations.WS_MESSAGE_SEND](state, payload) { /* do nothing */ },
 	[constants.mutations.WS_MESSAGE_SENT]() { /* do nothing */ },
 	[constants.mutations.WS_MESSAGE_RECEIVED]() { /* do nothing */ },

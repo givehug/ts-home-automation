@@ -3,7 +3,7 @@ import config from '../../../config';
 import {USER_SESSION_TOKEN} from '../data/constants';
 
 function Api() {
-	const rootUrl = config.HTTP_URL + '/api/';
+	const rootUrl = config.BASE_URL + '/api/';
 
 	const options = () => {
 		const token = localStorage.getItem(USER_SESSION_TOKEN);

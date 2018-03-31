@@ -74,7 +74,7 @@ export default {
 							});
 						}
 					} catch (error) {
-						
+						// do nothing
 					}
                 },
             });

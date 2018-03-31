@@ -31,6 +31,7 @@ const mutations = {
 	/**
 	 * Robot say message.
 	 */
+	// eslint-disable-next-line
 	[constants.mutations.ROBO_SAY](state, msg) { /* Used in roboMiddleware */ },
 	/**
 	 * Change robot face expression.

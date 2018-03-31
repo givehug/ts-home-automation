@@ -1,7 +1,7 @@
 // rename this file to config.json and fill in your real data
 {
 	"development": {
-		"HTTP_URL": "yourHttpRequestsUrl",
+		"BASE_URL": "yourHttpRequestsUrl",
 		"JWT_SECRET": "someSecretKeyForJWT",
 		"KEY": "anotherKey",
 		"MONGODB_URI": "mongoDbUri",
@@ -12,7 +12,7 @@
 		"WS_URL": "yourWsRequestsUrl",
 	},
 	"production": {
-		"HTTP_URL": "yourHttpRequestsUrl",
+		"BASE_URL": "yourHttpRequestsUrl",
 		"JWT_SECRET": "someSecretKeyForJWT",
 		"KEY": "anotherKey",
 		"MONGODB_URI": "mongoDbUri",

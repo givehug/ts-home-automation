@@ -34,7 +34,6 @@
 </template>
 
 <script>
-import {api, endpoints} from '@/api';
 import {actions, getters} from '@/store/constants';
 import UserList from '@/components/units/UserList.vue';
 
