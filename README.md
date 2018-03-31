@@ -8,7 +8,7 @@
 - Raspberry pi 3 running NodeJS and Nodemcu flashed with Espruino running es5 as home IOT devices.
 
 
-![alt text](/assets/schema.png "schema")
+![alt text](/docs/images/schema.png "schema")
 
 
 Communication:
@@ -17,7 +17,7 @@ Communication:
 
 Each device has independent power supply and is connected wirelessly to home WiFi network and further to cloud WebSockets server directly. This allows to control device outside of home, if it has internet access.
 
-![alt text](/assets/ui.png "user interface")
+![alt text](/docs/images/ui.png "user interface")
 
 ### FEATURES
 - email notifications with nodemailer
