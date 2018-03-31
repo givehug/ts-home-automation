@@ -34,28 +34,28 @@ import router from '@/router';
 import {actions} from '@/store/constants';
 
 export default {
-    name: 'LoginView',
-    data() {
-        return {
-            loginForm: {
-                email: '',
-                password: '',
-            },
-            loginError: false,
-        };
-    },
-    methods: {
-        async onLoginFormSubmit(e) {
-            e.preventDefault();
-            const logged = await this.$store.dispatch(actions.USER_LOGIN, this.loginForm);
+	name: 'LoginView',
+	data() {
+		return {
+			loginForm: {
+				email: '',
+				password: '',
+			},
+			loginError: false,
+		};
+	},
+	methods: {
+		async onLoginFormSubmit(e) {
+			e.preventDefault();
+			const logged = await this.$store.dispatch(actions.USER_LOGIN, this.loginForm);
 
-            if (logged) {
-                router.push('/');
-            } else {
-                this.loginError = true;
-            }
-        },
-    },
+			if (logged) {
+				router.push('/');
+			} else {
+				this.loginError = true;
+			}
+		},
+	},
 };
 </script>
 

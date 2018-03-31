@@ -32,12 +32,12 @@
 
 <script>
 export default {
-    name: 'NetworkUnit',
-    data() {
-        return {
-            showNetwork: false,
-        };
-    }
+	name: 'NetworkUnit',
+	data() {
+		return {
+			showNetwork: false,
+		};
+	}
 };
 </script>
 

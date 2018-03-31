@@ -84,13 +84,13 @@ export default {
 		},
 
 		handleDeviceDelete(deviceId) {
-            this.$dialog.confirm({
-                title: 'Deleting device',
-                message: 'Are you sure you want to delete this device?',
-                confirmText: 'Delete',
-                type: 'is-danger',
-                hasIcon: true,
-                onConfirm: async() => {
+			this.$dialog.confirm({
+				title: 'Deleting device',
+				message: 'Are you sure you want to delete this device?',
+				confirmText: 'Delete',
+				type: 'is-danger',
+				hasIcon: true,
+				onConfirm: async() => {
 					try {
 						await this.$store.dispatch(actions.DEVICES_DELETE, deviceId);
 						
@@ -104,8 +104,8 @@ export default {
 							type: 'is-danger',
 						});
 					}
-                },
-            });
+				},
+			});
 		},
 	},
 };

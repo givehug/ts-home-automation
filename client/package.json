@@ -1,13 +1,13 @@
 {
-	"name": "js-home-automation-web-app",
-	"version": "0.0.1",
-	"description": "JavaScript home automation web app",
+	"name": "ts-home-automation-web-app",
+	"version": "0.0.2",
+	"description": "TypeScript home automation web app",
 	"author": "Vladimir Boretskyi",
 	"license": "MIT",
 	"scripts": {
 		"serve": "vue-cli-service serve --open",
 		"build": "vue-cli-service build",
-		"lint": "eslint src/ --quiet"
+		"lint": "vue-cli-service lint"
 	},
 	"browserslist": [
 		"> 1%",
@@ -15,22 +15,21 @@
 		"not ie <= 8"
 	],
 	"dependencies": {
-		"@vue/cli-plugin-babel": "^3.0.0-beta.6",
-		"@vue/cli-plugin-eslint": "^3.0.0-beta.6",
+		"@vue/cli-plugin-typescript": "^3.0.0-beta.6",
 		"@vue/cli-service": "^3.0.0-beta.6",
-		"@vue/eslint-config-airbnb": "^3.0.0-beta.6",
 		"annyang": "*",
 		"autoprefixer": "^7.1.6",
 		"axios": "^0.17.1",
 		"buefy": "^0.6.1",
 		"bulma": "^0.6.1",
 		"connect-history-api-fallback": "^1.5.0",
-		"eslint": "^4.15.0",
 		"lodash": "*",
 		"moment": "^2.19.3",
 		"node-sass": "^4.7.2",
 		"sass-loader": "^6.0.6",
-		"vue": "^2.5.9",
+		"vue": "^2.5.13",
+		"vue-class-component": "^6.0.0",
+		"vue-property-decorator": "^6.0.0",
 		"vue-router": "^3.0.1",
 		"vue-template-compiler": "^2.5.13",
 		"vuex": "^3.0.1",

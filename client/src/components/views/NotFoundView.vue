@@ -9,9 +9,9 @@
 
 <script>
 export default {
-    name: 'NotFoundView',
-    data() {
-        return {};
-    },
+	name: 'NotFoundView',
+	data() {
+		return {};
+	},
 };
 </script>

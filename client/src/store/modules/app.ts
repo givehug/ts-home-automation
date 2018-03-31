@@ -4,9 +4,9 @@
  * it fetches all necessary data and initializes other components.
  */
 
-import * as constants from './../constants';
 import {api, endpoints} from '../../api';
 import {USER_SESSION_TOKEN} from '../../data/constants';
+import * as constants from './../constants';
 
 const state = {
 	dataLoaded: false,

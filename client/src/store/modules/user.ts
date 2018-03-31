@@ -1,7 +1,7 @@
+import {USER_SESSION_TOKEN} from '../../data/constants';
 import {api, endpoints} from './../../api';
 import router from './../../router';
 import * as constants from './../constants';
-import {USER_SESSION_TOKEN} from '../../data/constants';
 
 const state = {
 	token: null,

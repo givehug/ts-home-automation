@@ -1,7 +1,7 @@
 import annyang from 'annyang'; // only chrome and some android
+import deviceCommands from '../../../../common/data/deviceCommands';
 import SpeechSynthesisUtterance from './../../../../common/utils/speechSynthesis';
 import * as constants from './../constants';
-import deviceCommands from '../../../../common/data/deviceCommands';
 
 const state = {
 	annyangAvailable: false,
@@ -145,10 +145,10 @@ export const roboMiddleware = (store) => {
 				}
 
 				annyang.pause();
-				window.utterances = [];
+				(window as any).utterances = [];
 				const speach = new SpeechSynthesisUtterance(mutation.payload);
 
-				window.utterances.push(speach);
+				(window as any).utterances.push(speach);
 
 				speach.onstart = () => {
 					store.commit(constants.mutations.ROBO_EMOTION_CHANGE, {

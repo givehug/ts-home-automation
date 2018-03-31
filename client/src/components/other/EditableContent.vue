@@ -8,24 +8,24 @@
 
 <script>
 export default {
-    name: 'EditableContentContent',
-    props: {
-        content: String,
-        active: {
-            type: Boolean,
-            default: true,
+	name: 'EditableContentContent',
+	props: {
+		content: String,
+		active: {
+			type: Boolean,
+			default: true,
 		},
 		trim: {
-            type: Boolean,
-            default: false,
-        },
-    },
-    mounted() {
-        this.$el.innerText = this.content;
-    },
-    methods:{
-        update(event) {
-            this.$emit('update', event.target.innerText);
+			type: Boolean,
+			default: false,
+		},
+	},
+	mounted() {
+		this.$el.innerText = this.content;
+	},
+	methods:{
+		update(event) {
+			this.$emit('update', event.target.innerText);
 		},
 		blur(event) {
 			// optionally trim value
@@ -38,9 +38,9 @@ export default {
 				return;
 			}
 
-            this.$emit('blur', event.target.innerText);
-        },
-    }
+			this.$emit('blur', event.target.innerText);
+		},
+	}
 }
 </script>
 

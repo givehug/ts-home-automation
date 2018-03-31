@@ -1,16 +1,16 @@
-import Vuex from 'vuex';
 import Vue from 'vue';
+import Vuex from 'vuex';
 import createLogger from 'vuex/dist/logger';
 
+import * as constants from './constants';
 import app from './modules/app';
+import devices from './modules/devices';
+import home from './modules/home';
+import robo, {roboMiddleware} from './modules/robo';
+import settings from './modules/settings';
 import user from './modules/user';
 import users from './modules/users';
-import devices from './modules/devices';
-import settings from './modules/settings';
-import robo, {roboMiddleware} from './modules/robo';
 import ws, {wsMiddleware} from './modules/ws';
-import home from './modules/home';
-import * as constants from './constants';
 
 Vue.use(Vuex);
 
@@ -18,7 +18,7 @@ Vue.use(Vuex);
 const plugins = [roboMiddleware, wsMiddleware];
 
 if (process.env.NODE_ENV === 'development') {
-	const devPlugins = [createLogger()];
+	const devPlugins = [createLogger({})];
 
 	plugins.push(...devPlugins);
 }

@@ -1,4 +1,4 @@
-export const endpoints = {
+export const endpoints = Object.freeze({
 	users: 'users/',
 	userMe: 'users/me',
 	userLogin: 'login',
@@ -6,6 +6,4 @@ export const endpoints = {
 	settings: 'settings/',
 	devices: 'devices/',
 	app: 'app/',
-};
-
-Object.freeze(endpoints);
+});

@@ -55,21 +55,21 @@
 </template>
 
 <script>
-import RoboUnit from '@/components/units/RoboUnit.vue';
-import UserList from '@/components/units/UserList.vue';
-import NetworkUnit from '@/components/units/NetworkUnit.vue';
-import SecurityUnit from '@/components/units/SecurityUnit.vue';
 import LedUnit from '@/components/units/LedUnit.vue';
+import NetworkUnit from '@/components/units/NetworkUnit.vue';
+import RoboUnit from '@/components/units/RoboUnit.vue';
+import SecurityUnit from '@/components/units/SecurityUnit.vue';
+import UserList from '@/components/units/UserList.vue';
 
 export default {
-    name: 'DashboardView',
-    components: {
-        RoboUnit,
-        UserList,
-        NetworkUnit,
+	name: 'DashboardView',
+	components: {
+		RoboUnit,
+		UserList,
+		NetworkUnit,
 		SecurityUnit,
 		LedUnit,
-    },
+	},
 };
 </script>
 

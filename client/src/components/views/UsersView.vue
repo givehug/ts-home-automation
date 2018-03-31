@@ -34,11 +34,11 @@
 </template>
 
 <script>
-import {actions, getters} from '@/store/constants';
 import UserList from '@/components/units/UserList.vue';
+import {actions, getters} from '@/store/constants';
 
 export default {
-    name: 'UsersView',
+	name: 'UsersView',
 	components: {UserList},
 	data() {
 		return {
@@ -47,12 +47,12 @@ export default {
 		};
 	},
 	computed: {
-        amIAdmin() {
-            return this.$store.getters[getters.AM_I_ADMIN];
-        }
-    },
-    methods: {
-        async inviteNewUser() {
+		amIAdmin() {
+			return this.$store.getters[getters.AM_I_ADMIN];
+		}
+	},
+	methods: {
+		async inviteNewUser() {
 			const invited = await this.$store.dispatch(actions.USERS_INVITE, {
 				name: this.newUserName,
 				email: this.newUserEmail,
@@ -73,7 +73,7 @@ export default {
 				});
 			}
 		},
-    },
+	},
 };
 </script>
 

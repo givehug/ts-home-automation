@@ -2,28 +2,28 @@ import axios from 'axios';
 import config from '../../../config';
 import {USER_SESSION_TOKEN} from '../data/constants';
 
-function Api() {
-	const rootUrl = config.BASE_URL + '/api/';
+const api = Object.freeze({
+	rootUrl: config.BASE_URL + '/api/',
 
-	const options = () => {
+	options() {
 		const token = localStorage.getItem(USER_SESSION_TOKEN);
-		const ops = {headers: {}};
+		const ops: any = {headers: {}};
 
 		if (token) {
 			ops.headers['x-auth'] = token;
 		}
 
 		return ops;
-	};
+	},
 
-	this.request = (url, method, data) => {
+	request(url: string, method: string, data?: any) {
 		return axios({
 			method,
-			url: rootUrl + url,
+			url: this.rootUrl + url,
 			data,
-			headers: options().headers,
+			headers: this.options().headers,
 		});
-	};
-}
+	}
+});
 
-export default new Api();
+export default api;

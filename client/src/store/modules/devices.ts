@@ -49,7 +49,7 @@ const mutations = {
 	 * Update list of active devices
 	 */
 	[constants.mutations.DEVICES_ACTIVE_UPDATE](state, activeDevices = []) {
-		state.activeDevices = activeDevices.map(id => id.replace(/device-/, ''));
+		state.activeDevices = activeDevices.map((id: string) => id.replace(/device-/, ''));
 	},
 };
 

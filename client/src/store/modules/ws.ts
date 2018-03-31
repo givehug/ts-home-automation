@@ -1,13 +1,12 @@
-import {messageToJSON, jsonToMessage} from './../../../../common/utils/wsMessage';
-import * as constants from './../constants';
 import config from '../../../../config';
+import {jsonToMessage, messageToJSON} from './../../../../common/utils/wsMessage';
+import * as constants from './../constants';
 
 const mutations = {
 	[constants.mutations.WS_CONNECT]() { /* do nothing */ },
 	[constants.mutations.WS_CONNECTED]() { /* do nothing */ },
 	[constants.mutations.WS_DISCONNECT]() { /* do nothing */ },
 	[constants.mutations.WS_DISCONNECTED]() { /* do nothing */ },
-	// eslint-disable-next-line
 	[constants.mutations.WS_MESSAGE_SEND](state, payload) { /* do nothing */ },
 	[constants.mutations.WS_MESSAGE_SENT]() { /* do nothing */ },
 	[constants.mutations.WS_MESSAGE_RECEIVED]() { /* do nothing */ },
@@ -17,7 +16,7 @@ export default {mutations};
 
 export const wsMiddleware = (store) => {
 	const hostname = config.WS_URL;
-	let socket = null;
+	let socket: any;
 
 	const onMessage = (evt) => {
 		const msg = evt.data;
@@ -39,7 +38,7 @@ export const wsMiddleware = (store) => {
 				break;
 
 			case 'stateUpdate':
-				store.commit(constants.mutations.HOME_STATE_UPDATE, msgData && msgData.state);
+				store.commit(constants.mutations.HOME_STATE_UPDATE, msgData && (msgData as any).state);
 				break;
 
 			default:
@@ -50,9 +49,7 @@ export const wsMiddleware = (store) => {
 	store.subscribe((mutation) => {
 		switch (mutation.type) {
 			case constants.mutations.WS_CONNECT:
-				if (socket !== null) {
-					socket.close();
-				}
+				socket && socket.close();
 				socket = new WebSocket(hostname, 'ui-' + store.state.user.token);
 				socket.onmessage = onMessage;
 				socket.onclose = () => store.commit(constants.mutations.WS_DISCONNECTED);
@@ -60,10 +57,8 @@ export const wsMiddleware = (store) => {
 				break;
 
 			case constants.mutations.WS_DISCONNECT:
-				if (socket !== null) {
-					socket.close();
-				}
-				socket = null;
+				socket && socket.close();
+				socket = void 0;
 				store.commit(constants.mutations.WS_DISCONNECTED);
 				break;
 
@@ -74,9 +69,7 @@ export const wsMiddleware = (store) => {
 				break;
 
 			case constants.mutations.WS_MESSAGE_SEND:
-				if (socket !== null) {
-					socket.send(jsonToMessage(...mutation.payload));
-				}
+				socket && socket.send(jsonToMessage(...mutation.payload));
 				store.commit(constants.mutations.WS_MESSAGE_SENT);
 				break;
 

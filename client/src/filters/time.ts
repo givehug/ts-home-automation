@@ -9,7 +9,7 @@ const dateOptions = {
 	minute: '2-digit',
 };
 
-Vue.filter('time', value => {
+Vue.filter('time', (value: any) => {
 	const date = new Date(value);
 
 	return date ? date.toLocaleTimeString([], dateOptions) : value;

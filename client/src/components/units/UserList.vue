@@ -37,7 +37,7 @@
 import {actions, getters} from '@/store/constants';
 
 export default {
-    name: 'UserList',
+	name: 'UserList',
 	props: {
 		hideEmail: Boolean,
 		hideDelete: Boolean,
@@ -47,18 +47,18 @@ export default {
 			return this.$store.getters[getters.AM_I_ADMIN];
 		}
 	},
-    methods: {
-        isUserAtHome(userId) {
-            return this.$store.getters[getters.IS_USER_HOME](userId);
+	methods: {
+		isUserAtHome(userId) {
+			return this.$store.getters[getters.IS_USER_HOME](userId);
 		},
 		deleteUser(userId) {
-            this.$dialog.confirm({
-                title: 'Delete user',
-                message: 'Are you sure you want to delete this user?',
-                confirmText: 'Delete',
-                type: 'is-danger',
-                hasIcon: true,
-                onConfirm: async() => {
+			this.$dialog.confirm({
+				title: 'Delete user',
+				message: 'Are you sure you want to delete this user?',
+				confirmText: 'Delete',
+				type: 'is-danger',
+				hasIcon: true,
+				onConfirm: async() => {
 					try {
 						const deleted = await this.$store.dispatch(actions.USERS_DELETE, userId);
 
@@ -76,10 +76,10 @@ export default {
 					} catch (error) {
 						// do nothing
 					}
-                },
-            });
+				},
+			});
 		},
-    },
+	},
 };
 </script>
 

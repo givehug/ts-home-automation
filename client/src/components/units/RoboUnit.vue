@@ -54,17 +54,17 @@
 import {actions, getters} from '@/store/constants';
 
 export default {
-    name: 'RoboUnit',
-    computed: {
-        emotions() {
-            return this.$store.getters[getters.ROBO_GET_EMOTIONS_STRING];
-        }
-    },
-    methods: {
-        toggleActive() {
-            this.$store.dispatch(actions.ROBO_TOGGLE);
-        }
-    },
+	name: 'RoboUnit',
+	computed: {
+		emotions() {
+			return this.$store.getters[getters.ROBO_GET_EMOTIONS_STRING];
+		}
+	},
+	methods: {
+		toggleActive() {
+			this.$store.dispatch(actions.ROBO_TOGGLE);
+		}
+	},
 }
 </script>
 

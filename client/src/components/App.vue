@@ -12,24 +12,24 @@
 </template>
 
 <script>
-import SidebarLayout from '@/components/layout/SidebarLayout.vue';
 import HeaderLayout from '@/components/layout/HeaderLayout.vue';
+import SidebarLayout from '@/components/layout/SidebarLayout.vue';
 import {actions, getters} from '@/store/constants';
 
 export default {
-    name: 'app',
-    components: {SidebarLayout, HeaderLayout},
-    created() {
-        this.$store.dispatch(actions.APP_INIT);
-    },
-    computed: {
-        amIAuthed() {
-            return this.$store.getters[getters.AM_I_AUTHED];
+	name: 'app',
+	components: {SidebarLayout, HeaderLayout},
+	created() {
+		this.$store.dispatch(actions.APP_INIT);
+	},
+	computed: {
+		amIAuthed() {
+			return this.$store.getters[getters.AM_I_AUTHED];
 		},
 		appCssClass() {
 			return ['app-' + this.$route.name, {'authed': this.amIAuthed}];
 		},
-    }
+	}
 };
 </script>
 

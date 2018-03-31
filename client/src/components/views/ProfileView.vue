@@ -53,17 +53,17 @@
 </template>
 
 <script>
-import {actions} from '@/store/constants';
 import EditableContent from '@/components/other/EditableContent.vue';
+import {actions} from '@/store/constants';
 
 export default {
 	name: 'ProfileView',
 
 	components: {
-        EditableContent,
+		EditableContent,
 	},
-    data() {
-        return {
+	data() {
+		return {
 			changed: false,
 			userData: {
 				name: this.$store.state.user.data.name,
@@ -72,10 +72,10 @@ export default {
 				confirmPassword: '',
 				oldPassword: '',
 			},
-        };
+		};
 	},
-    methods: {
-        
+	methods: {
+		
 		handleChange(update) {
 			// apply changes to userData
 			Object.assign(this.userData, update);
@@ -117,7 +117,7 @@ export default {
 				});
 			}
 		},
-    },
+	},
 };
 </script>
 

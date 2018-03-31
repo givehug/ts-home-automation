@@ -5,13 +5,13 @@ import {USER_SESSION_TOKEN} from '@/data/constants';
 
 // components
 import DashboardView from '@/components/views/DashboardView.vue';
-import LoginView from '@/components/views/LoginView.vue';
 import DevicesView from '@/components/views/DevicesView.vue';
-import UsersView from '@/components/views/UsersView.vue';
-import WelcomeView from '@/components/views/WelcomeView.vue';
+import LoginView from '@/components/views/LoginView.vue';
 import NotFoundView from '@/components/views/NotFoundView.vue';
 import ProfileView from '@/components/views/ProfileView.vue';
 import SettingsView from '@/components/views/SettingsView.vue';
+import UsersView from '@/components/views/UsersView.vue';
+import WelcomeView from '@/components/views/WelcomeView.vue';
 
 // store
 import store from '@/store';
