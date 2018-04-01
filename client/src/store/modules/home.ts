@@ -4,9 +4,14 @@
  * which handles network and security units and simple nodemcu led bulb.
  */
 
-import * as constants from '../constants';
+// Import Moduels
+import * as types from '../types';
 
-const initialState = {
+// Import interfaces
+import {HomeState} from '@/../../common/@types/store';
+
+
+const initialState: HomeState = {
   /**
    * 'network' state represents state of home wifi network and connected devices at the moment.
    * (a few minutes delay possible)
@@ -38,7 +43,7 @@ const mutations = {
   /**
    * Update particular 'home' state property values
    */
-  [constants.mutations.HOME_STATE_UPDATE](state, update) {
+  [types.mutations.HOME_STATE_UPDATE](state: HomeState, update: any) {
     Object.keys(update).forEach((key) => {
       state[key] = update[key];
     });

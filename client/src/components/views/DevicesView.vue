@@ -38,7 +38,7 @@
 
 <script>
 import DeviceCard from '@/components/devices/DeviceCard.vue';
-import {actions} from '@/store/constants';
+import {actions} from '@/store/types';
 
 export default {
   name: 'DevicesView',

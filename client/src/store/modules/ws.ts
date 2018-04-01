@@ -1,31 +1,37 @@
-import config from '../../../../config';
-import {jsonToMessage, messageToJSON} from '../../../../common/utils/wsMessage';
-import * as constants from '../constants';
+// Import modules
+import config from '@/../../config';
+import wsMsg from '@/../../common/utils/wsMessage';
+import * as types from '@/store/types';
+
+// Import interfaces
+import {RootState} from '@/../../common/@types/store';
+import {Store, MutationPayload} from 'vuex';
+
 
 const mutations = {
-  [constants.mutations.WS_CONNECT]() { /* do nothing */ },
-  [constants.mutations.WS_CONNECTED]() { /* do nothing */ },
-  [constants.mutations.WS_DISCONNECT]() { /* do nothing */ },
-  [constants.mutations.WS_DISCONNECTED]() { /* do nothing */ },
-  [constants.mutations.WS_MESSAGE_SEND](state, payload) { /* do nothing */ },
-  [constants.mutations.WS_MESSAGE_SENT]() { /* do nothing */ },
-  [constants.mutations.WS_MESSAGE_RECEIVED]() { /* do nothing */ },
+  [types.mutations.WS_CONNECT]() { /* do nothing */ },
+  [types.mutations.WS_CONNECTED]() { /* do nothing */ },
+  [types.mutations.WS_DISCONNECT]() { /* do nothing */ },
+  [types.mutations.WS_DISCONNECTED]() { /* do nothing */ },
+  [types.mutations.WS_MESSAGE_SEND](state: {}, payload: any) { /* do nothing */ },
+  [types.mutations.WS_MESSAGE_SENT]() { /* do nothing */ },
+  [types.mutations.WS_MESSAGE_RECEIVED]() { /* do nothing */ },
 };
 
 export default {mutations};
 
-export const wsMiddleware = (store) => {
+export const wsMiddleware = (store: Store<RootState>) => {
   const hostname = config.WS_URL;
   let socket: any;
 
-  const onMessage = (evt) => {
+  const onMessage = (evt: any) => {
     const msg = evt.data;
-    const [msgType, msgData] = messageToJSON(msg);
+    const [msgType, msgData] = wsMsg.parse(msg);
 
-    store.commit(constants.mutations.WS_MESSAGE_RECEIVED);
+    store.commit(types.mutations.WS_MESSAGE_RECEIVED);
 
-    if (!store.getters[constants.getters.IS_AUTHED]) {
-      store.commit(constants.mutations.WS_DISCONNECT);
+    if (!store.getters[types.getters.IS_AUTHED]) {
+      store.commit(types.mutations.WS_DISCONNECT);
     }
 
     if (msg === '') {
@@ -34,11 +40,11 @@ export const wsMiddleware = (store) => {
 
     switch (msgType) {
       case 'connectedDevices':
-        store.commit(constants.mutations.DEVICES_ACTIVE_UPDATE, msgData);
+        store.commit(types.mutations.DEVICES_ACTIVE_UPDATE, msgData);
         break;
 
       case 'stateUpdate':
-        store.commit(constants.mutations.HOME_STATE_UPDATE, msgData && (msgData as any).state);
+        store.commit(types.mutations.HOME_STATE_UPDATE, msgData && (msgData as any).state);
         break;
 
       default:
@@ -46,37 +52,37 @@ export const wsMiddleware = (store) => {
     }
   };
 
-  store.subscribe((mutation) => {
+  store.subscribe((mutation: MutationPayload) => {
     switch (mutation.type) {
-      case constants.mutations.WS_CONNECT:
+      case types.mutations.WS_CONNECT:
         if (socket) {
           socket.close();
         }
         socket = new WebSocket(hostname, 'ui-' + store.state.user.token);
         socket.onmessage = onMessage;
-        socket.onclose = () => store.commit(constants.mutations.WS_DISCONNECTED);
-        socket.onopen = () => store.commit(constants.mutations.WS_CONNECTED);
+        socket.onclose = () => store.commit(types.mutations.WS_DISCONNECTED);
+        socket.onopen = () => store.commit(types.mutations.WS_CONNECTED);
         break;
 
-      case constants.mutations.WS_DISCONNECT:
+      case types.mutations.WS_DISCONNECT:
         if (socket) {
           socket.close();
         }
         socket = void 0;
-        store.commit(constants.mutations.WS_DISCONNECTED);
+        store.commit(types.mutations.WS_DISCONNECTED);
         break;
 
-      case constants.mutations.WS_DISCONNECTED:
+      case types.mutations.WS_DISCONNECTED:
         // setTimeout(() => { // TODO what about logging out?
-        // 	store.commit(constants.mutations.WS_CONNECT);
+        // 	store.commit(types.mutations.WS_CONNECT);
         // }, 5000);
         break;
 
-      case constants.mutations.WS_MESSAGE_SEND:
+      case types.mutations.WS_MESSAGE_SEND:
         if (socket) {
-          socket.send(jsonToMessage(...mutation.payload));
+          socket.send(wsMsg.prep(mutation.payload[0], mutation.payload[1]));
         }
-        store.commit(constants.mutations.WS_MESSAGE_SENT);
+        store.commit(types.mutations.WS_MESSAGE_SENT);
         break;
 
       default:

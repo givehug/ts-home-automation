@@ -1,9 +1,15 @@
+// Import modules
 import annyang from 'annyang'; // only chrome and some android
 import deviceCommands from '../../../../common/data/deviceCommands';
 import SpeechSynthesisUtterance from '../../../../common/utils/speechSynthesis';
-import * as constants from '../constants';
+import * as types from '../types';
 
-const initialState = {
+// Import interfaces
+import {RootState, RoboState, RoboEmotions} from '@/../../common/@types/store';
+import {Store, ActionContext, MutationPayload} from 'vuex';
+
+
+const initialState: RoboState = {
   annyangAvailable: false,
   name: 'Robby',
   langs: ['en-US', 'ru-RU'],
@@ -21,47 +27,47 @@ const mutations = {
   /**
    * Initialize annyang.
    */
-  [constants.mutations.ROBO_INIT](state) {
+  [types.mutations.ROBO_INIT](state: RoboState) {
     state.annyangAvailable = !!annyang;
   },
   /**
    * Stop annyang.
    */
-  [constants.mutations.ROBO_STOP]() { /* Used in roboMiddleware */ },
+  [types.mutations.ROBO_STOP]() { /* Used in roboMiddleware */ },
   /**
    * Robot say message.
    */
-  [constants.mutations.ROBO_SAY](state, msg) { /* Used in roboMiddleware */ },
+  [types.mutations.ROBO_SAY](state: RoboState, msg: any) { /* Used in roboMiddleware */ },
   /**
    * Change robot face expression.
    */
-  [constants.mutations.ROBO_EMOTION_CHANGE](state, emotions) {
+  [types.mutations.ROBO_EMOTION_CHANGE](state: RoboState, emotions: any) {
     state.emotions = {...state.emotions, ...emotions};
   },
   /**
    * Pause annyang.
    */
-  [constants.mutations.ROBO_PAUSE]() { /* Used in roboMiddleware */ },
+  [types.mutations.ROBO_PAUSE]() { /* Used in roboMiddleware */ },
   /**
    * Pause annyang after it was paused.
    */
-  [constants.mutations.ROBO_RESUME]() { /* Used in roboMiddleware */ },
+  [types.mutations.ROBO_RESUME]() { /* Used in roboMiddleware */ },
 };
 
 const actions = {
   /**
    * Turn annyang on/off. Save it on server in user settings.
    */
-  [constants.actions.ROBO_TOGGLE](context) {
+  [types.actions.ROBO_TOGGLE](context: ActionContext<RoboState, RootState>) {
     const annyangActive = context.rootState.settings.data.annyangActive;
 
     if (annyangActive) {
-      context.commit(constants.mutations.ROBO_PAUSE);
+      context.commit(types.mutations.ROBO_PAUSE);
     } else {
-      context.commit(constants.mutations.ROBO_RESUME);
+      context.commit(types.mutations.ROBO_RESUME);
     }
 
-    context.dispatch(constants.actions.SETTINGS_SAVE, {annyangActive: !annyangActive});
+    context.dispatch(types.actions.SETTINGS_SAVE, {annyangActive: !annyangActive});
   },
 };
 
@@ -69,14 +75,14 @@ const getters = {
   /**
    * Returns robot face expression css classes string.
    */
-  [constants.getters.ROBO_EMOTIONS_STRING]: (state) => {
+  [types.getters.ROBO_EMOTIONS_STRING]: (state: RoboState) => {
     return Object
       .keys(state.emotions)
       .reduce((p, c) => state.emotions[c] ? p + ' ' + c : p, '');
   },
 };
 
-export const roboMiddleware = (store) => {
+export const roboMiddleware = (store: Store<RootState>) => {
   if (!annyang) {
     /**
      * Annyang works by using the webkitSpeechRecognition API,
@@ -91,30 +97,30 @@ export const roboMiddleware = (store) => {
      * Simply respond with hello.
      */
     'hello': () => {
-      store.commit(constants.mutations.ROBO_SAY, 'Hi! How can I help?');
+      store.commit(types.mutations.ROBO_SAY, 'Hi! How can I help?');
     },
     /**
      * Please execute command from store.commands map.
      * Send WS device command event.
      */
-    'please *commandTitle': (commandTitle) => {
+    'please *commandTitle': (commandTitle: string) => {
       const command = deviceCommands.byTitle[commandTitle];
 
       if (command) {
-        store.commit(constants.mutations.ROBO_SAY, 'executing');
-        store.commit(constants.mutations.WS_MESSAGE_SEND, ['deviceCommand', {cmdId: command.key}]);
+        store.commit(types.mutations.ROBO_SAY, 'executing');
+        store.commit(types.mutations.WS_MESSAGE_SEND, ['deviceCommand', {cmdId: command.key}]);
       } else {
-        store.commit(constants.mutations.ROBO_SAY, 'sorry, unknown command');
+        store.commit(types.mutations.ROBO_SAY, 'sorry, unknown command');
       }
     },
   };
 
-  store.subscribe((mutation) => {
+  store.subscribe((mutation: MutationPayload) => {
     switch (mutation.type) {
       /**
        * On ROBO_INIT start anyang and populate it with predefined commands.
        */
-      case constants.mutations.ROBO_INIT:
+      case types.mutations.ROBO_INIT:
         if (annyang && !annyang.isListening()) {
           annyang.addCommands(commands);
           annyang.start({
@@ -126,19 +132,19 @@ export const roboMiddleware = (store) => {
           }
         }
         if (!store.state.settings.data.annyangActive) {
-          store.commit(constants.mutations.ROBO_PAUSE);
+          store.commit(types.mutations.ROBO_PAUSE);
         }
         break;
       /**
        * Stop robot.
        */
-      case constants.mutations.ROBO_STOP:
+      case types.mutations.ROBO_STOP:
         annyang.abort();
         break;
       /**
        * On ROBO_SAY check speach API, say something and change face expression.
        */
-      case constants.mutations.ROBO_SAY: {
+      case types.mutations.ROBO_SAY: {
         if (!SpeechSynthesisUtterance) {
           break;
         }
@@ -150,7 +156,7 @@ export const roboMiddleware = (store) => {
         (window as any).utterances.push(speach);
 
         speach.onstart = () => {
-          store.commit(constants.mutations.ROBO_EMOTION_CHANGE, {
+          store.commit(types.mutations.ROBO_EMOTION_CHANGE, {
             talking: true,
             moveEyes: false,
           });
@@ -158,7 +164,7 @@ export const roboMiddleware = (store) => {
 
         speach.onend = () => {
           annyang.resume();
-          store.commit(constants.mutations.ROBO_EMOTION_CHANGE, {
+          store.commit(types.mutations.ROBO_EMOTION_CHANGE, {
             talking: false,
             moveEyes: true,
           });
@@ -170,13 +176,13 @@ export const roboMiddleware = (store) => {
       /**
        * Pause robot.
        */
-      case constants.mutations.ROBO_PAUSE:
+      case types.mutations.ROBO_PAUSE:
         annyang.pause();
         break;
       /**
        * Resume robot.
        */
-      case constants.mutations.ROBO_RESUME:
+      case types.mutations.ROBO_RESUME:
         annyang.resume();
         break;
 

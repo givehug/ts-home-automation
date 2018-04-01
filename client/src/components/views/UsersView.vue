@@ -34,7 +34,7 @@
 </template>
 
 <script>import UserList from '@/components/units/UserList.vue';
-import {actions, getters} from '@/store/constants';
+import {actions, getters} from '@/store/types';
 
 export default {
   name: 'UsersView',

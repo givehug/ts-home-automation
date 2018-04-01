@@ -1,6 +1,6 @@
 import * as uuidv4 from 'uuid';
 import compareSets from '../../../common/utils/compareSets';
-import {jsonToMessage, messageToJSON} from '../../../common/utils/wsMessage';
+import wsMsg from '../../../common/utils/wsMessage';
 import {Settings} from '../models/settings';
 import {notifyDetection} from './motionDetection';
 
@@ -20,7 +20,7 @@ export default class WsServer {
     wss.on('connection', (ws) => {
       ws.id = uuidv4();
       ws.alive = true;
-      ws.send(jsonToMessage('connectedToServer'));
+      ws.send(wsMsg.prep('connectedToServer'));
 
       // on device connection
       if (ws.protocol.includes('device-')) {
@@ -64,7 +64,7 @@ export default class WsServer {
 
       if (!compareSets(confirmedConnectedDevices, this.connectedDevices)) {
         this.connectedDevices = confirmedConnectedDevices;
-        this.broadcast(null, jsonToMessage('connectedDevices', Array.from(this.connectedDevices)), 'ui');
+        this.broadcast(null, wsMsg.prep('connectedDevices', Array.from(this.connectedDevices)), 'ui');
       }
     }, pingInterval);
   }
@@ -97,18 +97,18 @@ export default class WsServer {
   private handleDeviceConnection(ws) {
     this.connectedDevices.add(ws.protocol);
     // send list of connected device to ui
-    this.broadcast(null, jsonToMessage('connectedDevices', Array.from(this.connectedDevices)), 'ui');
+    this.broadcast(null, wsMsg.prep('connectedDevices', Array.from(this.connectedDevices)), 'ui');
   }
 
   private handleUiConnection(ws) {
     // send list of connected device to ui
-    ws.send(jsonToMessage('connectedDevices', Array.from(this.connectedDevices)), 'ui');
+    ws.send(wsMsg.prep('connectedDevices', Array.from(this.connectedDevices)), 'ui');
     // currently device responds with stateUpdate on any message
-    this.broadcast(null, jsonToMessage('newUiConnection'), 'devices');
+    this.broadcast(null, wsMsg.prep('newUiConnection'), 'devices');
   }
 
   private handleMessage(message, ws) {
-    const [msgType, msgData] = messageToJSON(message);
+    const [msgType, msgData] = wsMsg.parse(message);
 
     ws.alive = true;
 
@@ -143,7 +143,7 @@ export default class WsServer {
           return s.deviceIdentifiers.some((mac) => mac in state.network.macMap);
         });
 
-        this.broadcast(null, jsonToMessage('someoneHome', someoneHome), ws.id);
+        this.broadcast(null, wsMsg.prep('someoneHome', someoneHome), ws.id);
       }
 
       this.cachedMacMapStr = JSON.stringify(Object.keys(state.network.macMap));

@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import {actions, getters} from '@/store/constants';
+import {actions, getters} from '@/store/types';
 
 export default {
   name: 'RoboUnit',

@@ -15,7 +15,7 @@ import WelcomeView from '@/components/views/WelcomeView.vue';
 
 // store
 import store from '@/store';
-import {actions} from '@/store/constants';
+import {actions} from '@/store/types';
 
 Vue.use(Router);
 

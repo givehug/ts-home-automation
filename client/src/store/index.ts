@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import createLogger from 'vuex/dist/logger';
 
-import * as constants from './constants';
+import * as types from './types';
 import app from './modules/app';
 import devices from './modules/devices';
 import home from './modules/home';
@@ -41,7 +41,7 @@ const getters = {
    * User is considered to be at home if one of his devices
    * is connected to home network at the moment.
    */
-  [constants.getters.IS_USER_HOME]: (state) => (userId) => {
+  [types.getters.IS_USER_HOME]: (state) => (userId) => {
     return state.users.map[userId].deviceIdentifiers
       .some((mac) => mac in state.home.network.macMap);
   },

@@ -13,7 +13,7 @@
 
 <script>import HeaderLayout from '@/components/layout/HeaderLayout.vue';
 import SidebarLayout from '@/components/layout/SidebarLayout.vue';
-import {actions, getters} from '@/store/constants';
+import {actions, getters} from '@/store/types';
 
 export default {
   name: 'app',
@@ -34,16 +34,16 @@ export default {
 
 <style lang="scss">
 #app {
-    height: 100%;
-    width: 100%;
-	display: flex;
-    flex-direction: row;
-	padding-top: 52px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding-top: 52px;
 
-    &.authed {
-        @media screen and (max-width: 1024px) {
-            padding-left: 0;
-        }
+  &.authed {
+    @media screen and (max-width: 1024px) {
+      padding-left: 0;
     }
+  }
 }
 </style>

@@ -44,7 +44,7 @@
 
 <script>
 import EditableContent from '@/components/other/EditableContent.vue';
-import {getters} from '@/store/constants';
+import {getters} from '@/store/types';
 
 export default {
   name: 'DeviceCard',

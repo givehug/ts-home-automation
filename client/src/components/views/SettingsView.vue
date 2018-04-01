@@ -60,7 +60,7 @@
 </div>
 </template>
 
-<script>import {actions} from '@/store/constants';
+<script>import {actions} from '@/store/types';
 
 export default {
   name: 'SettingsView',

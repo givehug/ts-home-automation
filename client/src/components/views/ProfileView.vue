@@ -53,7 +53,7 @@
 </template>
 
 <script>import EditableContent from '@/components/other/EditableContent.vue';
-import {actions} from '@/store/constants';
+import {actions} from '@/store/types';
 
 export default {
   name: 'ProfileView',

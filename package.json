@@ -7,7 +7,9 @@
   "scripts": {
     "start": "cd server && npm run start",
     "deploy": "git push heroku master -f",
-    "heroku-postbuild": "cd server && npm i && cd ../client && npm i && npm run build"
+    "install": "cd server && npm i && cd ../client && npm i && cd ../common && npm i",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run install && npm run build"
   },
   "engines": {
     "node": "9.9.0",

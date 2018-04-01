@@ -1,10 +1,10 @@
 /**
  * Compare two sets
- * @param {Set} setA
- * @param {Set} setB
+ * @param setA
+ * @param setB
  * @returns true if sets are equal, false if not
  */
-function compareSets(setA, setB) {
+function compareSets(setA: Set<any>, setB: Set<any>) {
   if (setA.size !== setB.size) {
     return false;
   }

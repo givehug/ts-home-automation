@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import {mutations} from '@/store/constants';
+import {mutations} from '@/store/types';
 import deviceCommands from '../../../../common/data/deviceCommands';
 
 export default {

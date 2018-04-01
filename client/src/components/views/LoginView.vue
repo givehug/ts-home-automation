@@ -31,7 +31,7 @@
 
 <script>
 import router from '@/router';
-import {actions} from '@/store/constants';
+import {actions} from '@/store/types';
 
 export default {
   name: 'LoginView',

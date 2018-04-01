@@ -1,4 +1,7 @@
-const genPass = () => {
+/**
+ * Generate simple first time user password
+ */
+const genPass = (): string => {
   return Math
     .random()      // Generate random number, eg: 0.123456
     .toString(36)  // Convert  to base-36 : "0.4fzyo82mvyr"
