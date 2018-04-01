@@ -112,11 +112,11 @@ const getters = {
   /**
    * Check if current user is authorized.
    */
-  [constants.getters.AM_I_AUTHED]: (state) => !!state.token,
+  [constants.getters.IS_AUTHED]: (state) => !!state.token,
   /**
-   * Check if user is admin.
+   * Check if current user is admin.
    */
-  [constants.getters.AM_I_ADMIN]: (state) => !!(state.data && state.data.admin),
+  [constants.getters.IS_ADMIN]: (state) => !!(state.data && state.data.admin),
 };
 
 export default {

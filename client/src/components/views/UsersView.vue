@@ -47,7 +47,7 @@ export default {
   },
   computed: {
     amIAdmin() {
-      return this.$store.getters[getters.AM_I_ADMIN];
+      return this.$store.getters[getters.IS_ADMIN];
     },
   },
   methods: {

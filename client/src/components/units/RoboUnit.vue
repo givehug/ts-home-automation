@@ -57,7 +57,7 @@ export default {
   name: 'RoboUnit',
   computed: {
     emotions() {
-      return this.$store.getters[getters.ROBO_GET_EMOTIONS_STRING];
+      return this.$store.getters[getters.ROBO_EMOTIONS_STRING];
     },
   },
   methods: {

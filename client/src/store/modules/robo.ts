@@ -69,7 +69,7 @@ const getters = {
   /**
    * Returns robot face expression css classes string.
    */
-  [constants.getters.ROBO_GET_EMOTIONS_STRING]: (state) => {
+  [constants.getters.ROBO_EMOTIONS_STRING]: (state) => {
     return Object
       .keys(state.emotions)
       .reduce((p, c) => state.emotions[c] ? p + ' ' + c : p, '');

@@ -23,7 +23,7 @@ export default {
   },
   computed: {
     amIAuthed() {
-      return this.$store.getters[getters.AM_I_AUTHED];
+      return this.$store.getters[getters.IS_AUTHED];
     },
     appCssClass() {
       return ['app-' + this.$route.name, {authed: this.amIAuthed}];

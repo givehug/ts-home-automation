@@ -24,7 +24,7 @@ export const wsMiddleware = (store) => {
 
     store.commit(constants.mutations.WS_MESSAGE_RECEIVED);
 
-    if (!store.getters[constants.getters.AM_I_AUTHED]) {
+    if (!store.getters[constants.getters.IS_AUTHED]) {
       store.commit(constants.mutations.WS_DISCONNECT);
     }
 
