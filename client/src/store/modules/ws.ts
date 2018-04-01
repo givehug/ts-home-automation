@@ -1,6 +1,6 @@
 import config from '../../../../config';
-import {jsonToMessage, messageToJSON} from './../../../../common/utils/wsMessage';
-import * as constants from './../constants';
+import {jsonToMessage, messageToJSON} from '../../../../common/utils/wsMessage';
+import * as constants from '../constants';
 
 const mutations = {
   [constants.mutations.WS_CONNECT]() { /* do nothing */ },

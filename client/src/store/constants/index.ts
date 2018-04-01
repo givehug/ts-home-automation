@@ -1,5 +1,9 @@
-import * as actions from './actions';
-import * as getters from './getters';
-import * as mutations from './mutations';
+import ActionTypes from './ActionTypes';
+import GetterTypes from './GetterTypes';
+import MutationTypes from './MutationTypes';
 
-export {mutations, actions, getters};
+export {
+  ActionTypes as actions,
+  MutationTypes as mutations,
+  GetterTypes as getters,
+};

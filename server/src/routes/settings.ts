@@ -1,7 +1,7 @@
 import * as express from 'express';
 import {pick} from 'lodash';
-import {authenticate} from './../middleware/authenticate';
-import {Settings} from './../models/settings';
+import {authenticate} from '../middleware/authenticate';
+import {Settings} from '../models/settings';
 
 const router = express.Router();
 

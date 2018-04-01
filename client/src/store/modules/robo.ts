@@ -1,7 +1,7 @@
 import annyang from 'annyang'; // only chrome and some android
 import deviceCommands from '../../../../common/data/deviceCommands';
-import SpeechSynthesisUtterance from './../../../../common/utils/speechSynthesis';
-import * as constants from './../constants';
+import SpeechSynthesisUtterance from '../../../../common/utils/speechSynthesis';
+import * as constants from '../constants';
 
 const initialState = {
   annyangAvailable: false,

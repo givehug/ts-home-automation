@@ -1,7 +1,7 @@
 import * as express from 'express';
 import {ObjectID} from 'mongodb';
-import {authenticate} from './../middleware/authenticate';
-import {Device} from './../models/device';
+import {authenticate} from '../middleware/authenticate';
+import {Device} from '../models/device';
 
 const router = express.Router();
 

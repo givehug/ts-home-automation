@@ -4,7 +4,7 @@
  * which handles network and security units and simple nodemcu led bulb.
  */
 
-import * as constants from './../constants';
+import * as constants from '../constants';
 
 const initialState = {
   /**

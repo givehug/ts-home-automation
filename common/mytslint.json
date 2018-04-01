@@ -4,7 +4,7 @@
     "quotemark": [true, "single"],
     "indent": [true, "spaces", 2],
     "interface-name": false,
-    "ordered-imports": true,
+    "ordered-imports": false,
     "no-any": false,
     "no-unsafe-any": false,
     "object-literal-sort-keys": false,

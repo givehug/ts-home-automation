@@ -1,4 +1,4 @@
-import {User} from './../models/user';
+import {User} from '../models/user';
 
 export const authenticate = async (req, res, next) => {
   const token = req.header('x-auth');

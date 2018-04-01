@@ -6,7 +6,7 @@
 
 import {endpoints, request} from '../../api';
 import {USER_SESSION_TOKEN} from '../../data/constants';
-import * as constants from './../constants';
+import * as constants from '../constants';
 
 const initialState = {
   dataLoaded: false,

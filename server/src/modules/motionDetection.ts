@@ -1,5 +1,5 @@
-import {Settings} from './../models/settings';
-import {User} from './../models/user';
+import {Settings} from '../models/settings';
+import {User} from '../models/user';
 import {sendEmail} from './emailMessenger';
 
 export async function notifyDetection(lastDetected) {

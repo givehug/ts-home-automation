@@ -1,11 +1,11 @@
 import * as express from 'express';
 import {pick} from 'lodash';
 import genPass from '../../../common/utils/genPass';
-import mongoose from './../db/mongoose';
-import {authenticate} from './../middleware/authenticate';
-import {Settings} from './../models/settings';
-import {checkPassword, User} from './../models/user';
-import {sendEmail} from './../modules/emailMessenger';
+import mongoose from '../db/mongoose';
+import {authenticate} from '../middleware/authenticate';
+import {Settings} from '../models/settings';
+import {checkPassword, User} from '../models/user';
+import {sendEmail} from '../modules/emailMessenger';
 
 const userPropsToUpdate = ['name', 'email', 'password'];
 

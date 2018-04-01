@@ -1,7 +1,7 @@
 import * as uuidv4 from 'uuid';
 import compareSets from '../../../common/utils/compareSets';
 import {jsonToMessage, messageToJSON} from '../../../common/utils/wsMessage';
-import {Settings} from './../models/settings';
+import {Settings} from '../models/settings';
 import {notifyDetection} from './motionDetection';
 
 const pingInterval = 10000;

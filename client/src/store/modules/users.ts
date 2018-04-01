@@ -1,6 +1,6 @@
 import Vue from 'vue';
-import {endpoints, request} from './../../api';
-import * as constants from './../constants';
+import {endpoints, request} from '../../api';
+import * as constants from '../constants';
 
 const initialState = {map: {}};
 

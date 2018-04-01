@@ -12,7 +12,8 @@ interface RequestHeaders {
 }
 
 /**
- * Get reuest options onject based on user token in local storage
+ * Get request headers object
+ * If user token in localStorage decorate headers with x-auth
  */
 const getHeaders = (): RequestHeaders => {
   const token = localStorage.getItem(USER_SESSION_TOKEN);

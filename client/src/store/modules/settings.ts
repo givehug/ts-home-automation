@@ -2,8 +2,8 @@
  * Settings state has main object 'data' where all user settings are stored.
  */
 
-import {endpoints, request} from './../../api';
-import * as constants from './../constants';
+import {endpoints, request} from '../../api';
+import * as constants from '../constants';
 
 const initialState = {
   data: {},

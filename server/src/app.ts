@@ -12,7 +12,7 @@ import routes from './routes';
 // Constants
 const excludeApiRoutes = /^\/(?!api).*/;
 const app = express();
-const staticPath = path.join(__dirname, './../../client/dist/');
+const staticPath = path.join(__dirname, '../../client/dist/');
 
 // Middleware
 import {cors} from './middleware/cors';
