@@ -7,7 +7,7 @@
 	"scripts": {
 		"start": "ts-node src/server.ts",
 		"serve": "nodemon --exec ts-node -- src/server.ts",
-		"lint": "tslint \"src/**/*.ts\""
+		"lint": "tslint \"src/**/*.ts\" --fix"
 	},
 	"dependencies": {
 		"@types/lodash": "^4.14.106",

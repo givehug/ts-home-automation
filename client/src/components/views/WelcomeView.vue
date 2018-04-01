@@ -25,7 +25,34 @@
 </template>
 
 <script>
-export default {name: 'WelcomeView'}
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+export default {name: 'WelcomeView'};
 </script>
 
 <style lang="scss" scoped>

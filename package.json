@@ -1,16 +1,16 @@
 {
-	"name": "js-home-automation",
-	"version": "0.0.1",
-	"description": "JavaScript home automation.",
-	"author": "Vladimir Boretskyi",
-	"license": "MIT",
-	"scripts": {
-		"start": "cd server && npm run start",
-		"deploy": "git push heroku master -f",
-		"heroku-postbuild": "cd server && npm i && cd ../client && npm i && npm run build"
-	},
-	"engines": {
-		"node": "9.9.0",
-		"npm": "5.8.0"
-	}
+  "name": "js-home-automation",
+  "version": "0.0.1",
+  "description": "JavaScript home automation.",
+  "author": "Vladimir Boretskyi",
+  "license": "MIT",
+  "scripts": {
+    "start": "cd server && npm run start",
+    "deploy": "git push heroku master -f",
+    "heroku-postbuild": "cd server && npm i && cd ../client && npm i && npm run build"
+  },
+  "engines": {
+    "node": "9.9.0",
+    "npm": "5.8.0"
+  }
 }

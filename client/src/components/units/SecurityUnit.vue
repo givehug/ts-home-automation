@@ -79,30 +79,111 @@
 </template>
 
 <script>
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 import {mutations} from '@/store/constants';
 import deviceCommands from '../../../../common/data/deviceCommands';
 
 export default {
-	name: 'SecurityUnit',
-	data() {
-		return {
-			imageToShow: false,
-			commandsByKey: deviceCommands.byKey,
-		};
-	},
-	computed: {
-		securityState() {
-			return this.$store.state.home.security;
-		},
-	},
-	methods: {
-		sendCommand(cmd) {
-			this.$store.commit(mutations.WS_MESSAGE_SEND, [
-				'deviceCommand',
-				{cmdId: cmd},
-			]);
-		},
-	},
+  name: 'SecurityUnit',
+  data() {
+    return {
+      imageToShow: false,
+      commandsByKey: deviceCommands.byKey,
+    };
+  },
+  computed: {
+    securityState() {
+      return this.$store.state.home.security;
+    },
+  },
+  methods: {
+    sendCommand(cmd) {
+      this.$store.commit(mutations.WS_MESSAGE_SEND, [
+        'deviceCommand',
+        {cmdId: cmd},
+      ]);
+    },
+  },
 };
 </script>
 

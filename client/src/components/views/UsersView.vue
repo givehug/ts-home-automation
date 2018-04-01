@@ -34,46 +34,82 @@
 </template>
 
 <script>
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 import UserList from '@/components/units/UserList.vue';
 import {actions, getters} from '@/store/constants';
 
 export default {
-	name: 'UsersView',
-	components: {UserList},
-	data() {
-		return {
-			newUserEmail: '',
-			newUserName: '',
-		};
-	},
-	computed: {
-		amIAdmin() {
-			return this.$store.getters[getters.AM_I_ADMIN];
-		}
-	},
-	methods: {
-		async inviteNewUser() {
-			const invited = await this.$store.dispatch(actions.USERS_INVITE, {
-				name: this.newUserName,
-				email: this.newUserEmail,
-			});
+  name: 'UsersView',
+  components: {UserList},
+  data() {
+    return {
+      newUserEmail: '',
+      newUserName: '',
+    };
+  },
+  computed: {
+    amIAdmin() {
+      return this.$store.getters[getters.AM_I_ADMIN];
+    },
+  },
+  methods: {
+    async inviteNewUser() {
+      const invited = await this.$store.dispatch(actions.USERS_INVITE, {
+        name: this.newUserName,
+        email: this.newUserEmail,
+      });
 
-			if (invited) {
-				this.newUserEmail = '';
-				this.newUserName = '';
+      if (invited) {
+        this.newUserEmail = '';
+        this.newUserName = '';
 
-				this.$toast.open({
-					message: `User invited`,
-					type: 'is-success',
-				});
-			} else {
-				this.$toast.open({
-					message: `Error inviting user`,
-					type: 'is-danger',
-				});
-			}
-		},
-	},
+        this.$toast.open({
+          message: `User invited`,
+          type: 'is-success',
+        });
+      } else {
+        this.$toast.open({
+          message: `Error inviting user`,
+          type: 'is-danger',
+        });
+      }
+    },
+  },
 };
 </script>
 

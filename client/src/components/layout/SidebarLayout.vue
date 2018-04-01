@@ -17,25 +17,44 @@
 </template>
 
 <script>
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 export default {
-	name: 'SidebarLayout',
-	data() {
-		return {
-			links: [{
-				name: 'dashboard',
-				icon: 'fa-tachometer',
-			},{
-				name: 'devices',
-				icon: 'fa-puzzle-piece',
-			},{
-				name: 'users',
-				icon: 'fa-users',
-			},{
-				name: 'settings',
-				icon: 'fa-cog',
-			}]
-		};
-	}
+  name: 'SidebarLayout',
+  data() {
+    return {
+      links: [{
+        name: 'dashboard',
+        icon: 'fa-tachometer',
+      }, {
+        name: 'devices',
+        icon: 'fa-puzzle-piece',
+      }, {
+        name: 'users',
+        icon: 'fa-users',
+      }, {
+        name: 'settings',
+        icon: 'fa-cog',
+      }],
+    };
+  },
 };
 </script>
 

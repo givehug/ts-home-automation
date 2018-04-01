@@ -2,32 +2,42 @@ import axios from 'axios';
 import config from '../../../config';
 import {USER_SESSION_TOKEN} from '../data/constants';
 
-const rootUrl = config.BASE_URL + '/api/';
+const API_URL = config.BASE_URL + '/api/';
 
-// Get reuest options onject based on user token in local storage
-function getOptions(): any {
-	const token = localStorage.getItem(USER_SESSION_TOKEN);
-	const ops: any = {headers: {}};
-
-	if (token) {
-		ops.headers['x-auth'] = token;
-	}
-
-	return ops;
+/**
+ * Request headers object interface
+ */
+interface RequestHeaders {
+  ['x-auth']?: string;
 }
 
-// Make http request with provided options
-function request(
-	url: string,     // request url
-	method: string,  // method type
-	data?: any,      // request data object if any
-): Promise<any> {
-	return axios({
-		method,
-		url: rootUrl + url,
-		data,
-		headers: getOptions().headers,
-	});
-}
+/**
+ * Get reuest options onject based on user token in local storage
+ */
+const getHeaders = (): RequestHeaders => {
+  const token = localStorage.getItem(USER_SESSION_TOKEN);
+  const headers: RequestHeaders = {};
+
+  if (token) {
+    headers['x-auth'] = token;
+  }
+
+  return headers;
+};
+
+/**
+ * Make http request with provided options
+ * @param url request url
+ * @param method method type
+ * @param data data/body object if any
+ */
+const request = (url: string, method: string, data?: any): Promise<any> => {
+  return axios({
+    method,
+    url: API_URL + url,
+    data,
+    headers: getHeaders(),
+  });
+};
 
 export default request;

@@ -61,48 +61,111 @@
 </template>
 
 <script>
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 import {actions} from '@/store/constants';
 
 export default {
-	name: 'SettingsView',
-	data() {
-		return {
-			showMacs: false,
-			newMacAddress: '',
-			macToRemove: '',
-		};
-	},
-	computed: {
-		updatedMacs() {
-			return [...this.$store.state.settings.data.deviceIdentifiers, this.newMacAddress];
-		},
-		macsToRemove() {
-			return this.$store.state.settings.data.deviceIdentifiers.filter(m => m !== this.macToRemove);
-		},
-	},
-	methods: {
-		toggleActive() {
-			this.$store.dispatch(actions.ROBO_TOGGLE);
-		},
-		toggleMotionNotification() {
-			this.$store.dispatch(actions.SETTINGS_SAVE, {
-				notifyOnMotionDetection: !this.$store.state.settings.data.notifyOnMotionDetection,
-			});
-		},
-		addNewMacAddress() {
-			if (!this.newMacAddress) {
-				return;
-			}
+  name: 'SettingsView',
+  data() {
+    return {
+      showMacs: false,
+      newMacAddress: '',
+      macToRemove: '',
+    };
+  },
+  computed: {
+    updatedMacs() {
+      return [...this.$store.state.settings.data.deviceIdentifiers, this.newMacAddress];
+    },
+    macsToRemove() {
+      return this.$store.state.settings.data.deviceIdentifiers.filter((m) => m !== this.macToRemove);
+    },
+  },
+  methods: {
+    toggleActive() {
+      this.$store.dispatch(actions.ROBO_TOGGLE);
+    },
+    toggleMotionNotification() {
+      this.$store.dispatch(actions.SETTINGS_SAVE, {
+        notifyOnMotionDetection: !this.$store.state.settings.data.notifyOnMotionDetection,
+      });
+    },
+    addNewMacAddress() {
+      if (!this.newMacAddress) {
+        return;
+      }
 
-			this.$store.dispatch(actions.SETTINGS_SAVE, {deviceIdentifiers: this.updatedMacs});
-			this.newMacAddress = '';
-		},
-		deleteMacAddress(mac) {
-			this.macToRemove = mac;
-			this.$store.dispatch(actions.SETTINGS_SAVE, {deviceIdentifiers: this.macsToRemove});
-			this.macToRemove = '';
-		},
-	}
+      this.$store.dispatch(actions.SETTINGS_SAVE, {deviceIdentifiers: this.updatedMacs});
+      this.newMacAddress = '';
+    },
+    deleteMacAddress(mac) {
+      this.macToRemove = mac;
+      this.$store.dispatch(actions.SETTINGS_SAVE, {deviceIdentifiers: this.macsToRemove});
+      this.macToRemove = '';
+    },
+  },
 };
 </script>
 

@@ -1,13 +1,4 @@
 {
-  "defaultSeverity": "warning",
-  "rules": {
-    "quotemark": [true, "single"],
-    "indent": [true, "tabs", 4],
-    "interface-name": false,
-    "ordered-imports": true,
-    "object-literal-sort-keys": false,
-	"no-consecutive-blank-lines": true,
-	"no-any": false,
-	"no-unsafe-any": false
-  }
+  "extends": "../common/mytslint.json",
+  "rules": {}
 }

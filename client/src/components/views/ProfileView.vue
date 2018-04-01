@@ -53,71 +53,126 @@
 </template>
 
 <script>
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 import EditableContent from '@/components/other/EditableContent.vue';
 import {actions} from '@/store/constants';
 
 export default {
-	name: 'ProfileView',
+  name: 'ProfileView',
 
-	components: {
-		EditableContent,
-	},
-	data() {
-		return {
-			changed: false,
-			userData: {
-				name: this.$store.state.user.data.name,
-				email: this.$store.state.user.data.email,
-				password: '',
-				confirmPassword: '',
-				oldPassword: '',
-			},
-		};
-	},
-	methods: {
-		
-		handleChange(update) {
-			// apply changes to userData
-			Object.assign(this.userData, update);
+  components: {
+    EditableContent,
+  },
+  data() {
+    return {
+      changed: false,
+      userData: {
+        name: this.$store.state.user.data.name,
+        email: this.$store.state.user.data.email,
+        password: '',
+        confirmPassword: '',
+        oldPassword: '',
+      },
+    };
+  },
+  methods: {
 
-			this.checkUserDataChange();
-		},
-		checkUserDataChange() {
-			// check if some user data prop has changes
-			this.changed = this.userData.name !== this.$store.state.user.data.name
-				|| this.userData.email !== this.$store.state.user.data.email
-				|| this.userData.password
-					&& this.userData.confirmPassword
-					&& this.userData.oldPassword;
-		},
-		resetUserData() {
-			this.userData = {
-				name: this.$store.state.user.data.name,
-				email: this.$store.state.user.data.email,
-				password: '',
-				confirmPassword: '',
-				oldPassword: '',
-			};
-		},
-		async saveUserData() {
-			const updated = await this.$store.dispatch(actions.USER_DATA_PATCH, this.userData);
+    handleChange(update) {
+      // apply changes to userData
+      Object.assign(this.userData, update);
 
-			if (updated) {
-				this.$toast.open({
-					message: `User data updated`,
-					type: 'is-success',
-				});
+      this.checkUserDataChange();
+    },
+    checkUserDataChange() {
+      // check if some user data prop has changes
+      this.changed = this.userData.name !== this.$store.state.user.data.name
+        || this.userData.email !== this.$store.state.user.data.email
+        || this.userData.password
+          && this.userData.confirmPassword
+          && this.userData.oldPassword;
+    },
+    resetUserData() {
+      this.userData = {
+        name: this.$store.state.user.data.name,
+        email: this.$store.state.user.data.email,
+        password: '',
+        confirmPassword: '',
+        oldPassword: '',
+      };
+    },
+    async saveUserData() {
+      const updated = await this.$store.dispatch(actions.USER_DATA_PATCH, this.userData);
 
-				this.resetUserData();
-				this.checkUserDataChange();
-			} else {
-				this.$toast.open({
-					message: `Update failed`,
-					type: 'is-danger',
-				});
-			}
-		},
-	},
+      if (updated) {
+        this.$toast.open({
+          message: `User data updated`,
+          type: 'is-success',
+        });
+
+        this.resetUserData();
+        this.checkUserDataChange();
+      } else {
+        this.$toast.open({
+          message: `Update failed`,
+          type: 'is-danger',
+        });
+      }
+    },
+  },
 };
 </script>
 

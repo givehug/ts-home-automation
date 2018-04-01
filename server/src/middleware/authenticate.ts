@@ -1,20 +1,20 @@
 import {User} from './../models/user';
 
-export const authenticate = async(req, res, next) => {
-	const token = req.header('x-auth');
+export const authenticate = async (req, res, next) => {
+  const token = req.header('x-auth');
 
-	try {
-		const user = await User.findByToken(token);
+  try {
+    const user = await User.findByToken(token);
 
-		if (!user) {
-			return res.sendStatus(401);
-		}
+    if (!user) {
+      return res.sendStatus(401);
+    }
 
-		req.user = user;
-		req.token = token;
+    req.user = user;
+    req.token = token;
 
-		next();
-	} catch (error) {
-		res.sendStatus(401);
-	}
+    next();
+  } catch (error) {
+    res.sendStatus(401);
+  }
 };

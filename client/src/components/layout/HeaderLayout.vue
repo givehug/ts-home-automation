@@ -55,29 +55,86 @@
 </template>
 
 <script>
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 import {actions, getters} from '@/store/constants';
 
 export default {
-	name: 'HeaderLayout',
-	data () {
-		return {
-			showMobMenu: false,
-		};
-	},
-	computed: {
-		amIAuthed() {
-			return this.$store.getters[getters.AM_I_AUTHED];
-		}
-	},
-	methods: {
-		logOut(e) {
-			e.preventDefault();
-			this.$store.dispatch(actions.USER_LOGOUT);
-		},
-		toggleMobMenu() {
-			this.showMobMenu = !this.showMobMenu;
-		},
-	},
+  name: 'HeaderLayout',
+  data() {
+    return {
+      showMobMenu: false,
+    };
+  },
+  computed: {
+    amIAuthed() {
+      return this.$store.getters[getters.AM_I_AUTHED];
+    },
+  },
+  methods: {
+    logOut(e) {
+      e.preventDefault();
+      this.$store.dispatch(actions.USER_LOGOUT);
+    },
+    toggleMobMenu() {
+      this.showMobMenu = !this.showMobMenu;
+    },
+  },
 };
 </script>
 

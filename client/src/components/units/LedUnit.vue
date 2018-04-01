@@ -28,27 +28,57 @@
 </template>
 
 <script>
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 import {mutations} from '@/store/constants';
 import deviceCommands from '../../../../common/data/deviceCommands';
 
 export default {
-	name: 'LedUnit',
-	computed: {
-		ledState() {
-			return this.$store.state.home.led;
-		},
-	},
-	methods: {
-		toggleLed() {
-			this.$store.commit(mutations.WS_MESSAGE_SEND, [
-				'deviceCommand',
-				{
-					cmdId: deviceCommands.byKey.setLed.key,
-					status: this.ledState ? 0 : 1,
-				}
-			]);
-		},
-	},
+  name: 'LedUnit',
+  computed: {
+    ledState() {
+      return this.$store.state.home.led;
+    },
+  },
+  methods: {
+    toggleLed() {
+      this.$store.commit(mutations.WS_MESSAGE_SEND, [
+        'deviceCommand',
+        {
+          cmdId: deviceCommands.byKey.setLed.key,
+          status: this.ledState ? 0 : 1,
+        },
+      ]);
+    },
+  },
 };
 </script>
 

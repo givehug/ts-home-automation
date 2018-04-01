@@ -5,10 +5,10 @@ import settingsRouter from './settings';
 import userRouter from './user';
 
 const routes = [
-	userRouter,
-	deviceRouter,
-	settingsRouter,
-	appRouter,
+  userRouter,
+  deviceRouter,
+  settingsRouter,
+  appRouter,
 ];
 
 export default routes;

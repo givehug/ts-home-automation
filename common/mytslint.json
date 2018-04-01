@@ -1,0 +1,10 @@
+{
+  "rules": {
+    "quotemark": [true, "single"],
+    "indent": [true, "spaces", 2],
+    "interface-name": false,
+    "ordered-imports": true,
+    "no-any": false,
+    "no-unsafe-any": false
+  }
+}

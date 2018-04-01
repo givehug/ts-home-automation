@@ -27,7 +27,7 @@ app.use('/api', ...routes);
 // Apply static routes
 app.get(excludeApiRoutes, express.static(staticPath));
 app.get(excludeApiRoutes, (req, res) => {
-	res.sendFile(staticPath + 'index.html');
+  res.sendFile(staticPath + 'index.html');
 });
 
 export default app;

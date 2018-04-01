@@ -1,9 +1,7 @@
 {
-	"extends": "tslint:latest",
-	"rules": {
-		"indent": [true, "tabs", 4],
-		"quotemark": [true, "single", "avoid-escape"],
-		"ordered-imports": true,
-		"object-literal-sort-keys": true
-	}
+  "extends": "../common/mytslint.json",
+  "rules": {
+    "no-console": false,
+    "no-this-assignment": false
+  }
 }

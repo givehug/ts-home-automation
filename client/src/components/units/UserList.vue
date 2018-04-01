@@ -34,52 +34,88 @@
 </template>
 
 <script>
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 import {actions, getters} from '@/store/constants';
 
 export default {
-	name: 'UserList',
-	props: {
-		hideEmail: Boolean,
-		hideDelete: Boolean,
-	},
-	computed: {
-		amIAdmin() {
-			return this.$store.getters[getters.AM_I_ADMIN];
-		}
-	},
-	methods: {
-		isUserAtHome(userId) {
-			return this.$store.getters[getters.IS_USER_HOME](userId);
-		},
-		deleteUser(userId) {
-			this.$dialog.confirm({
-				title: 'Delete user',
-				message: 'Are you sure you want to delete this user?',
-				confirmText: 'Delete',
-				type: 'is-danger',
-				hasIcon: true,
-				onConfirm: async() => {
-					try {
-						const deleted = await this.$store.dispatch(actions.USERS_DELETE, userId);
+  name: 'UserList',
+  props: {
+    hideEmail: Boolean,
+    hideDelete: Boolean,
+  },
+  computed: {
+    amIAdmin() {
+      return this.$store.getters[getters.AM_I_ADMIN];
+    },
+  },
+  methods: {
+    isUserAtHome(userId) {
+      return this.$store.getters[getters.IS_USER_HOME](userId);
+    },
+    deleteUser(userId) {
+      this.$dialog.confirm({
+        title: 'Delete user',
+        message: 'Are you sure you want to delete this user?',
+        confirmText: 'Delete',
+        type: 'is-danger',
+        hasIcon: true,
+        onConfirm: async () => {
+          try {
+            const deleted = await this.$store.dispatch(actions.USERS_DELETE, userId);
 
-						if (deleted) {
-							this.$toast.open({
-								message: `User deleted`,
-								type: 'is-success',
-							});
-						} else {
-							this.$toast.open({
-								message: 'Error deleting user',
-								type: 'is-danger',
-							});
-						}
-					} catch (error) {
-						// do nothing
-					}
-				},
-			});
-		},
-	},
+            if (deleted) {
+              this.$toast.open({
+                message: `User deleted`,
+                type: 'is-success',
+              });
+            } else {
+              this.$toast.open({
+                message: 'Error deleting user',
+                type: 'is-danger',
+              });
+            }
+          } catch (error) {
+            // do nothing
+          }
+        },
+      });
+    },
+  },
 };
 </script>
 

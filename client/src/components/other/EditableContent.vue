@@ -7,41 +7,50 @@
 </template>
 
 <script>
+//
+//
+//
+//
+//
+//
+//
+//
+
 export default {
-	name: 'EditableContentContent',
-	props: {
-		content: String,
-		active: {
-			type: Boolean,
-			default: true,
-		},
-		trim: {
-			type: Boolean,
-			default: false,
-		},
-	},
-	mounted() {
-		this.$el.innerText = this.content;
-	},
-	methods:{
-		update(event) {
-			this.$emit('update', event.target.innerText);
-		},
-		blur(event) {
-			// optionally trim value
-			if (this.trim) {
-				event.target.innerText = event.target.innerText.trim();
-			}
+  name: 'EditableContentContent',
+  props: {
+    content: String,
+    active: {
+      type: Boolean,
+      default: true,
+    },
+    trim: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  mounted() {
+    this.$el.innerText = this.content;
+  },
+  methods: {
+    update(event) {
+      this.$emit('update', event.target.innerText);
+    },
+    blur(event) {
+      // optionally trim value
+      if (this.trim) {
+        event.target.innerText = event.target.innerText.trim();
+      }
 
-			// fire blur only if value changed
-			if (this.content === event.target.innerText) {
-				return;
-			}
+      // fire blur only if value changed
+      if (this.content === event.target.innerText) {
+        return;
+      }
 
-			this.$emit('blur', event.target.innerText);
-		},
-	}
-}
+      this.$emit('blur', event.target.innerText);
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

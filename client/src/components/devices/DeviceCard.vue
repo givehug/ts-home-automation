@@ -43,33 +43,78 @@
 </template>
 
 <script>
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 import EditableContent from '@/components/other/EditableContent.vue';
-import {getters} from '@/store/constants';        
+import {getters} from '@/store/constants';
 
 export default {
-	name: 'DeviceCard',
-	props: {
-		device: Object,
-		changed: Function,
-		deleted: Function,
-	},
-	components: {
-		EditableContent,
-	},
-	computed: {
-		isDeviceActive() {
-			return this.$store.getters[getters.IS_DEVICE_ACTIVE](this.device._id);
-		},
-	},
-	methods: {
-		handleChange(update) {
-			this.$emit('changed', update);
-		},
-		handleDelete(e) {
-			e.preventDefault();
-			this.$emit('deleted');
-		}
-	},
+  name: 'DeviceCard',
+  props: {
+    device: Object,
+    changed: Function,
+    deleted: Function,
+  },
+  components: {
+    EditableContent,
+  },
+  computed: {
+    isDeviceActive() {
+      return this.$store.getters[getters.IS_DEVICE_ACTIVE](this.device._id);
+    },
+  },
+  methods: {
+    handleChange(update) {
+      this.$emit('changed', update);
+    },
+    handleDelete(e) {
+      e.preventDefault();
+      this.$emit('deleted');
+    },
+  },
 };
 </script>
 
