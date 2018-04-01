@@ -1,109 +1,56 @@
 <template>
 <div id="robo">
-    <div class="robo-face">
-        <div class="head">
-            <div class="antena">
-                <div class="antena__body">
-                    <div class="antena__bulb"></div>
-                </div>
-            </div>
-            <div
-				class="face"
-				v-bind:class="emotions"
-			>
-                <div class="eye eye--left">
-                    <div class="eye__body">
-                        <div class="eye__ball"></div>
-                    </div>
-                </div>
-                <div class="eye eye--right">
-                    <div class="eye__body">
-                        <div class="eye__ball"></div>
-                    </div>
-                </div>
-                <div class="jaw jaw--upper">
-                    <div
-						v-for="n in 5"
-						:key="n"
-						class="tooth"
-					></div>
-                </div>
-                <div class="jaw jaw--lower">
-                    <div
-						v-for="n in 5"
-						:key="n"
-						class="tooth"
-					></div>
-                </div>
-            </div>
+  <div class="robo-face">
+    <div class="head">
+      <div class="antena">
+        <div class="antena__body">
+          <div class="antena__bulb"></div>
         </div>
+      </div>
+      <div
+        class="face"
+        v-bind:class="emotions"
+      >
+        <div class="eye eye--left">
+          <div class="eye__body">
+            <div class="eye__ball"></div>
+          </div>
+        </div>
+        <div class="eye eye--right">
+          <div class="eye__body">
+            <div class="eye__ball"></div>
+          </div>
+        </div>
+        <div class="jaw jaw--upper">
+          <div
+            v-for="n in 5"
+            :key="n"
+            class="tooth"
+          ></div>
+        </div>
+        <div class="jaw jaw--lower">
+          <div
+            v-for="n in 5"
+            :key="n"
+            class="tooth"
+          ></div>
+        </div>
+      </div>
     </div>
-    <div
+  </div>
+  <div
 		v-if="$store.state.app.dataLoaded"
 		class="robo-settings"
 	>
-        <b-switch
+    <b-switch
 			:value="$store.state.settings.data.annyangActive"
 			@input="toggleActive()"
 		>{{$store.state.settings.data.annyangActive ? 'Active' : 'Inactive'}}</b-switch>
-    </div>
+  </div>
 </div>
 </template>
 
 <script>
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 import {actions, getters} from '@/store/constants';
 
 export default {

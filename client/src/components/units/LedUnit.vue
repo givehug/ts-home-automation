@@ -2,22 +2,21 @@
 <div id="led">
 
 	<!-- led connected -->
-    <div v-if="ledState !== null">
-		<!-- led status -->
-		<div class="line">
-			<p>LED is: {{ledState ? 'ON' : 'OFF'}}</p>
-		</div>
-
-		<!-- toggle led -->
-		<div class="line">
-			<button
-				class="button"
-				@click="toggleLed()"
-			>
-				<span>Turn LED {{ledState ? 'OFF' : 'ON'}}</span>
-			</button>
-		</div>
-	</div>
+  <div v-if="ledState !== null">
+    <!-- led status -->
+    <div class="line">
+      <p>LED is: {{ledState ? 'ON' : 'OFF'}}</p>
+    </div>
+    <!-- toggle led -->
+    <div class="line">
+      <button
+        class="button"
+        @click="toggleLed()"
+      >
+        <span>Turn LED {{ledState ? 'OFF' : 'ON'}}</span>
+      </button>
+    </div>
+  </div>
 
 	<!-- led not connected -->
 	<div v-if="ledState === null">
@@ -28,36 +27,6 @@
 </template>
 
 <script>
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 import {mutations} from '@/store/constants';
 import deviceCommands from '../../../../common/data/deviceCommands';
 

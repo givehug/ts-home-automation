@@ -18,103 +18,25 @@
 		</div>
 	</div>
 
-    <div class="columns is-multiline">
+  <div class="columns is-multiline">
 		<!-- cards -->
-        <div
+    <div
 			class="column is-half-tablet is-one-third-desktop"
 			v-for="device in $store.state.devices.map"
 			:key="device._id"
 		>
-            <device-card
+      <device-card
 				:device="device"
 				@changed="handleDeviceChange(device._id, $event)"
 				@deleted="handleDeviceDelete(device._id)"
 			></device-card>
-        </div>
-    </div> 
+    </div>
+  </div> 
 
 </div>
 </template>
 
 <script>
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 import DeviceCard from '@/components/devices/DeviceCard.vue';
 import {actions} from '@/store/constants';
 
@@ -140,9 +62,11 @@ export default {
     },
 
     async handleDeviceChange(deviceId, update) {
-      const deviceData = {...this.$store.state.devices.map[deviceId],
-                          ...update,
-      };
+      const deviceData = Object.assign(
+        {},
+        this.$store.state.devices.map[deviceId],
+        update,
+      );
 
       try {
         await this.$store.dispatch(actions.DEVICES_SAVE, deviceData);

@@ -1,8 +1,8 @@
 <template>
 <div id="users" class="main-content">
 	<!-- list of all users -->
-    <user-list></user-list>
-    <hr />
+  <user-list></user-list>
+  <hr />
 	<!-- invite new user if admin -->
 	<div v-if="amIAdmin">
 		<h4>Invite new user</h4>
@@ -33,44 +33,7 @@
 </div>
 </template>
 
-<script>
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-import UserList from '@/components/units/UserList.vue';
+<script>import UserList from '@/components/units/UserList.vue';
 import {actions, getters} from '@/store/constants';
 
 export default {

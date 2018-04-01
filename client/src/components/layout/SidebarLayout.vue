@@ -17,25 +17,6 @@
 </template>
 
 <script>
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 export default {
   name: 'SidebarLayout',
   data() {

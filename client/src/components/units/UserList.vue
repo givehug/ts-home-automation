@@ -3,22 +3,22 @@
 	v-if="$store.state.app.dataLoaded"
 	class="userList"
 >
-    <li
+  <li
 		class="userList-item"
 		v-for="user in $store.state.users.map"
 		:key="user._id"
 	>
-        <b-tooltip
+    <b-tooltip
 			:label="isUserAtHome(user._id) ? 'At Home' : 'Away'"
-            position="is-right" type="is-dark"
+      position="is-right" type="is-dark"
 		>
-            <i
+      <i
 				class="userList-status"
 				:class="{'active': isUserAtHome(user._id)}"
 			></i>
-            <span class="userList-name">{{user.name}}</span>
-        </b-tooltip>
-        <span
+        <span class="userList-name">{{user.name}}</span>
+    </b-tooltip>
+    <span
 			v-if="!hideEmail"
 			class="userList-email"
 		>{{user.email}}</span>
@@ -29,47 +29,11 @@
 		>
 			<i class="fa fa-trash-o fa-lg"></i>
 		</span>
-    </li>
+  </li>
 </ul>
 </template>
 
 <script>
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 import {actions, getters} from '@/store/constants';
 
 export default {

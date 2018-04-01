@@ -5,17 +5,17 @@
  * @returns true if sets are equal, false if not
  */
 function compareSets(setA, setB) {
-	if (setA.size !== setB.size) {
-		return false;
-	}
+  if (setA.size !== setB.size) {
+    return false;
+  }
 
-	for (const a of setA) {
-		if (!setB.has(a)) {
-			return false;
-		}
-	}
+  for (const a of setA) {
+    if (!setB.has(a)) {
+      return false;
+    }
+  }
 
-	return true;
+  return true;
 }
 
 export default compareSets;

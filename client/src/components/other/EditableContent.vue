@@ -7,15 +7,6 @@
 </template>
 
 <script>
-//
-//
-//
-//
-//
-//
-//
-//
-
 export default {
   name: 'EditableContentContent',
   props: {

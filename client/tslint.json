@@ -1,4 +1,3 @@
 {
-  "extends": "../common/mytslint.json",
-  "rules": {}
+  "extends": "../common/mytslint.json"
 }

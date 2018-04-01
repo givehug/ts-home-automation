@@ -1,93 +1,48 @@
 <template>
-    <div class="card">
-		<!-- header -->
-        <header class="card-header">
-            <p class="card-header-title">
-				<editable-content
-					:content="device.name"
-					@blur="handleChange({name: $event})"
-				></editable-content>
-            </p>
-            <a class="card-header-icon">
-				<span
-					class="icon is-medium"
-					:class="{'has-text-success': isDeviceActive, 'has-text-danger': !isDeviceActive}"
-				>
-					<i class="fa fa-lightbulb-o fa-lg"></i>
-				</span>
-            </a>
-        </header>
-		<!-- body -->
-        <div class="card-content">
-            <div class="content">
-				<p><strong>id:</strong> {{device._id}}</p>
-				<p><editable-content
-					:content="device.description"
-					@blur="handleChange({description: $event})"
-				></editable-content></p>
-            </div>
-        </div>
-		<!-- footer -->
-		<footer class="card-footer">
-			<a
-				href=""
-				@click="handleDelete($event, device._id)"
-				class="card-footer-item"
-			>
-				<span class="icon is-medium has-text-danger">
-					<i class="fa fa-trash-o fa-lg"></i>
-				</span>
-			</a>
-		</footer>
+  <div class="card">
+    <!-- header -->
+    <header class="card-header">
+      <p class="card-header-title">
+        <editable-content
+          :content="device.name"
+          @blur="handleChange({name: $event})"
+        ></editable-content>
+      </p>
+      <a class="card-header-icon">
+        <span
+          class="icon is-medium"
+          :class="{'has-text-success': isDeviceActive, 'has-text-danger': !isDeviceActive}"
+        >
+          <i class="fa fa-lightbulb-o fa-lg"></i>
+        </span>
+      </a>
+    </header>
+    <!-- body -->
+    <div class="card-content">
+      <div class="content">
+        <p><strong>id:</strong> {{device._id}}</p>
+        <p><editable-content
+          :content="device.description"
+          @blur="handleChange({description: $event})"
+        ></editable-content></p>
+      </div>
     </div>
+    <!-- footer -->
+    <footer class="card-footer">
+      <a
+        href=""
+        @click="handleDelete($event, device._id)"
+        class="card-footer-item"
+      >
+        <span class="icon is-medium has-text-danger">
+          <i class="fa fa-trash-o fa-lg"></i>
+        </span>
+      </a>
+    </footer>
+  </div>
 </template>
 
 <script>
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 import EditableContent from '@/components/other/EditableContent.vue';
 import {getters} from '@/store/constants';
 

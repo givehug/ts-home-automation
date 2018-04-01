@@ -1,39 +1,39 @@
 <template>
 <div id="security">
 
-    <!-- Images -->
-    <div
+  <!-- Images -->
+  <div
 		class="images-wrapper"
 		v-if="securityState.images"
 	>
-        <p v-if="!securityState.images.length">No Images</p>
-        <div
+    <p v-if="!securityState.images.length">No Images</p>
+    <div
 			v-if="securityState.images.length"
 			class="images"
 		>
-            <img
-                v-for="(image, index) in securityState.images"
-                :src="'data:image/png;base64,' + image"
-                :key="index"
-                @click="imageToShow = image"
-            />
-        </div>
+      <img
+          v-for="(image, index) in securityState.images"
+          :src="'data:image/png;base64,' + image"
+          :key="index"
+          @click="imageToShow = image"
+      />
     </div>
+  </div>
 
-    <!-- Images Lightshot -->
+  <!-- Images Lightshot -->
 	<b-modal :active.sync="imageToShow">
 		<p class="image">
-            <img :src="'data:image/png;base64,' + imageToShow">
-        </p>
+      <img :src="'data:image/png;base64,' + imageToShow">
+    </p>
 	</b-modal>
 
-    <!-- Last detected -->
-    <div
+  <!-- Last detected -->
+  <div
 		v-if="securityState"
 		class="line"
 	>
-        <p>Last detected: {{securityState.lastDetected | time}}</p>
-    </div>
+    <p>Last detected: {{securityState.lastDetected | time}}</p>
+  </div>
 
 	<div class="line">
 		<!-- take picture -->
@@ -79,87 +79,6 @@
 </template>
 
 <script>
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 import {mutations} from '@/store/constants';
 import deviceCommands from '../../../../common/data/deviceCommands';
 

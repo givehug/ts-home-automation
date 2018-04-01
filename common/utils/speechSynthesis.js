@@ -1,10 +1,10 @@
 // check SpeechSynthesisUtterance support
 const SpeechSynthesisUtterance = window && (
-	window.webkitSpeechSynthesisUtterance
+  window.webkitSpeechSynthesisUtterance
     || window.mozSpeechSynthesisUtterance
     || window.msSpeechSynthesisUtterance
     || window.oSpeechSynthesisUtterance
-	|| window.SpeechSynthesisUtterance
+  || window.SpeechSynthesisUtterance
 );
 
 export default SpeechSynthesisUtterance;

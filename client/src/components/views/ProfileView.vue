@@ -9,22 +9,22 @@
 	>Save</button>
 
 	<!-- name -->
-    <h4 class="title is-5">Name</h4>
+  <h4 class="title is-5">Name</h4>
     <p><editable-content
-		:content="userData.name"
-		:trim="true"
-		@blur="handleChange({name: $event})"
-	></editable-content></p>
-    <hr />
+      :content="userData.name"
+      :trim="true"
+      @blur="handleChange({name: $event})"
+    ></editable-content></p>
+  <hr />
 
 	<!-- email -->
-    <h4 class="title is-5">Email</h4>
+  <h4 class="title is-5">Email</h4>
     <p><editable-content
-		:content="userData.email"
-		:trim="true"
-		@blur="handleChange({email: $event})"
-	></editable-content></p>
-    <hr />
+      :content="userData.email"
+      :trim="true"
+      @blur="handleChange({email: $event})"
+    ></editable-content></p>
+  <hr />
 
 	<!-- password -->
 	<h4 class="title is-5">Change Password</h4>
@@ -52,63 +52,7 @@
 </div>
 </template>
 
-<script>
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-import EditableContent from '@/components/other/EditableContent.vue';
+<script>import EditableContent from '@/components/other/EditableContent.vue';
 import {actions} from '@/store/constants';
 
 export default {

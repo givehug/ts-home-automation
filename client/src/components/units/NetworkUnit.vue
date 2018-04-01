@@ -1,69 +1,36 @@
 <template>
 <div class="network">
-    <div
+  <div
 		v-if="!showNetwork"
 		class="showNetwork"
 		@click="showNetwork = true"
 	>show network</div>
-    <div
+  <div
 		v-if="showNetwork"
 		class="hideNetwork"
 		@click="showNetwork = false"
 	>hide</div>
-    <div class="table-wrapper">
-        <table v-if="showNetwork">
-            <tr>
-                <th>ip</th>
-                <th>mac</th>
-                <th>vendor</th>
-            </tr>
-            <tr
-				v-for="mac in $store.state.home.network.macMap"
+  <div class="table-wrapper">
+    <table v-if="showNetwork">
+      <tr>
+        <th>ip</th>
+        <th>mac</th>
+        <th>vendor</th>
+      </tr>
+      <tr
+        v-for="mac in $store.state.home.network.macMap"
 				:key="mac[1]"
 			>
-                <td>{{mac[0]}}</td>
-                <td>{{mac[1]}}</td>
-                <td>{{mac[2]}}</td>
-            </tr>
-        </table>
-    </div>
+        <td>{{mac[0]}}</td>
+        <td>{{mac[1]}}</td>
+        <td>{{mac[2]}}</td>
+      </tr>
+    </table>
+  </div>
 </div>
 </template>
 
 <script>
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 export default {
   name: 'NetworkUnit',
   data() {

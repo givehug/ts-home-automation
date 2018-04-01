@@ -1,32 +1,17 @@
 <template>
-    <div
+  <div
 		id="app"
 		:class="appCssClass"
 	>
-        <sidebar-layout v-if="amIAuthed"></sidebar-layout>
-        <div class="main">
-            <router-view :key="$route.path"></router-view>
-        </div>
-        <header-layout></header-layout>
+    <sidebar-layout v-if="amIAuthed"></sidebar-layout>
+    <div class="main">
+      <router-view :key="$route.path"></router-view>
     </div>
+    <header-layout></header-layout>
+  </div>
 </template>
 
-<script>
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-import HeaderLayout from '@/components/layout/HeaderLayout.vue';
+<script>import HeaderLayout from '@/components/layout/HeaderLayout.vue';
 import SidebarLayout from '@/components/layout/SidebarLayout.vue';
 import {actions, getters} from '@/store/constants';
 

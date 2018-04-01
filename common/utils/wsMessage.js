@@ -1,22 +1,22 @@
 export const messageToJSON = (msg) => {
-	let message = [
-		'',
-		null,
-	];
+  let message = [
+    '',
+    null,
+  ];
 
-	try {
-		message = JSON.parse(msg);
-	} catch (e) {
-		message[0] = msg;
-	}
+  try {
+    message = JSON.parse(msg);
+  } catch (e) {
+    message[0] = msg;
+  }
 
-	return message;
+  return message;
 };
 
 export const jsonToMessage = (type, data) => {
-	if (!type) {
-		return '';
-	}
+  if (!type) {
+    return '';
+  }
 
-	return JSON.stringify(data === undefined ? [type] : [type, data]);
+  return JSON.stringify(data === undefined ? [type] : [type, data]);
 };
