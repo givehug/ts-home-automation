@@ -22,7 +22,7 @@
 	<div v-if="ledState === null">
 		<p>LED is not connected</p>
 	</div>
-	
+
 </div>
 </template>
 
@@ -53,8 +53,8 @@ export default {
 
 <style lang="scss" scoped>
 #led {
-    .line {
-        margin-bottom: 15px;
-    }
+  .line {
+    margin-bottom: 15px;
+  }
 }
 </style>

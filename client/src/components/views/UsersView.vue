@@ -78,6 +78,6 @@ export default {
 
 <style lang="scss" scoped>
 #users {
-    padding-top: 45px;
+  padding-top: 45px;
 }
 </style>

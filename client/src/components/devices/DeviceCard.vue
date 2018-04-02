@@ -75,24 +75,24 @@ export default {
 
 <style lang="scss" scoped>
 .deviceCard {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 
+  .card-header {
+    background-color: #f2dede;
+    border-color: #ebcccc;
+    color: #a94442;
+
+    h4 {
+      margin-bottom: 0;
+    }
+  }
+
+  &.active {
     .card-header {
-        background-color: #f2dede;
-        border-color: #ebcccc;
-        color: #a94442;
-
-        h4 {
-            margin-bottom: 0;
-        }
+      background-color: #dff0d8;
+      border-color: #d0e9c6;
+      color: #3c763d;
     }
-
-    &.active {
-        .card-header {
-            background-color: #dff0d8;
-            border-color: #d0e9c6;
-            color: #3c763d;
-        }
-    }
+  }
 }
 </style>

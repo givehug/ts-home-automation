@@ -1,5 +1,5 @@
 <template>
-<div 
+<div
 	id="dashboard"
 	class="main-content"
 >
@@ -26,7 +26,7 @@
           </div>
       </div>
     </div>
-	
+
     <div class="columns is-multiline">
 		<!-- security -->
     <div class="column is-half-desktop">
@@ -75,15 +75,15 @@ export default {
 
 <style lang="scss" scoped>
 #dashboard {
-    .tile {
-        .title {
-            margin-bottom: 30px;
-        }
+  .tile {
+    .title {
+      margin-bottom: 30px;
     }
-    .box {
-        .button {
-            margin: 5px;
-        }
+  }
+  .box {
+    .button {
+      margin: 5px;
     }
+  }
 }
 </style>

@@ -46,14 +46,14 @@ export default {
 
 <style lang="scss" scoped>
 [contenteditable] {
-    display: inline-block;
-    min-width: 30px;
-    cursor: pointer;
-    &:hover {
-        outline: 1px dashed #ccc;
-    }
-    &:focus {
-        outline: 1px solid #ccc;
-    }
+  display: inline-block;
+  min-width: 30px;
+  cursor: pointer;
+  &:hover {
+    outline: 1px dashed #ccc;
+  }
+  &:focus {
+    outline: 1px solid #ccc;
+  }
 }
 </style>

@@ -108,24 +108,24 @@ export default {
 
 <style lang="scss" scoped>
 #settings {
-    .mac {
-        .del {
-            opacity: 0;
-            visibility: hidden;
-            transition: .2s;
-            margin-left: 15px;
-            position: relative;
-            top: -2px;
-        }
-        &:hover {
-            .del {
-                opacity: 0.6;
-                visibility: visible;
-                &:hover {
-                    opacity: 1;
-                }
-            }
-        }
+  .mac {
+    .del {
+      opacity: 0;
+      visibility: hidden;
+      transition: .2s;
+      margin-left: 15px;
+      position: relative;
+      top: -2px;
     }
+    &:hover {
+      .del {
+        opacity: 0.6;
+        visibility: visible;
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
 }
 </style>

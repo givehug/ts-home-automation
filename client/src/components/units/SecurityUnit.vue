@@ -74,7 +74,7 @@
 			@click="sendCommand(commandsByKey.toggleDetectionWhenNobodyHome.key)"
 		/>
 	</div>
-	
+
 </div>
 </template>
 
@@ -108,26 +108,26 @@ export default {
 
 <style lang="scss" scoped>
 #security {
-    .images-wrapper {
-        overflow-y: auto;
-        margin-bottom: 15px;
-        min-height: 40px;
-        line-height: 40px;
-        text-align: center;
-    }
-    .images {
-        text-align: left;
-        height: 100px;
-        white-space: nowrap;
+  .images-wrapper {
+    overflow-y: auto;
+    margin-bottom: 15px;
+    min-height: 40px;
+    line-height: 40px;
+    text-align: center;
+  }
+  .images {
+    text-align: left;
+    height: 100px;
+    white-space: nowrap;
 
-        img {
-            margin: 0 5px;
-            height: 100px;
-            cursor: pointer;
-        }
+    img {
+      margin: 0 5px;
+      height: 100px;
+      cursor: pointer;
     }
-    .line {
-        margin-bottom: 15px;
-    }
+  }
+  .line {
+    margin-bottom: 15px;
+  }
 }
 </style>

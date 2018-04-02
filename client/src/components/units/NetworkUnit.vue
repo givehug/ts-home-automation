@@ -43,35 +43,34 @@ export default {
 
 <style lang="scss" scoped>
 .network {
-    position: relative;
+  position: relative;
 
-    .showNetwork,
-    .hideNetwork {
-        font-style: italic;
-        opacity: 0.5;
-        padding: 20px 0 40px;
-        font-size: 1.2rem;
-        font-weight: bold;
-        text-transform: uppercase;
-        text-align: center;
-        cursor: pointer;
+  .showNetwork,
+  .hideNetwork {
+    font-style: italic;
+    opacity: 0.5;
+    padding: 20px 0 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .hideNetwork {
+    padding: 0;
+    position: absolute;
+    top: -53px;
+    right: 20px;
+  }
+
+  tr {
+    td, th {
+      padding: 0 15px 15px;
     }
-
-    .hideNetwork {
-        padding: 0;
-        position: absolute;
-        top: -53px;
-        right: 20px;
+    th {
+      text-align: center;
     }
-
-    tr {
-        td, th {
-            padding: 0 15px 15px;
-        }
-        th {
-            text-align: center;
-        }
-    }
-
+  }
 }
 </style>

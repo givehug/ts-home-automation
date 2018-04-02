@@ -85,60 +85,59 @@ export default {
 
 <style lang="scss" scoped>
 .userList {
-    max-height: 350px;
-    overflow-y: auto;
+  max-height: 350px;
+  overflow-y: auto;
 
-    &-item {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: flex-start;
-        overflow: hidden;
-        margin-bottom: 15px;
-        font-size: 1.3rem;
-        font-weight: normal;
+  &-item {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    overflow: hidden;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+    font-weight: normal;
 
-        .tooltip:not([data-label=""]):hover:after {
-            font-size: 1rem;
-        }
-
-        @media screen and (max-width: 1024px) {
-            flex-direction: column;
-            margin-bottom: 25px;
-        }
+    .tooltip:not([data-label=""]):hover:after {
+      font-size: 1rem;
     }
 
-    &-status {
-        display: inline-block;
-        width: 13px;
-        height: 31px;
-        margin-right: 30px;
-        background: #ff3860;
-
-        &.active {
-            background: #23d160;
-        }
+    @media screen and (max-width: 1024px) {
+      flex-direction: column;
+      margin-bottom: 25px;
     }
+  }
 
-    &-name {
-        font-weight: bold;
-        margin-right: 30px;
-    }
+  &-status {
+    display: inline-block;
+    width: 13px;
+    height: 31px;
+    margin-right: 30px;
+    background: #ff3860;
 
-    &-email {
-        font-style: italic;
-        opacity: 0.5;
-		margin-right: 30px;
+    &.active {
+      background: #23d160;
     }
+  }
+
+  &-name {
+    font-weight: bold;
+    margin-right: 30px;
+  }
+
+  &-email {
+    font-style: italic;
+    opacity: 0.5;
+    margin-right: 30px;
+  }
 
 	&-del {
-        opacity: 0.5;
+    opacity: 0.5;
 		cursor: pointer;
 
 		&:hover {
 			opacity: 1;
 		}
-    }
-
+  }
 }
 </style>
