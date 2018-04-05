@@ -41,7 +41,7 @@ const mutations = {
   /**
    * Change robot face expression.
    */
-  [types.mutations.ROBO_EMOTION_CHANGE](state: RoboState, emotions: any) {
+  [types.mutations.ROBO_EMOTION_CHANGE](state: RoboState, emotions: object) {
     state.emotions = {...state.emotions, ...emotions};
   },
   /**

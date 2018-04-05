@@ -18,7 +18,7 @@ const mutations = {
   /**
    * Update settings state
    */
-  [types.mutations.SETTINGS_UPDATE](state: SettingsState, update: any) {
+  [types.mutations.SETTINGS_UPDATE](state: SettingsState, update: object) {
     state.data = {...state.data, ...update};
   },
 };
@@ -27,7 +27,7 @@ const actions = {
   /**
    * Save settings on server
    */
-  [types.actions.SETTINGS_SAVE]: async (context: ActionContext<SettingsState, RootState>, update: any) => {
+  [types.actions.SETTINGS_SAVE]: async (context: ActionContext<SettingsState, RootState>, update: object) => {
     await request(endpoints.settings, 'PATCH', update);
     context.commit(types.mutations.SETTINGS_UPDATE, update);
   },

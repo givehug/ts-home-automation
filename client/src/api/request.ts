@@ -32,7 +32,7 @@ const getHeaders = (): RequestHeaders => {
  * @param method method type
  * @param data data/body object if any
  */
-const request = (url: string, method: string, data?: any): Promise<any> => {
+const request = (url: string, method: string, data?: object): Promise<any> => {
   return axios({
     method,
     url: API_URL + url,

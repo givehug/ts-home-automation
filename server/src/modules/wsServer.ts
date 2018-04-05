@@ -9,8 +9,8 @@ const pingInterval = 10000;
 export default class WsServer {
   private WS: any;
   private wss: any;
-  private connectedDevices: any;
-  private cachedMacMapStr: any;
+  private connectedDevices?: Set<string>;
+  private cachedMacMapStr: string;
 
   constructor(WS, wss) {
     this.WS = WS;

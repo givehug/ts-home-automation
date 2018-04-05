@@ -38,8 +38,10 @@ const mutations = {
   /**
    * Update user data.
    */
-  [types.mutations.USER_DATA_UPDATE](state: UserState, data: any) {
-    state.data = {...state.data, ...data};
+  [types.mutations.USER_DATA_UPDATE](state: UserState, data: object) {
+    if (state.data) {
+      state.data = {...state.data, ...data} ;
+    }
   },
   /**
    * Initially set user data.
@@ -57,9 +59,7 @@ const actions = {
     context: ActionContext<UserState, RootState>,
     update: any,
   ) => {
-    if (!update) {
-      return;
-    }
+    if (!update) return;
 
     try {
       await request(endpoints.userMe, 'PATCH', {update});
@@ -73,7 +73,7 @@ const actions = {
   /**
    * Add (invite) new user.
    */
-  [types.actions.USER_ADD]: async (context: ActionContext<UserState, RootState>, form: any) => {
+  [types.actions.USER_ADD]: async (context: ActionContext<UserState, RootState>, form: object) => {
     try {
       const res = await request(endpoints.users, 'POST', form);
 

@@ -26,14 +26,14 @@ export interface DevicesState {
 // Home
 export interface NetworkState {
   macMap: {
-    [macId: string]: any[]
+    [macId: string]: object[]
   };
 }
 
 export interface SecurityState {
   detectionStatus: boolean | null;
   lastDetected: Date | any;
-  images: any[] | null;
+  images: string[] | null;
   turnDetectionOnWhenNobodyHome: boolean | null;
 }
 

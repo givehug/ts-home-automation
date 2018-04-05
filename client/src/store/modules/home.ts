@@ -43,7 +43,7 @@ const mutations = {
   /**
    * Update particular 'home' state property values
    */
-  [types.mutations.HOME_STATE_UPDATE](state: HomeState, update: any) {
+  [types.mutations.HOME_STATE_UPDATE](state: HomeState, update: object) {
     Object.keys(update).forEach((key) => {
       state[key] = update[key];
     });
