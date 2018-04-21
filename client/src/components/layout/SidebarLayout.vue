@@ -41,8 +41,12 @@ export default {
 
 <style lang="scss" scoped>
 .sidebar {
+  position: fixed;
+  top: 52px;
+  left: 0;
 	flex: 0 0 180px;
-	padding: 15px;
+  padding: 15px;
+  height: calc(100% - 52px);
 
 	.icon {
 		margin-right: 10px;

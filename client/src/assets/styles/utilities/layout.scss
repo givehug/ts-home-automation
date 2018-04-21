@@ -1,57 +1,50 @@
 html,
 body {
-    height: 100%;
-    width: 100%;
-    background: #edeff0;
-}
-
-.main {
-    display: flex;
-    flex-grow: 1;
-    flex-direction: column;
-    overflow-y: auto;
+  height: 100%;
+  width: 100%;
+  background: #edeff0;
 }
 
 .main-content {
-    flex-grow: 1;
-    // overflow-y: auto;
-    padding: 30px;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+  flex-grow: 1;
+  // overflow-y: auto;
+  padding: 30px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 
-    @media screen and (max-width: 1024px) {
-        padding: 15px;
-    }
+  @media screen and (max-width: 1024px) {
+    padding: 15px;
+  }
 }
 
 .container {
-    max-width: 1200px;
+  max-width: 1200px;
 }
 
 .main-navbar {
-    padding: 0;
-    margin: -10px -16px 15px;
-    // margin-bottom: 15px;
-    background: #edeff0;
+  padding: 0;
+  margin: -10px -16px 15px;
+  // margin-bottom: 15px;
+  background: #edeff0;
 }
 
 .is-grow {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 .is-100 {
-    height: 100%;
+  height: 100%;
 }
 
 .is-flex {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .center-content {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
 }

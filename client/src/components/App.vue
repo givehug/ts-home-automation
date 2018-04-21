@@ -4,14 +4,13 @@
 		:class="appCssClass"
 	>
     <sidebar-layout v-if="amIAuthed"></sidebar-layout>
-    <div class="main">
-      <router-view :key="$route.path"></router-view>
-    </div>
+    <router-view :key="$route.path"></router-view>
     <header-layout></header-layout>
   </div>
 </template>
 
-<script>import HeaderLayout from '@/components/layout/HeaderLayout.vue';
+<script>
+import HeaderLayout from '@/components/layout/HeaderLayout.vue';
 import SidebarLayout from '@/components/layout/SidebarLayout.vue';
 import {actions, getters} from '@/store/types';
 
@@ -39,9 +38,11 @@ export default {
   display: flex;
   flex-direction: row;
   padding-top: 52px;
+  padding-left: 180px;
 
   &.authed {
     @media screen and (max-width: 1024px) {
+      padding-left: 0;
       padding-left: 0;
     }
   }
