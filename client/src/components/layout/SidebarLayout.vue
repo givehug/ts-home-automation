@@ -18,31 +18,35 @@
 
 <script>
 export default {
-	name: 'SidebarLayout',
-	data() {
-		return {
-			links: [{
-				name: 'dashboard',
-				icon: 'fa-tachometer',
-			},{
-				name: 'devices',
-				icon: 'fa-puzzle-piece',
-			},{
-				name: 'users',
-				icon: 'fa-users',
-			},{
-				name: 'settings',
-				icon: 'fa-cog',
-			}]
-		};
-	}
+  name: 'SidebarLayout',
+  data() {
+    return {
+      links: [{
+        name: 'dashboard',
+        icon: 'fa-tachometer',
+      }, {
+        name: 'devices',
+        icon: 'fa-puzzle-piece',
+      }, {
+        name: 'users',
+        icon: 'fa-users',
+      }, {
+        name: 'settings',
+        icon: 'fa-cog',
+      }],
+    };
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .sidebar {
+  position: fixed;
+  top: 52px;
+  left: 0;
 	flex: 0 0 180px;
-	padding: 15px;
+  padding: 15px;
+  height: calc(100% - 52px);
 
 	.icon {
 		margin-right: 10px;

@@ -1,0 +1,27 @@
+enum ActionTypes {
+  // App
+  APP_INIT = 'APP_INIT',
+
+  // Devices
+  DEVICES_SAVE = 'DEVICES_SAVE',
+  DEVICES_ADD = 'DEVICES_ADD',
+  DEVICES_DELETE = 'DEVICES_DELETE',
+
+  // Robo
+  ROBO_TOGGLE = 'ROBO_TOGGLE',
+
+  // Settings
+  SETTINGS_SAVE = 'SETTINGS_SAVE',
+
+  // User
+  USER_DATA_PATCH = 'USER_DATA_PATCH',
+  USER_ADD = 'USER_ADD',
+  USER_LOGIN = 'USER_LOGIN',
+  USER_LOGOUT = 'USER_LOGOUT',
+
+  // Users
+  USERS_INVITE = 'USERS_INVITE',
+  USERS_DELETE = 'USERS_DELETE',
+}
+
+export default ActionTypes;

@@ -1,13 +1,20 @@
 {
-	"name": "harsu",
-	"version": "1.0.0",
-	"description": "Home automation raspberry security unit.",
-	"main": "main.js",
-	"scripts": {},
-	"author": "Vladimir Boretskyi",
-	"license": "ISC",
+	"name": "ts-home-automation-raspberry-security",
+	"version": "0.0.2",
+	"description": "TypeScript home automation raspberry security unit",
+  "author": "Vladimir Boretskyi",
+	"license": "MIT",
+	"scripts": {
+    "start": "ts-node src/main.ts",
+		"lint": "tslint \"src/**/*.ts\" --fix"
+  },
 	"dependencies": {
+		"@types/node": "^9.6.6",
 		"fs-extra": "^3.0.0",
-		"onoff": "^1.1.2"
+		"onoff": "^1.1.2",
+		"ts-node": "^6.0.0",
+		"tslint": "^5.9.1",
+		"typescript": "^2.8.3",
+		"ws": "^5.1.1"
 	}
 }

@@ -1,0 +1,10 @@
+{
+	"name": "ts-home-automation-common",
+	"version": "0.0.2",
+	"description": "TypeScript home automation common",
+	"author": "Vladimir Boretskyi",
+	"license": "MIT",
+	"dependencies": {
+		"lodash": "^4.17.4"
+	}
+}

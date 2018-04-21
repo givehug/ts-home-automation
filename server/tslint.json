@@ -1,0 +1,7 @@
+{
+  "extends": "../common/tslint.json",
+  "rules": {
+    "no-console": false,
+    "no-this-assignment": false
+  }
+}

@@ -55,29 +55,29 @@
 </template>
 
 <script>
-import {actions, getters} from '@/store/constants';
+import {actions, getters} from '@/store/types';
 
 export default {
-    name: 'HeaderLayout',
-    data () {
-        return {
-			showMobMenu: false,
-		};
+  name: 'HeaderLayout',
+  data() {
+    return {
+      showMobMenu: false,
+    };
+  },
+  computed: {
+    amIAuthed() {
+      return this.$store.getters[getters.IS_AUTHED];
     },
-    computed: {
-        amIAuthed() {
-            return this.$store.getters[getters.AM_I_AUTHED];
-        }
+  },
+  methods: {
+    logOut(e) {
+      e.preventDefault();
+      this.$store.dispatch(actions.USER_LOGOUT);
     },
-    methods: {
-        logOut(e) {
-            e.preventDefault();
-            this.$store.dispatch(actions.USER_LOGOUT);
-		},
-		toggleMobMenu() {
-			this.showMobMenu = !this.showMobMenu;
-		},
+    toggleMobMenu() {
+      this.showMobMenu = !this.showMobMenu;
     },
+  },
 };
 </script>
 

@@ -1,0 +1,21 @@
+{
+	"compilerOptions": {
+		"target": "es6",
+		"module": "es6",
+		"strict": true,
+		"moduleResolution": "node",
+		"sourceMap": true,
+		"noImplicitAny": false,
+		"baseUrl": ".",
+		"types": [
+			"node",
+		],
+		"lib": [
+			"dom",
+      "es2017"
+		]
+	},
+	"include": [
+    "**/*.ts"
+	],
+}

@@ -9,22 +9,22 @@
 	>Save</button>
 
 	<!-- name -->
-    <h4 class="title is-5">Name</h4>
+  <h4 class="title is-5">Name</h4>
     <p><editable-content
-		:content="userData.name"
-		:trim="true"
-		@blur="handleChange({name: $event})"
-	></editable-content></p>
-    <hr />
+      :content="userData.name"
+      :trim="true"
+      @blur="handleChange({name: $event})"
+    ></editable-content></p>
+  <hr />
 
 	<!-- email -->
-    <h4 class="title is-5">Email</h4>
+  <h4 class="title is-5">Email</h4>
     <p><editable-content
-		:content="userData.email"
-		:trim="true"
-		@blur="handleChange({email: $event})"
-	></editable-content></p>
-    <hr />
+      :content="userData.email"
+      :trim="true"
+      @blur="handleChange({email: $event})"
+    ></editable-content></p>
+  <hr />
 
 	<!-- password -->
 	<h4 class="title is-5">Change Password</h4>
@@ -52,72 +52,71 @@
 </div>
 </template>
 
-<script>
-import {actions} from '@/store/constants';
-import EditableContent from '@/components/other/EditableContent.vue';
+<script>import EditableContent from '@/components/other/EditableContent.vue';
+import {actions} from '@/store/types';
 
 export default {
-	name: 'ProfileView',
+  name: 'ProfileView',
 
-	components: {
-        EditableContent,
-	},
-    data() {
-        return {
-			changed: false,
-			userData: {
-				name: this.$store.state.user.data.name,
-				email: this.$store.state.user.data.email,
-				password: '',
-				confirmPassword: '',
-				oldPassword: '',
-			},
-        };
-	},
-    methods: {
-        
-		handleChange(update) {
-			// apply changes to userData
-			Object.assign(this.userData, update);
+  components: {
+    EditableContent,
+  },
+  data() {
+    return {
+      changed: false,
+      userData: {
+        name: this.$store.state.user.data.name,
+        email: this.$store.state.user.data.email,
+        password: '',
+        confirmPassword: '',
+        oldPassword: '',
+      },
+    };
+  },
+  methods: {
 
-			this.checkUserDataChange();
-		},
-		checkUserDataChange() {
-			// check if some user data prop has changes
-			this.changed = this.userData.name !== this.$store.state.user.data.name
-				|| this.userData.email !== this.$store.state.user.data.email
-				|| this.userData.password
-					&& this.userData.confirmPassword
-					&& this.userData.oldPassword;
-		},
-		resetUserData() {
-			this.userData = {
-				name: this.$store.state.user.data.name,
-				email: this.$store.state.user.data.email,
-				password: '',
-				confirmPassword: '',
-				oldPassword: '',
-			};
-		},
-		async saveUserData() {
-			const updated = await this.$store.dispatch(actions.USER_DATA_PATCH, this.userData);
+    handleChange(update) {
+      // apply changes to userData
+      Object.assign(this.userData, update);
 
-			if (updated) {
-				this.$toast.open({
-					message: `User data updated`,
-					type: 'is-success',
-				});
-
-				this.resetUserData();
-				this.checkUserDataChange();
-			} else {
-				this.$toast.open({
-					message: `Update failed`,
-					type: 'is-danger',
-				});
-			}
-		},
+      this.checkUserDataChange();
     },
+    checkUserDataChange() {
+      // check if some user data prop has changes
+      this.changed = this.userData.name !== this.$store.state.user.data.name
+        || this.userData.email !== this.$store.state.user.data.email
+        || this.userData.password
+          && this.userData.confirmPassword
+          && this.userData.oldPassword;
+    },
+    resetUserData() {
+      this.userData = {
+        name: this.$store.state.user.data.name,
+        email: this.$store.state.user.data.email,
+        password: '',
+        confirmPassword: '',
+        oldPassword: '',
+      };
+    },
+    async saveUserData() {
+      const updated = await this.$store.dispatch(actions.USER_DATA_PATCH, this.userData);
+
+      if (updated) {
+        this.$toast.open({
+          message: `User data updated`,
+          type: 'is-success',
+        });
+
+        this.resetUserData();
+        this.checkUserDataChange();
+      } else {
+        this.$toast.open({
+          message: `Update failed`,
+          type: 'is-danger',
+        });
+      }
+    },
+  },
 };
 </script>
 

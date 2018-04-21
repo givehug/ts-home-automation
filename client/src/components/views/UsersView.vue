@@ -1,8 +1,8 @@
 <template>
 <div id="users" class="main-content">
 	<!-- list of all users -->
-    <user-list></user-list>
-    <hr />
+  <user-list></user-list>
+  <hr />
 	<!-- invite new user if admin -->
 	<div v-if="amIAdmin">
 		<h4>Invite new user</h4>
@@ -33,52 +33,51 @@
 </div>
 </template>
 
-<script>
-import {actions, getters} from '@/store/constants';
-import UserList from '@/components/units/UserList.vue';
+<script>import UserList from '@/components/units/UserList.vue';
+import {actions, getters} from '@/store/types';
 
 export default {
-    name: 'UsersView',
-	components: {UserList},
-	data() {
-		return {
-			newUserEmail: '',
-			newUserName: '',
-		};
-	},
-	computed: {
-        amIAdmin() {
-            return this.$store.getters[getters.AM_I_ADMIN];
-        }
+  name: 'UsersView',
+  components: {UserList},
+  data() {
+    return {
+      newUserEmail: '',
+      newUserName: '',
+    };
+  },
+  computed: {
+    amIAdmin() {
+      return this.$store.getters[getters.IS_ADMIN];
     },
-    methods: {
-        async inviteNewUser() {
-			const invited = await this.$store.dispatch(actions.USERS_INVITE, {
-				name: this.newUserName,
-				email: this.newUserEmail,
-			});
+  },
+  methods: {
+    async inviteNewUser() {
+      const invited = await this.$store.dispatch(actions.USERS_INVITE, {
+        name: this.newUserName,
+        email: this.newUserEmail,
+      });
 
-			if (invited) {
-				this.newUserEmail = '';
-				this.newUserName = '';
+      if (invited) {
+        this.newUserEmail = '';
+        this.newUserName = '';
 
-				this.$toast.open({
-					message: `User invited`,
-					type: 'is-success',
-				});
-			} else {
-				this.$toast.open({
-					message: `Error inviting user`,
-					type: 'is-danger',
-				});
-			}
-		},
+        this.$toast.open({
+          message: `User invited`,
+          type: 'is-success',
+        });
+      } else {
+        this.$toast.open({
+          message: `Error inviting user`,
+          type: 'is-danger',
+        });
+      }
     },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 #users {
-    padding-top: 45px;
+  padding-top: 45px;
 }
 </style>
