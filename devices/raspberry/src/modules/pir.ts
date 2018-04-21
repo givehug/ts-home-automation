@@ -1,21 +1,22 @@
-const Gpio = require('onoff').Gpio;
-const EventEmitter = require('events');
+import {Gpio} from 'onoff';
+import {EventEmitter} from 'events';
 
 /*
 * Motion detection module.
 */
-class Pir extends EventEmitter {
+export default class Pir extends EventEmitter {
+  pir;
+
+  // state
+  detectionStatus = 0;
+  detectionPaused = false;
+  lastDetected = null;
 
   constructor() {
     super();
 
     // pir pin
     this.pir = new Gpio(4, 'in', 'both');
-
-    // state
-    this.detectionStatus = 0;
-    this.detectionPaused = false;
-    this.lastDetected = null;
 
     // start motion detection
     this.pir.watch((err, value) => {
@@ -27,7 +28,7 @@ class Pir extends EventEmitter {
     });
   }
 
-	/*
+  /*
 	* Get motion detector state.
 	*/
   get state() {
@@ -37,33 +38,31 @@ class Pir extends EventEmitter {
     };
   }
 
-	/*
+  /*
 	* Toggle motion detection on/off .
 	*/
   toggleDetection() {
     this.detectionStatus = this.detectionStatus === 1 ? 0 : 1;
   }
 
-	/*
+  /*
 	* Set motion detection state.
 	*/
   setDetection(state) {
     this.detectionStatus = state ? 1 : 0;
   }
 
-	/*
+  /*
 	* Pause motion detection.
 	*/
   pauseDetection() {
     this.detectionPaused = true;
   }
 
-	/*
+  /*
 	* Resume motion detection.
 	*/
   resumeDetection() {
     this.detectionPaused = false;
   }
 }
-
-module.exports = Pir;

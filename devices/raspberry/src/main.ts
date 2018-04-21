@@ -1,13 +1,13 @@
 // configs
-const config = require('./config');
+import config from './config';
 
 // modules
-const App = require('./modules/app');
+import App from './modules/app';
 
 // Initialize application.
 const app = new App(config);
 
 // Start application.
 app.start().then(() => {
-	console.log('Raspberry HA unit started.');
+  console.log('Raspberry HA unit started.');
 });

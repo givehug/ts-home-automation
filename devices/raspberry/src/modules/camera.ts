@@ -1,22 +1,23 @@
-const fs = require('fs-extra');
-const spawn = require('child_process').spawn;
+import * as fs from 'fs-extra';
+import {spawn} from 'child_process';
 
 /*
 * Camera module.
 */
-class Camera {
+export default class Camera {
+  imagesDir = './images';
+  imagesLimit = 6;
+  imageQuality = 5;
+  cameraDelay = 1;
+  imageCmd = 'raspistill -t ' + this.cameraDelay + ' -q ' + this.imageQuality + ' -o ';
+  images = [];
+  takingPicture = false;
 
   constructor() {
-    this.imagesDir = './images';
-    this.imagesLimit = 6;
-    this.imageQuality = 5;
-    this.cameraDelay = 1;
-    this.imageCmd = 'raspistill -t ' + this.cameraDelay + ' -q ' + this.imageQuality + ' -o ';
-    this.images = [];
-    this.takingPicture = false;
+    //
   }
 
-	/*
+  /*
 	* Get Camera module state. Images list, takingPicture status.
 	*/
   get state() {
@@ -26,7 +27,7 @@ class Camera {
     };
   }
 
-	/*
+  /*
 	* Read image files from their directory
 	*/
   readImages() {
@@ -55,7 +56,7 @@ class Camera {
     }));
   }
 
-	/*
+  /*
 	* Take picture, save file and return its content
 	*/
   takePicture() {
@@ -94,7 +95,7 @@ class Camera {
     });
   }
 
-	/*
+  /*
 	* Delete picture
 	*/
   deletePictures() {
@@ -109,5 +110,3 @@ class Camera {
     }));
   }
 }
-
-module.exports = Camera;

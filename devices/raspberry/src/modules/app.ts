@@ -1,21 +1,28 @@
-const Camera = require('./camera');
-const Pir = require('./pir');
-const Sockets = require('./webSockets');
-const ArpScan = require('./arpscan');
-const { jsonToMessage } = require('../../../common/utils/wsMessage');
+import Camera from './camera';
+import Pir from './pir';
+import Sockets from './webSockets';
+import ArpScan from './arpscan';
+import wsMessage from'../../../../common/utils/wsMessage';
 
 /*
 * App module.
 */
-class App {
+export default class App {
+  config;
+
+  // state
+  turnDetectionOnWhenNobodyHome = true;
+  someoneHome = false;
+  macMap = {};
+
+  // modules
+  arpscan;
+  camera;
+  pir;
+  sockets;
 
   constructor(config) {
     this.config = config;
-
-    // state
-    this.turnDetectionOnWhenNobodyHome = true;
-    this.someoneHome = false;
-    this.macMap = {};
 
     this.arpscan = new ArpScan(null, 60000);
     this.camera = new Camera();
@@ -38,11 +45,11 @@ class App {
     });
   }
 
-	/*
+  /*
 	* Return all modules states.
 	*/
-  reportState(newDetection) {
-    return jsonToMessage(
+  reportState(newDetection = false) {
+    return wsMessage.prep(
       'stateUpdate',
       {
         state: {
@@ -61,7 +68,7 @@ class App {
     );
   }
 
-	/*
+  /*
 	* Take picture with camera module.
 	*/
   async takePicture() {
@@ -70,7 +77,7 @@ class App {
     setTimeout(this.pir.resumeDetection, 3000);
   }
 
-	/*
+  /*
 	* Initialize raspberry home automation unit app.
 	*/
   async start() {
@@ -128,5 +135,3 @@ class App {
   }
 
 }
-
-module.exports = App;

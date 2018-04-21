@@ -1,26 +1,28 @@
-const child = require('child_process');
-const EventEmitter = require('events');
+import {exec} from 'child_process';
+import {EventEmitter} from 'events';
 
 /*
 * Home network module.
 */
-class ArpScan extends EventEmitter {
+export default class ArpScan extends EventEmitter {
+  scanInterval = 10000;
+  fiveMinuteInterval = 300000;
+  fiveMinuteMark = 0;
+  macMap = {};
+  cachedMacMap = {};
 
   constructor(scanInterval, fiveMinuteInterval) {
     super();
 
-    this.scanInterval = scanInterval || 10000;
-    this.fiveMinuteInterval = fiveMinuteInterval || 300000;
-    this.fiveMinuteMark = 0;
-    this.macMap = {};
-    this.cachedMacMap = {};
+    this.scanInterval = scanInterval || this.scanInterval;
+    this.fiveMinuteInterval = fiveMinuteInterval || this.fiveMinuteInterval;
   }
 
-	/*
+  /*
 	* Scan local wifi network for connecte devices
 	*/
   scan() {
-    child.exec('sudo arp-scan --interface=wlan0 --localnet', (err, res) => {
+    exec('sudo arp-scan --interface=wlan0 --localnet', (err, res) => {
       if (err) return console.log('ArpScan scan error: ', err);
 
       const now = Date.now();
@@ -43,12 +45,10 @@ class ArpScan extends EventEmitter {
     });
   }
 
-	/*
+  /*
 	* Perform scan with given interval
 	*/
   watch() {
     setInterval(() => this.scan(), this.scanInterval);
   }
 }
-
-module.exports = ArpScan;
