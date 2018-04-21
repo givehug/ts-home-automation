@@ -7,11 +7,8 @@ const {messageToJSON} = require('../../../common/utils/wsMessage');
 class Sockets {
 	constructor(options) {
 		this.options = options;
-
 		this.ws;
 		this.reconnectInterval = 1000;
-
-		this.send = this.send.bind(this);
 	}
 
 	/*
@@ -30,9 +27,9 @@ class Sockets {
 
 			if (this.options.onMessage) {
 				if (this.options.onMessage[msgType]) {
-					this.options.onMessage[msgType](this.send, msgData);
+					this.options.onMessage[msgType](() => this.send(), msgData);
 				} else if (this.options.onMessage.default) {
-					this.options.onMessage.default(this.send, msgData);
+					this.options.onMessage.default(() => this.send(), msgData);
 				}
 			}
 		});
