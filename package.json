@@ -1,7 +1,7 @@
 {
-  "name": "js-home-automation",
-  "version": "0.0.1",
-  "description": "JavaScript home automation.",
+  "name": "ts-home-automation",
+  "version": "0.0.2",
+  "description": "TypeScript home automation.",
   "author": "Vladimir Boretskyi",
   "license": "MIT",
   "scripts": {

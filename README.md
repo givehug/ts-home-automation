@@ -1,4 +1,4 @@
-# Simple JavaScript Home Automation
+# Simple ~~JavaScript~~ TypeScript Home Automation
 ![alt text](/client/public/favicon.ico "logo")
 
 [Demo video](https://youtu.be/lrV0SyhGV-c)
@@ -34,7 +34,6 @@ Each device has independent power supply and is connected wirelessly to home WiF
 - face recognition (when motion detected, to differentiate between homie and intruder)
 - replace web speach API with something cross platfrom
 - enhance security
-- migrate to TypeScript (nodemcu?)
 - improve vue components composition
 - lerna js project splitting
 - add homie entrance sound and illumination introduction
