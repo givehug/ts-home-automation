@@ -28,4 +28,5 @@ yarn-error.log*
 *.sln
 
 // Tools
-devices/tools/flashEspruino/firmware
+devices/tools/flashEspruino/firmware/*
+!devices/tools/flashEspruino/firmware/README.md
