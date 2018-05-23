@@ -22,3 +22,7 @@ esptool.stdout.on('data', data => {
     process.stdout.cursorTo(0);
     process.stdout.write(`${data}`);
 });
+
+esptool.stderr.on('data', data => {
+    console.error(`${data}`);
+});
