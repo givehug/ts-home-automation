@@ -49,7 +49,7 @@ export default {
 
   &.app-welcome,
   &.app-login {
-      padding-left: 0;
+	  padding-left: 0;
   }
 }
 </style>
