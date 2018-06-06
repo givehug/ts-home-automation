@@ -46,5 +46,10 @@ export default {
       padding-left: 0;
     }
   }
+
+  &.app-welcome,
+  &.app-login {
+      padding-left: 0;
+  }
 }
 </style>
