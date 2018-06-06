@@ -21,13 +21,15 @@
 		},
 		"lib": [
 			"dom",
-      "es2017"
-		]
+            "es2017",
+            "dom.iterable",
+            "scripthost"
+        ]
 	},
 	"include": [
 		"src/**/*.ts",
 		"src/**/*.vue",
-    "tests/**/*.ts"
+        "tests/**/*.ts"
 	],
 	"exclude": [
 		"node_modules"

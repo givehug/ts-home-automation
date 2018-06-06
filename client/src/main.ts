@@ -15,6 +15,9 @@ import App from './components/App.vue';
 import router from './router';
 import store from './store';
 
+// pwa
+import './registerServiceWorker';
+
 // styles
 import './assets/styles/main.scss';
 
