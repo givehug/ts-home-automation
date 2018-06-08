@@ -10,31 +10,13 @@
 			@click="toggleMobMenu()"
 			:class="{'is-active': showMobMenu}"
 		>
-			<span></span>
-			<span></span>
-			<span></span>
+			<span></span><span></span><span></span>
 		</div>
 	</div>
 	<!-- desktop menu -->
 	<div class="navbar-menu">
 		<div class="navbar-end" v-if="amIAuthed">
-			<router-link
-				class="navbar-item"
-				to="/profile"
-			>{{$store.state.user.data && $store.state.user.data.name}}</router-link>
-			<a
-				class="navbar-item" to="/settings"
-				@click="logOut($event)"
-			>
-				<b-tooltip
-					label="log out"
-					position="is-left" type="is-white"
-				>
-					<span class="icon is-medium">
-						<i class="fa fa-power-off fa-lg"></i>
-					</span>
-				</b-tooltip>
-			</a>
+            <h4 class="navbar-item title is-4 route-title">{{$store.state.user.data && $store.state.user.data.name}}</h4>
 		</div>
 	</div>
 	<!-- mob menu -->
@@ -44,11 +26,12 @@
 		:class="{'is-active': showMobMenu}"
 		@click="toggleMobMenu()"
 	>
-		<li><router-link to="/profile">profile</router-link></li>
-		<li><router-link to="/settings">settings</router-link></li>
-		<li><router-link to="/dashboard">dashboard</router-link></li>
-		<li><router-link to="/devices">devices</router-link></li>
-		<li><router-link to="/users">users</router-link></li>
+        <li
+            v-for="link in loggedRoutes"
+            :key="link.name"
+        >
+            <router-link :to="'/' + link.name">{{link.name}}</router-link>
+        </li>
 		<li @click="logOut($event)">logout</li>
 	</ul>
 </nav>
@@ -56,39 +39,46 @@
 
 <script>
 import {actions, getters} from '@/store/types';
+import loggedRoutes from '@/router/loggedRoutes';
 
 export default {
-  name: 'HeaderLayout',
-  data() {
-    return {
-      showMobMenu: false,
-    };
-  },
-  computed: {
-    amIAuthed() {
-      return this.$store.getters[getters.IS_AUTHED];
+    name: 'HeaderLayout',
+    data() {
+        return {
+            showMobMenu: false,
+            loggedRoutes,
+        };
     },
-  },
-  methods: {
-    logOut(e) {
-      e.preventDefault();
-      this.$store.dispatch(actions.USER_LOGOUT);
+    computed: {
+        amIAuthed() {
+            return this.$store.getters[getters.IS_AUTHED];
+        },
     },
-    toggleMobMenu() {
-      this.showMobMenu = !this.showMobMenu;
+    methods: {
+        logOut(e) {
+            e.preventDefault();
+            this.$store.dispatch(actions.USER_LOGOUT);
+        },
+        toggleMobMenu() {
+            this.showMobMenu = !this.showMobMenu;
+        },
     },
-  },
 };
 </script>
 
 <style lang="scss" scoped>
+.navbar {
+    padding: 0 10px;
+    @media screen and (max-width: 1023px) {
+        padding: 0;
+    }
+}
 .route-title {
 	margin: 0 !important;
 }
 .mob-nav {
-	display: none;
-
-	@media screen and (max-width: 1024px) {
+    display: none;
+	@media screen and (max-width: 1023px) {
 		position: fixed;
 		top: 52px;
 		left: 0;
@@ -97,14 +87,12 @@ export default {
 		z-index: 5;
 		background: white;		
 		padding: 20px;
-
 		li {
 			padding: 15px;
 			color: black;
 			text-transform: uppercase;
 			font-weight: 500;
 		}
-
 		&.is-active {
 			display: block;
 		}

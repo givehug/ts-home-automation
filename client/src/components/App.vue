@@ -33,23 +33,21 @@ export default {
 
 <style lang="scss">
 #app {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  padding-top: 52px;
-  padding-left: 180px;
-
-  &.authed {
-    @media screen and (max-width: 1024px) {
-      padding-left: 0;
-      padding-left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding-top: 52px;
+    padding-left: 80px;
+    &.authed {
+        @media screen and (max-width: 1023px) {
+            padding-left: 0;
+            padding-left: 0;
+        }
     }
-  }
-
-  &.app-welcome,
-  &.app-login {
-	  padding-left: 0;
-  }
+    &.app-welcome,
+    &.app-login {
+        padding-left: 0;
+    }
 }
 </style>

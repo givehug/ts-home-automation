@@ -8,18 +8,18 @@ body {
 .main-content {
   flex-grow: 1;
   // overflow-y: auto;
-  padding: 30px;
+  padding: 30px 50px;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
 
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 1023px) {
     padding: 15px;
   }
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1600px;
 }
 
 .main-navbar {

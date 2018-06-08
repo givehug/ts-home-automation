@@ -11,20 +11,25 @@
 ![alt text](/docs/images/ui.png "user interface")
 
 ### TECH STACK
-- Web server: NodeJS, MongoDB.
-- Web client: VueJS.
+- Web server: NodeJS, MongoDB
+- Web client: VueJS
 - Security unit: Raspberry pi 3 (NodeJS)
-- LED bulb: Nodemcu (Espruino).
+- LED bulb: Nodemcu (Espruino)
 
 ![alt text](/docs/images/schema.png "schema")
 
 ### TODO
 - PWA support
-- unit/e2e tests, test coverage
+- keep all settings on server
+- make docs readable
+- gui components refactoring
+- text commands similar to Jarvis
 - save images on server
-- video streaming
+- network unit customization
 - face recognition (when motion detected, to differentiate between homie and intruder)
 - replace web speach API with something cross platfrom
+- unit/e2e tests, test coverage
+- video streaming
 - enhance security
 - lerna js project splitting
 - add homie entrance sound and illumination introduction
