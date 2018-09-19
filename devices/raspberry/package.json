@@ -1,20 +1,21 @@
 {
-	"name": "ts-home-automation-raspberry-security",
-	"version": "0.0.2",
-	"description": "TypeScript home automation raspberry security unit",
-  "author": "Vladimir Boretskyi",
-	"license": "MIT",
+	"name": "@home-automation/control-unit",
+	"version": "1.0.0",
+	"description": "Home automation raspberry control unit",
+	"main": "main.js",
 	"scripts": {
-    "start": "ts-node src/main.ts",
+		"start": "ts-node src/main.ts",
 		"lint": "tslint \"src/**/*.ts\" --fix"
-  },
+	},
+	"author": "Vladimir Boretskyi",
+	"license": "ISC",
 	"dependencies": {
-		"@types/node": "^9.6.6",
-		"fs-extra": "^3.0.0",
-		"onoff": "^1.1.2",
-		"ts-node": "^6.0.0",
-		"tslint": "^5.9.1",
-		"typescript": "^2.8.3",
-		"ws": "^5.1.1"
+		"@types/node": "10.10.1",
+		"fs-extra": "7.0.0",
+		"onoff": "3.2.1",
+		"ts-node": "7.0.1",
+		"tslint": "5.11.0",
+		"typescript": "3.0.3",
+		"ws": "6.0.0"
 	}
 }
