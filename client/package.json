@@ -15,9 +15,9 @@
 		"not ie <= 8"
 	],
 	"dependencies": {
-		"@vue/cli-plugin-pwa": "^3.0.0-beta.15",
-		"@vue/cli-plugin-typescript": "^3.0.0-beta.15",
-		"@vue/cli-service": "^3.0.0-beta.15",
+		"@vue/cli-plugin-pwa": "3.0.3",
+		"@vue/cli-plugin-typescript": "3.0.3",
+		"@vue/cli-service": "3.0.3",
 		"annyang": "*",
 		"autoprefixer": "^7.1.6",
 		"axios": "^0.17.1",
