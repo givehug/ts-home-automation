@@ -29,6 +29,7 @@
 		"node-sass": "4.9.3",
 		"register-service-worker": "^1.0.0",
 		"sass-loader": "^7.0.1",
+		"typescript": "^3.0.3",
 		"vue": "^2.5.16",
 		"vue-class-component": "^6.0.0",
 		"vue-property-decorator": "^6.0.0",
