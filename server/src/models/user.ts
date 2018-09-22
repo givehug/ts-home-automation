@@ -50,7 +50,7 @@ UserSchema.methods.generateAuthToken = async function() {
     access,
   }, config.JWT_SECRET).toString();
 
-  user.tokens.push({
+  user.tokens = user.tokens.concat({
     access,
     token,
   });
