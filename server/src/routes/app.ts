@@ -11,7 +11,7 @@ import {UserData} from '../../../common/@types/store';
 
 const userProps = ['name', 'email', '_id', 'admin'];
 const deviceProps = ['name', 'type', '_id', 'description'];
-const settingsProps = ['annyangActive', 'deviceIdentifiers', 'notifyOnMotionDetection'];
+const settingsProps = ['annyangActive', 'deviceIdentifiers', 'notifyOnMotionDetection', 'networkCustomNames'];
 
 const router = express.Router();
 

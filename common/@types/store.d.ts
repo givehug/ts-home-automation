@@ -67,7 +67,8 @@ export interface SettingsState {
 	data: {
 		deviceIdentifiers?: string[];
 		annyangActive?: boolean;
-		notifyOnMotionDetection?: boolean;
+        notifyOnMotionDetection?: boolean;
+        networkCustomNames?: {[ip: string]: string};
 	};
 }
 

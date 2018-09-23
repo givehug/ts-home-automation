@@ -60,7 +60,8 @@
 </div>
 </template>
 
-<script>import {actions} from '@/store/types';
+<script>
+import {actions} from '@/store/types';
 
 export default {
   name: 'SettingsView',
