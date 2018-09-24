@@ -1,5 +1,5 @@
 <template>
-  <li  class="network-item">
+  <li class="network-item" v-bind:class="{blur}">
     <editable-content
       class="network-item__name"
       :content="name"
@@ -25,6 +25,7 @@ export default {
     ip: String,
     mac: String,
     editable: Boolean,
+    blur: Boolean,
   },
   methods: {
     handleChange(name) {
@@ -53,6 +54,18 @@ export default {
   &__ip,
   &__mac, {
     width: 30%;
+  }
+
+  &.blur .network-item__ip,
+  &.blur .network-item__mac, {
+    color: transparent;
+    text-shadow: #111 0 0 20px;
+    user-select:none;
+    &:hover {
+      color: inherit;
+      text-shadow: none;
+      user-select:all;
+    }
   }
 }
 </style>

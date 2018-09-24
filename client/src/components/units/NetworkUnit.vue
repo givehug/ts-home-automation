@@ -14,6 +14,7 @@
       :ip="mac[0]"
       :mac="mac[1]"
       :editable="true"
+      :blur="true"
       @changeName="changeName(mac[0], $event)"
     ></network-item>
   </ul>
