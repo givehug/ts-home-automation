@@ -13,6 +13,9 @@ enum ActionTypes {
   // Settings
   SETTINGS_SAVE = 'SETTINGS_SAVE',
 
+    // Home settings
+    HOME_SETTINGS_SAVE = 'HOME_SETTINGS_SAVE',
+
   // User
   USER_DATA_PATCH = 'USER_DATA_PATCH',
   USER_ADD = 'USER_ADD',

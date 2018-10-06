@@ -23,6 +23,9 @@ enum MutationTypes {
   // Home state
   HOME_STATE_UPDATE = 'HOME_STATE_UPDATE',
 
+  // Home state
+  HOME_SETTINGS_UPDATE = 'HOME_SETTINGS_UPDATE',
+
   // User
   USER_TOKEN_SET = 'USER_TOKEN_SET',
   USER_TOKEN_CLEAR = 'USER_TOKEN_CLEAR',

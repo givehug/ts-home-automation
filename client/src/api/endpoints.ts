@@ -3,6 +3,7 @@ enum Endpoints {
   userMe = 'users/me',
   userLogin = 'login',
   userLogout = 'users/me/token',
+  homeSettings = 'homeSettings/',
   settings = 'settings/',
   devices = 'devices/',
   app = 'app/',

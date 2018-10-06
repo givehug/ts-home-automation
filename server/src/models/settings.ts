@@ -7,7 +7,6 @@ const SettingsSchema = new mongoose.Schema({
     type: Boolean,
   },
   deviceIdentifiers: [{type: String}],
-  networkCustomNames: {type: Object},
   notifyOnMotionDetection: {
     default: false,
     type: Boolean,

@@ -31,7 +31,7 @@ const initialState: HomeState = {
     detectionStatus: null, // whether motion detector is ON or OFF
     lastDetected: null, // last motion detection date and time
     images: null, // list of recent images taken
-    turnDetectionOnWhenNobodyHome: null,
+    pirOnWhenNobodyHome: null,
   },
   /**
    * Simple LED bulb state.

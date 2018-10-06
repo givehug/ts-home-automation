@@ -1,5 +1,4 @@
 import * as express from 'express';
-import {pick} from 'lodash';
 import {authenticate} from '../middleware/authenticate';
 import {Settings} from '../models/settings';
 
@@ -9,7 +8,7 @@ router.use('/settings', authenticate);
 router.route('/settings')
   // UPDATE USER SETTINGS
   .patch(async (req, res) => {
-    const query = {userId: req.user._id};
+    const query = {userId: req['user']._id};
     const update = req.body;
     const options = {
       new: true,

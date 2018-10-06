@@ -47,6 +47,7 @@ const actions = {
       context.commit(types.mutations.USERS_MAP_UPDATE, data.users);
       context.commit(types.mutations.DEVICES_MAP_UPDATE, data.devices);
       context.commit(types.mutations.SETTINGS_UPDATE, data.settings);
+      context.commit(types.mutations.HOME_SETTINGS_UPDATE, data.homeSettings);
       context.commit(types.mutations.APP_DATA_LOADED);
       context.commit(types.mutations.ROBO_INIT);
       context.commit(types.mutations.WS_CONNECT);

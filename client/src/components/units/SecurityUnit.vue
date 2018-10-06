@@ -74,8 +74,8 @@
                 <input
                     class="checkbox checkbox--margin"
                     type="checkbox"
-                    v-model="securityState.turnDetectionOnWhenNobodyHome"
-                    @click="sendCommand(commandsByKey.toggleDetectionWhenNobodyHome.key)"
+                    v-model="securityState.pirOnWhenNobodyHome"
+                    @click="sendCommand(commandsByKey.togglePirWhenNobodyHome.key)"
                 />
             </div>
         </div>

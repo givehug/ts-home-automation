@@ -4,6 +4,7 @@ import mongoose from '../db/mongoose';
 import {authenticate} from '../middleware/authenticate';
 import {Device} from '../models/device';
 import {Settings} from '../models/settings';
+import {HomeSettings} from '../models/homeSettings';
 import {User} from '../models/user';
 import getMapBy from '../../../common/utils/getMapBy';
 
@@ -11,7 +12,8 @@ import {UserData} from '../../../common/@types/store';
 
 const userProps = ['name', 'email', '_id', 'admin'];
 const deviceProps = ['name', 'type', '_id', 'description'];
-const settingsProps = ['annyangActive', 'deviceIdentifiers', 'notifyOnMotionDetection', 'networkCustomNames'];
+const settingsProps = ['annyangActive', 'deviceIdentifiers', 'notifyOnMotionDetection'];
+const homeSettingsProps = ['networkCustomNames'];
 
 const router = express.Router();
 
@@ -21,11 +23,13 @@ router.route('/app')
   .get(async (req, res) => {
     try {
       const settingsMap = keyBy('userId', await Settings.find());
+      const homeSettings = await HomeSettings.find();
 
       res.send({
         devices: getMapBy('_id', pick(deviceProps), await Device.find()),
-        settings: pick(settingsProps, settingsMap[req.user._id]),
-        user: pick(userProps, req.user),
+        homeSettings: pick(homeSettingsProps, homeSettings[0]),
+        settings: pick(settingsProps, settingsMap[req['user']._id]),
+        user: pick(userProps, req['user']),
         users: getMapBy('_id', (u: UserData) => ({
           ...pick(userProps, u),
           deviceIdentifiers: settingsMap[u._id].deviceIdentifiers,

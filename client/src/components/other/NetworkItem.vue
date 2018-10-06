@@ -61,7 +61,8 @@ export default {
     color: transparent;
     text-shadow: #111 0 0 20px;
     user-select:none;
-    &:hover {
+    &:hover,
+    &:focus {
       color: inherit;
       text-shadow: none;
       user-select:all;

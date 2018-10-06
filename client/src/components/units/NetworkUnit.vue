@@ -8,14 +8,14 @@
       :editable="false"
     ></network-item>
     <network-item
-      v-for="mac in $store.state.home.network.macMap"
-      :key="mac[1]"
-      :name="($store.state.settings.data.networkCustomNames || {})[mac[0]] || mac[2]"
-      :ip="mac[0]"
-      :mac="mac[1]"
+      v-for="item in $store.state.home.network.macMap"
+      :key="item[1]"
+      :name="($store.state.homeSettings.networkCustomNames || {})[item[1]] || item[2]"
+      :ip="item[0]"
+      :mac="item[1]"
       :editable="true"
       :blur="true"
-      @changeName="changeName(mac[0], $event)"
+      @changeName="changeName(item[1], $event)"
     ></network-item>
   </ul>
 </template>
@@ -35,11 +35,13 @@ export default {
     };
   },
   methods: {
-    changeName(ip, name) {
-      this.$store.dispatch(actions.SETTINGS_SAVE, {networkCustomNames: {
-        ...this.$store.state.settings.data.networkCustomNames,
-        [ip]: name,
-      }});
+    changeName(mac, name) {
+      this.$store.dispatch(actions.HOME_SETTINGS_SAVE, {
+        networkCustomNames: {
+          ...this.$store.state.homeSettings.networkCustomNames,
+          [mac]: name,
+        },
+      });
     },
   },
 };
@@ -47,6 +49,7 @@ export default {
 
 <style lang="scss" scoped>
 .network-list {
+  overflow-x: auto;
   &__titles {
     text-transform: uppercase;
   }

@@ -2,15 +2,16 @@ import * as uuidv4 from 'uuid';
 import compareSets from '../../../common/utils/compareSets';
 import wsMsg from '../../../common/utils/wsMessage';
 import {Settings} from '../models/settings';
+import {Device} from '../models/device';
 import {notifyDetection} from './motionDetection';
 
 const pingInterval = 10000;
 
 export default class WsServer {
-  private WS: any;
-  private wss: any;
-  private connectedDevices?: Set<string>;
-  private cachedMacMapStr: string;
+  WS: any;
+  wss: any;
+  connectedDevices?: Set<string>;
+  cachedMacMapStr: string;
 
   constructor(WS, wss) {
     this.WS = WS;
@@ -69,7 +70,7 @@ export default class WsServer {
     }, pingInterval);
   }
 
-  private broadcast(socket, msg, target?) {
+  broadcast(socket, msg, target?) {
     this.wss.clients.forEach((client) => {
       if (
         client.readyState !== this.WS.OPEN
@@ -94,20 +95,27 @@ export default class WsServer {
     });
   }
 
-  private handleDeviceConnection(ws) {
-    this.connectedDevices.add(ws.protocol);
-    // send list of connected device to ui
-    this.broadcast(null, wsMsg.prep('connectedDevices', Array.from(this.connectedDevices)), 'ui');
+  async handleDeviceConnection(ws) {
+    // check if it is recognized device
+    try {
+      await Device.findById(ws.protocol.replace('device-', ''));
+
+      this.connectedDevices.add(ws.protocol);
+      // send list of connected device to ui
+      this.broadcast(null, wsMsg.prep('connectedDevices', Array.from(this.connectedDevices)), 'ui');
+    } catch (error) {
+      ws.terminate(); // if not fund in db, terminate
+    }
   }
 
-  private handleUiConnection(ws) {
+  handleUiConnection(ws) {
     // send list of connected device to ui
-    ws.send(wsMsg.prep('connectedDevices', Array.from(this.connectedDevices)), 'ui');
+    this.broadcast(null, wsMsg.prep('connectedDevices', Array.from(this.connectedDevices)), 'ui');
     // currently device responds with stateUpdate on any message
     this.broadcast(null, wsMsg.prep('newUiConnection'), 'devices');
   }
 
-  private handleMessage(message, ws) {
+  handleMessage(message, ws) {
     const [msgType, msgData] = wsMsg.parse(message);
 
     ws.alive = true;
@@ -125,7 +133,7 @@ export default class WsServer {
     }
   }
 
-  private async handleStateUpdate(state, ws) {
+  async handleStateUpdate(state, ws) {
     // handle security new motion detection
     if (state.security && state.security.newDetection) {
       // handle notifications for each state key

@@ -1,5 +1,4 @@
 import * as fs from 'fs-extra';
-import {spawn} from 'child_process';
 
 /*
 * Camera module.

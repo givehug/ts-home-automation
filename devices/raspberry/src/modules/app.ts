@@ -3,6 +3,7 @@ import Pir from './pir';
 import Sockets from './webSockets';
 import ArpScan from './arpscan';
 import wsMessage from'../../../../common/utils/wsMessage';
+import * as fs from 'fs-extra';
 
 /*
 * App module.
@@ -10,8 +11,12 @@ import wsMessage from'../../../../common/utils/wsMessage';
 export default class App {
   config;
 
+  settings: {
+    pirOn: boolean,
+    pirOnWhenNobodyHome: boolean,
+  };
+
   // state
-  turnDetectionOnWhenNobodyHome = true;
   someoneHome = false;
   macMap = {};
 
@@ -22,8 +27,8 @@ export default class App {
   sockets;
 
   constructor(config) {
+    this.settings = fs.readJsonSync('./settings.json');
     this.config = config;
-
     this.arpscan = new ArpScan(null, 60000);
     this.camera = new Camera();
     this.pir = new Pir();
@@ -35,7 +40,6 @@ export default class App {
         'deviceCommand': (send, data) => this.deviceCommandHandler(send, data),
         'someoneHome': (send, data) => {
           this.someoneHome = data;
-          this.turnDetectionOn();
           send(this.reportState());
         },
         'default': send => {
@@ -55,14 +59,13 @@ export default class App {
         state: {
           security: {
             'images': this.camera.state.images,
-            'detectionStatus': this.pir.state.detectionStatus,
+            'detectionStatus': this.settings.pirOn,
             'lastDetected': this.pir.state.lastDetected,
             'newDetection': newDetection,
-            'turnDetectionOnWhenNobodyHome': this.turnDetectionOnWhenNobodyHome,
+            'pirOnWhenNobodyHome': this.settings.pirOnWhenNobodyHome,
           },
           network: { 'macMap': this.macMap },
         },
-        // commands: ['take picture', 'toggle detection', 'delete pictures'],
         // _id: this.config.deviceId,
       }
     );
@@ -73,8 +76,13 @@ export default class App {
 	*/
   async takePicture() {
     this.pir.pauseDetection();
-    await this.camera.takePicture();
-    setTimeout(this.pir.resumeDetection, 3000);
+    try {
+      await this.camera.takePicture();
+    } catch (error) {
+      console.log('Camera error', error);
+    } finally {
+      setTimeout(() => this.pir.resumeDetection(), 3000);
+    }
   }
 
   /*
@@ -91,47 +99,37 @@ export default class App {
     });
     // listen to motion detector events
     this.pir.on('motionDetected', async () => {
-      await this.takePicture();
-      this.sockets.send(this.reportState(true));
+      if (this.settings.pirOn || this.settings.pirOnWhenNobodyHome && !this.someoneHome) {
+        await this.camera.takePicture();
+        this.sockets.send(this.reportState());
+      }
     });
   }
 
-  turnDetectionOn() {
-    if (this.turnDetectionOnWhenNobodyHome && !this.someoneHome) {
-      this.pir.setDetection(1);
-    }
+  saveSettings() {
+    fs.writeJsonSync('./settings.json', this.settings);
   }
 
   async deviceCommandHandler(send, data) {
     switch (data.cmdId) {
       case 'takePicture':
         await this.takePicture();
-        send(this.reportState());
         break;
       case 'toggleDetection':
-        if (
-          !this.someoneHome // dont turn detection off if nobody home and
-          && this.turnDetectionOnWhenNobodyHome // turnDetectionOnWhenNobodyHome is set to true
-          && this.pir.state.detectionStatus === 1
-        ) {
-          send(this.reportState());
-          break;
-        }
-        this.pir.toggleDetection();
-        send(this.reportState());
+        this.settings.pirOn = !this.settings.pirOn;
+        this.saveSettings();
         break;
       case 'deletePictures':
         await this.camera.deletePictures();
-        send(this.reportState());
         break;
-      case 'toggleDetectionWhenNobodyHome':
-        this.turnDetectionOnWhenNobodyHome = !this.turnDetectionOnWhenNobodyHome;
-        this.turnDetectionOn();
-        send(this.reportState());
+      case 'togglePirWhenNobodyHome':
+        this.settings.pirOnWhenNobodyHome = !this.settings.pirOnWhenNobodyHome;
+        this.saveSettings();
         break;
       default:
         break;
     }
+    send(this.reportState());
   }
 
 }

@@ -34,7 +34,7 @@ export interface SecurityState {
   detectionStatus: boolean | null;
   lastDetected: Date | any;
   images: string[] | null;
-  turnDetectionOnWhenNobodyHome: boolean | null;
+  pirOnWhenNobodyHome: boolean | null;
 }
 
 export interface HomeState {
@@ -43,6 +43,9 @@ export interface HomeState {
   led: 1 | 0 | null; // on | off | unknown;
 }
 
+export interface HomeSettings {
+	networkCustomNames: {[mac: string]: string};
+}
 
 // Robo
 export interface RoboEmotions {

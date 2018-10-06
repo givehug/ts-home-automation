@@ -6,6 +6,7 @@ import * as types from './types';
 import app from './modules/app';
 import devices from './modules/devices';
 import home from './modules/home';
+import homeSettings from './modules/homeSettings';
 import robo, {roboMiddleware} from './modules/robo';
 import settings from './modules/settings';
 import user from './modules/user';
@@ -33,6 +34,7 @@ const modules = {
   ws,
   settings,
   home,
+  homeSettings,
 };
 
 // Getters

@@ -40,7 +40,6 @@ const actions = {
           name,
           _id: res.data,
           deviceIdentifiers: [],
-          networkCustomNames: {},
         },
       });
 

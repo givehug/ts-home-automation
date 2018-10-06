@@ -18,7 +18,7 @@ const commands = [
     title: 'delete pictures',
   },
   {
-    key: 'toggleDetectionWhenNobodyHome',
+    key: 'togglePirWhenNobodyHome',
     title: 'turn detection on when nobody home',
   },
   {

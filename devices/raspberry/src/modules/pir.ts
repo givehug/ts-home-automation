@@ -8,7 +8,6 @@ export default class Pir extends EventEmitter {
   pir;
 
   // state
-  detectionStatus = 0;
   detectionPaused = false;
   lastDetected = null;
 
@@ -20,7 +19,7 @@ export default class Pir extends EventEmitter {
 
     // start motion detection
     this.pir.watch((err, value) => {
-      if (!this.detectionStatus || this.detectionPaused) {
+      if (this.detectionPaused) {
         return;
       }
       this.lastDetected = Date.now();
@@ -33,23 +32,8 @@ export default class Pir extends EventEmitter {
 	*/
   get state() {
     return {
-      detectionStatus: this.detectionStatus,
       lastDetected: this.lastDetected,
     };
-  }
-
-  /*
-	* Toggle motion detection on/off .
-	*/
-  toggleDetection() {
-    this.detectionStatus = this.detectionStatus === 1 ? 0 : 1;
-  }
-
-  /*
-	* Set motion detection state.
-	*/
-  setDetection(state) {
-    this.detectionStatus = state ? 1 : 0;
   }
 
   /*
