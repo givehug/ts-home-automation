@@ -1,7 +1,5 @@
 # ![alt text](/client/public/favicon.ico "logo") Simple ~~JavaScript~~ TypeScript Home Automation 
 
-[Demo video](https://youtu.be/lrV0SyhGV-c)
-
 ### FEATURES
 - voice control (chrome only)
 - security: motion detection, camera (pictures), email notifications
@@ -29,7 +27,7 @@
 - face recognition (when motion detected, to differentiate between homie and intruder)
 - replace web speach API with something cross platfrom
 - unit/e2e tests, test coverage
-- video streaming
+- video streaming ([see](https://github.com/givehug/picam-mjpeg-js))
 - enhance security
 - lerna js project splitting
 - add homie entrance sound and illumination introduction
