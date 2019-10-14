@@ -20,7 +20,7 @@
 		"@vue/cli-service": "3.0.3",
 		"annyang": "*",
 		"autoprefixer": "^7.1.6",
-		"axios": "^0.17.1",
+		"axios": "^0.18.1",
 		"buefy": "^0.6.1",
 		"bulma": "^0.6.1",
 		"connect-history-api-fallback": "^1.5.0",
