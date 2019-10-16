@@ -2,7 +2,7 @@
 
 ### FEATURES
 - voice control (chrome only)
-- security: motion detection, camera (pictures), email notifications
+- security: motion detection, camera (pictures, video is [here](https://github.com/givehug/picam-mjpeg-js)), email notifications
 - track whether user is at home or not
 - JWT, bcrypt user authorization
 
