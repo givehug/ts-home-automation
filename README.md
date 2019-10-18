@@ -1,4 +1,6 @@
-# ![alt text](/client/public/favicon.ico "logo") Simple ~~JavaScript~~ TypeScript Home Automation 
+# JavaScript Home Automation Example <img src="./docs/images/robo.gif" alt="logo" width="75"/>
+
+<img src="./docs/images/rpi.JPG" alt="raspberry pi camera" width="300"/>
 
 ### FEATURES
 - voice control (chrome only)
@@ -6,7 +8,7 @@
 - track whether user is at home or not
 - JWT, bcrypt user authorization
 
-![alt text](/docs/images/ui.png "user interface")
+![alt text](./docs/images/ui.png "user interface")
 
 ### TECH STACK
 - Web server: NodeJS, MongoDB
