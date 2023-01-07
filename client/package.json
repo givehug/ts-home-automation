@@ -17,7 +17,7 @@
 	"dependencies": {
 		"@vue/cli-plugin-pwa": "4.0.0",
 		"@vue/cli-plugin-typescript": "4.0.0",
-		"@vue/cli-service": "4.0.0",
+		"@vue/cli-service": "5.0.8",
 		"annyang": "*",
 		"autoprefixer": "^7.1.6",
 		"axios": "^0.18.1",
